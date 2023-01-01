@@ -20,6 +20,7 @@ main nav {
   width: 20%;
   background-color: #fff;
   border-radius: 0 70px 40px 0;
+  box-shadow: 0 2px 5px #24282c;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,9 +87,10 @@ main .tabule .canvas .head-create-task .create-task {
   align-items: center;
   justify-content: center;
 }
-main .tabule .canvas .head-create-task .create-task input {
+main .tabule .canvas .head-create-task .create-task input,
+main .tabule .canvas .head-create-task .create-task select {
   border: none;
-  padding: 0.3rem;
+  padding: 0.2rem;
   border-radius: 10px;
   outline: none;
   color: #24282c;
@@ -108,53 +110,33 @@ main .tabule .canvas .head-create-task .create-task .one-row #description {
   width: 16rem;
 }
 main .tabule .canvas .head-create-task .create-task .two-row {
+  width: 9rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  width: 7rem;
+}
+main .tabule .canvas .head-create-task .create-task .two-row .date {
+  content: url(/icon/calendar.svg);
+  height: 20px;
+  width: 20px;
 }
 main .tabule .canvas .head-create-task .create-task .two-row #date {
   margin-bottom: 0.5rem;
   width: 6.5rem;
 }
-main .tabule .canvas .head-create-task .create-task .two-row .colors {
-  width: 5rem;
-  text-align: center;
-  padding-top: 0.2rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color1,
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color2,
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color3 {
-  display: none;
-}
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color-1,
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color-2,
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color-3 {
-  border-radius: 50%;
-  width: 20px;
+main .tabule .canvas .head-create-task .create-task .two-row .time {
+  content: url(/icon/clock.svg);
   height: 20px;
-  cursor: pointer;
+  width: 20px;
 }
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color-1:active,
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color-2:active,
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color-3:active {
-  border: 2px solid #24282c;
+main .tabule .canvas .head-create-task .create-task .two-row .prior {
+  padding-top: 0.3rem;
 }
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color-1 {
-  background-color: #14dd28;
-  color: #14dd28;
-}
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color-2 {
-  background-color: #3581f2;
-  color: #3581f2;
-}
-main .tabule .canvas .head-create-task .create-task .two-row .colors #color-3 {
-  background-color: #f61f1f;
-  color: #f61f1f;
+main .tabule .canvas .head-create-task .create-task .two-row .prior label {
+  content: url(/icon/alert-triangle.svg);
+  height: 20px;
+  width: 20px;
 }
 main .tabule .canvas .head-create-task .create-task #submit {
   width: 1.5rem;
@@ -175,7 +157,8 @@ main .tabule .canvas .all-todo h2 {
   text-align: center;
   font-family: "Poppins", sans-serif;
   font-size: clamp(1rem, 5vw, 1.375rem);
-  font-weight: 500;
+  font-weight: 600;
+  padding-top: 1rem;
 }
 main .tabule .canvas .all-todo .to-start {
   grid-area: start;

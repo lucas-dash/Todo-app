@@ -29,7 +29,7 @@
             <div class="canvas">
 
                 <div class="head-create-task">
-                    <h2>Create Tasks <span id="add-task">+</span></h2>
+                    <h2>Create Task<span id="add-task">+</span></h2>
                     <form class="create-task">
                         <div class="one-row">
                             <input type="text" name="text" id="text" placeholder="What would you like to do?">
@@ -39,20 +39,23 @@
 
                         <div class="two-row">
 
-                            <label for="date"></label>
-                            <input type="date" name="date" id="date">
-                            <label for="time"></label>
-                            <input type="time" name="time" id="time">
+                            <div class="dateTask">
+                                <label for="date" class="date"></label>
+                                <input type="date" name="date" id="date">
+                            </div>
 
-                            <div class="colors">
-                                <label for="color1" id="color-1">.</label>
-                                <input type="radio" name="color" id="color1" value="14dd28">
+                            <div class="timeTask">
+                                <label for="time" class="time"></label>
+                                <input type="time" name="time" id="time">
+                            </div>
 
-                                <label for="color2" id="color-2">.</label>
-                                <input type="radio" name="color" id="color2" value="3581f2">
-
-                                <label for="color3" id="color-3">.</label>
-                                <input type="radio" name="color" id="color3" value="f61f1f">
+                            <div class="prior">
+                                <label for="priority"></label>
+                                <select id="priority" name="color">
+                                    <option value="14dd28">Nízká</option>
+                                    <option value="3581f2">Střední</option>
+                                    <option value="f61f1f">Vysoká</option>
+                                </select>
                             </div>
                         </div>
                         <input type="submit" value="+" id="submit">
