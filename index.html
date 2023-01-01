@@ -10,9 +10,83 @@
 </head>
 
 <body>
+    <main>
 
-    <h1>Hello todo</h1>
+        <nav>
+            <h1>To-Do</h1>
+            <div class="navbar">
+                <div class="searchbox">
+                    <label for="search"></label>
+                    <input type="text" name="search" id="search" placeholder="Search">
+                </div>
+                <div class="calendar-box">
 
+                </div>
+            </div>
+        </nav>
+
+        <section class="tabule">
+            <div class="canvas">
+
+                <div class="head-create-task">
+                    <h2>Create Tasks <span id="add-task">+</span></h2>
+                    <form class="create-task">
+                        <div class="one-row">
+                            <input type="text" name="text" id="text" placeholder="What would you like to do?">
+
+                            <input name="describtion" id="description" placeholder="Description">
+                        </div>
+
+                        <div class="two-row">
+
+                            <label for="date"></label>
+                            <input type="date" name="date" id="date">
+                            <label for="time"></label>
+                            <input type="time" name="time" id="time">
+
+                            <div class="colors">
+                                <label for="color1" id="color-1">.</label>
+                                <input type="radio" name="color" id="color1" value="14dd28">
+
+                                <label for="color2" id="color-2">.</label>
+                                <input type="radio" name="color" id="color2" value="3581f2">
+
+                                <label for="color3" id="color-3">.</label>
+                                <input type="radio" name="color" id="color3" value="f61f1f">
+                            </div>
+                        </div>
+                        <input type="submit" value="+" id="submit">
+                    </form>
+                </div>
+
+                <article class="all-todo">
+
+                    <section class="to-start">
+                        <h2>To Start</h2>
+                        <div class="newTask">
+
+                        </div>
+                    </section>
+                    <section class="in-progress">
+                        <h2>In Progress</h2>
+                        <div class="progressTask">
+
+                        </div>
+                    </section>
+                    <section class="done">
+                        <h2>Done</h2>
+                        <div class="completeTask">
+
+                        </div>
+                    </section>
+
+                </article>
+
+
+            </div>
+
+        </section>
+    </main>
 
 
 

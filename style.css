@@ -3,4 +3,189 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: "Lora", serif;
+  background-color: #f7f6f0;
+  color: #24282c;
+}
+
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+main nav {
+  width: 20%;
+  background-color: #fff;
+  border-radius: 0 70px 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main nav h1 {
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  padding: 1rem 0.5rem;
+}
+main nav .navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main nav .navbar .searchbox input {
+  width: 150px;
+  height: 1.5rem;
+  border-radius: 40px;
+  border: 2px solid #24282c;
+  color: #24282c;
+  padding: 0 1rem;
+}
+main nav .navbar .calendar-box {
+  border: 2px solid #24282c;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 10px;
+  margin: 1rem;
+}
+main .tabule {
+  width: 80%;
+  height: 100%;
+}
+main .tabule .canvas {
+  width: 100%;
+  height: 100%;
+}
+main .tabule .canvas .head-create-task {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+}
+main .tabule .canvas .head-create-task h2 {
+  padding: 1rem;
+}
+main .tabule .canvas .head-create-task h2 #add-task {
+  padding: 0 0.55rem;
+  margin: 0.4rem;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  background-color: #24282c;
+  color: #fff;
+  cursor: pointer;
+}
+main .tabule .canvas .head-create-task .create-task {
+  background-color: #d3f36b;
+  border-radius: 15px;
+  padding: 0.6rem;
+  box-shadow: 1px 2px 5px #24282c;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+main .tabule .canvas .head-create-task .create-task input {
+  border: none;
+  padding: 0.3rem;
+  border-radius: 10px;
+  outline: none;
+  color: #24282c;
+  font-family: "Lora", serif;
+}
+main .tabule .canvas .head-create-task .create-task .one-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main .tabule .canvas .head-create-task .create-task .one-row #text {
+  width: 16rem;
+  margin-bottom: 0.5rem;
+}
+main .tabule .canvas .head-create-task .create-task .one-row #description {
+  width: 16rem;
+}
+main .tabule .canvas .head-create-task .create-task .two-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 7rem;
+}
+main .tabule .canvas .head-create-task .create-task .two-row #date {
+  margin-bottom: 0.5rem;
+  width: 6.5rem;
+}
+main .tabule .canvas .head-create-task .create-task .two-row .colors {
+  width: 5rem;
+  text-align: center;
+  padding-top: 0.2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color1,
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color2,
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color3 {
+  display: none;
+}
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color-1,
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color-2,
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color-3 {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color-1:active,
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color-2:active,
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color-3:active {
+  border: 2px solid #24282c;
+}
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color-1 {
+  background-color: #14dd28;
+  color: #14dd28;
+}
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color-2 {
+  background-color: #3581f2;
+  color: #3581f2;
+}
+main .tabule .canvas .head-create-task .create-task .two-row .colors #color-3 {
+  background-color: #f61f1f;
+  color: #f61f1f;
+}
+main .tabule .canvas .head-create-task .create-task #submit {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #24282c;
+  color: #fff;
+}
+main .tabule .canvas .all-todo {
+  width: 100%;
+  height: 80%;
+  display: grid;
+  grid-template-areas: "start progress done";
+  justify-content: stretch;
+}
+main .tabule .canvas .all-todo h2 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1rem, 5vw, 1.375rem);
+  font-weight: 500;
+}
+main .tabule .canvas .all-todo .to-start {
+  grid-area: start;
+  border: 2px solid green;
+}
+main .tabule .canvas .all-todo .in-progress {
+  grid-area: progress;
+  border: 2px solid red;
+}
+main .tabule .canvas .all-todo .done {
+  grid-area: done;
+  border: 2px solid black;
 }/*# sourceMappingURL=style.css.map */
