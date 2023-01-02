@@ -140,12 +140,27 @@ main .tabule .canvas .head-create-task h2 #add-task {
   color: #fff;
   cursor: pointer;
 }
+main .tabule .canvas .head-create-task .create-task.pulse {
+  display: flex;
+  height: auto;
+  width: auto;
+  left: 0;
+  -webkit-animation: pulse 900ms linear 0s 1 normal none;
+          animation: pulse 900ms linear 0s 1 normal none;
+}
 main .tabule .canvas .head-create-task .create-task {
+  position: relative;
+  top: 1rem;
+  left: -3rem;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  transition: all 400ms ease-out;
   background-color: #d3f36b;
   border-radius: 15px;
   padding: 0.6rem;
   box-shadow: 1px 2px 5px #24282c;
-  display: flex;
+  display: none;
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
@@ -410,4 +425,90 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete .delete {
   height: 19px;
   width: 19px;
   cursor: pointer;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    opacity: 1;
+    transform: translateX(-48px);
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    transform: translateX(-26px);
+  }
+  65% {
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    transform: translateX(-13px);
+  }
+  82% {
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    transform: translateX(-6.5px);
+  }
+  93% {
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    transform: translateX(-4px);
+  }
+  25%, 55%, 75%, 87%, 98% {
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    transform: translateX(0px);
+  }
+  100% {
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    opacity: 1;
+    transform: translateX(-48px);
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    transform: translateX(-26px);
+  }
+  65% {
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    transform: translateX(-13px);
+  }
+  82% {
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    transform: translateX(-6.5px);
+  }
+  93% {
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    transform: translateX(-4px);
+  }
+  25%, 55%, 75%, 87%, 98% {
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    transform: translateX(0px);
+  }
+  100% {
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }/*# sourceMappingURL=style.css.map */

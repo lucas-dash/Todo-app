@@ -139,6 +139,7 @@ main {
 
         display: flex;
         align-items: center;
+
         h2 {
           padding: 1rem;
           #add-task {
@@ -152,13 +153,29 @@ main {
             cursor: pointer;
           }
         }
+        .create-task.pulse {
+          display: flex;
+          height: auto;
+          width: auto;
+          left: 0;
+          animation: pulse 900ms linear 0s 1 normal none;
+        }
         .create-task {
+          position: relative;
+          top: 1rem;
+          left: -3rem;
+
+          height: 30px;
+          width: 30px;
+          overflow: hidden;
+          transition: all 400ms ease-out;
+
           background-color: $primary-light;
           border-radius: 15px;
           padding: 0.6rem;
           box-shadow: 1px 2px 5px $secondary-light;
 
-          display: flex;
+          display: none;
           gap: 0.5rem;
           align-items: center;
           justify-content: center;
@@ -415,5 +432,52 @@ main {
         }
       }
     }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 1;
+    transform: translateX(-48px);
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  40% {
+    animation-timing-function: ease-in;
+    transform: translateX(-26px);
+  }
+
+  65% {
+    animation-timing-function: ease-in;
+    transform: translateX(-13px);
+  }
+
+  82% {
+    animation-timing-function: ease-in;
+    transform: translateX(-6.5px);
+  }
+
+  93% {
+    animation-timing-function: ease-in;
+    transform: translateX(-4px);
+  }
+
+  25%,
+  55%,
+  75%,
+  87%,
+  98% {
+    animation-timing-function: ease-out;
+    transform: translateX(0px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateX(0px);
   }
 }
