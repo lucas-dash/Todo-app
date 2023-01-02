@@ -7,8 +7,9 @@
 
 body {
   font-family: "Lora", serif;
-  background-color: #f7f6f0;
   color: #24282c;
+  background: linear-gradient(90deg, #f7f6f0 21px, transparent 1%) center, linear-gradient(#f7f6f0 21px, transparent 1%) center, grey;
+  background-size: 22px 22px;
 }
 
 main {

@@ -8,8 +8,12 @@
 
 body {
   font-family: $lora;
-  background-color: $third-light;
   color: $secondary-light;
+  // dooted background
+  background: linear-gradient(90deg, $third-light (22px - 1px), transparent 1%)
+      center,
+    linear-gradient($third-light (22px - 1px), transparent 1%) center, grey;
+  background-size: 22px 22px;
 }
 
 main {
