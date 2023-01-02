@@ -123,7 +123,7 @@ main .tabule .canvas {
 }
 main .tabule .canvas .head-create-task {
   width: 100%;
-  height: 20%;
+  height: 20vh;
   display: flex;
   align-items: center;
 }
@@ -211,11 +211,10 @@ main .tabule .canvas .head-create-task .create-task #submit {
 }
 main .tabule .canvas .all-todo {
   width: 100%;
-  height: 80%;
+  height: 80vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: "start progress done";
-  justify-content: stretch;
 }
 main .tabule .canvas .all-todo h2 {
   text-align: center;
@@ -226,31 +225,54 @@ main .tabule .canvas .all-todo h2 {
 }
 main .tabule .canvas .all-todo .to-start {
   grid-area: start;
-  overflow: scroll;
   padding: 0 0.5rem;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }
 main .tabule .canvas .all-todo .in-progress {
   grid-area: progress;
   padding: 0 0.5rem;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }
 main .tabule .canvas .all-todo .done {
   grid-area: done;
   padding: 0 0.5rem;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+main .tabule .canvas .all-todo .todo,
+main .tabule .canvas .all-todo .progressTask,
+main .tabule .canvas .all-todo .completeTask {
+  height: 100%;
 }
 main .tabule .canvas .all-todo .todo .newTask,
 main .tabule .canvas .all-todo .progressTask .newTask,
 main .tabule .canvas .all-todo .completeTask .newTask {
-  width: clamp(285px, 5vw, 95%);
   list-style: none;
+  width: clamp(285px, 5vw, 95%);
+  height: 6rem;
   margin: 1rem auto;
-  background-color: #fff;
   padding: 1rem;
-  border-radius: 10px;
+  background-color: #fff;
   color: #24282c;
+  overflow: hidden;
+  border-radius: 10px;
   box-shadow: 0 2px 7px #24282c;
+  transition: all 200ms ease-out;
+}
+main .tabule .canvas .all-todo .todo .newTask:hover, main .tabule .canvas .all-todo .todo .newTask:focus,
+main .tabule .canvas .all-todo .progressTask .newTask:hover,
+main .tabule .canvas .all-todo .progressTask .newTask:focus,
+main .tabule .canvas .all-todo .completeTask .newTask:hover,
+main .tabule .canvas .all-todo .completeTask .newTask:focus {
+  height: 8.5rem;
 }
 main .tabule .canvas .all-todo .todo .newTask .head,
 main .tabule .canvas .all-todo .progressTask .newTask .head,
@@ -355,7 +377,7 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0.5rem 0.5rem 0 0.5rem;
 }
 main .tabule .canvas .all-todo .todo .newTask .complete .check label,
 main .tabule .canvas .all-todo .progressTask .newTask .complete .check label,
