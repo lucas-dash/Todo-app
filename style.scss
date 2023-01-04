@@ -139,7 +139,7 @@ main {
       height: 100%;
       .head-create-task {
         width: 100%;
-        height: 20vh;
+        height: 20%;
         padding: 0 1rem;
 
         display: grid;
@@ -299,14 +299,12 @@ main {
 
       .all-todo {
         width: 100%;
-        height: 80vh;
-        overflow: scroll;
+        // height: 80%;
+        // overflow: scroll;
 
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-areas: "start progress done";
-        // justify-content: stretch;
-
+        grid-template-columns: repeat(3, 1fr);
+        // grid-template-areas: "start progress done";
         h2 {
           text-align: center;
           font-family: $poppins;
@@ -332,34 +330,34 @@ main {
         }
 
         .to-start {
-          grid-area: start;
+          // grid-area: start;
           padding: 0 0.5rem;
           height: 100%;
 
           display: flex;
           flex-direction: column;
           overflow: scroll;
-          // border: 2px solid green;
+          border: 2px solid green;
         }
 
         .in-progress {
-          grid-area: progress;
+          // grid-area: progress;
           padding: 0 0.5rem;
           height: 100%;
           display: flex;
           flex-direction: column;
           overflow: scroll;
-          // border: 2px solid red;
+          border: 2px solid red;
         }
 
         .done {
-          grid-area: done;
+          // grid-area: done;
           padding: 0 0.5rem;
           height: 100%;
           display: flex;
           flex-direction: column;
           overflow: scroll;
-          // border: 2px solid black;
+          border: 2px solid black;
         }
 
         // ! create new Task
@@ -519,3 +517,5 @@ main {
     opacity: 1;
   }
 }
+
+@import "mediaQueries";
