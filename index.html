@@ -39,44 +39,65 @@
             <div class="canvas">
 
                 <div class="head-create-task">
-                    <h2>Create Task<span id="add-task">+</span></h2>
+                    <div class="first-row-head">
 
-                    <form class="create-task">
-                        <div class="one-row">
-                            <input type="text" name="text" id="text" placeholder="What would you like to do?">
+                        <h2>Create Task<span id="add-task"></span></h2>
 
-                            <input name="describtion" id="description" placeholder="Description">
+                        <form class="create-task">
+                            <div class="one-row">
+                                <input type="text" name="text" id="text" placeholder="What would you like to do?">
+
+                                <input name="describtion" id="description" placeholder="Description">
+                            </div>
+
+                            <div class="two-row">
+
+                                <div class="dateTask">
+                                    <label for="date" class="date"></label>
+                                    <input type="date" name="date" id="date">
+                                </div>
+
+                                <div class="timeTask">
+                                    <label for="time" class="time"></label>
+                                    <input type="time" name="time" id="time">
+                                </div>
+
+                                <div class="prior">
+                                    <label for="priority"></label>
+                                    <select id="priority" name="color">
+                                        <option value="14dd28">Nízká</option>
+                                        <option value="3581f2">Střední</option>
+                                        <option value="f61f1f">Vysoká</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="submit" value="+" id="submit">
+                        </form>
+                    </div>
+
+                    <div class="second-row-head">
+                        <!-- <div class="count-task">
+                            <p>To-Do</p>
+                            <p id="count-toStart-task">2</p>
                         </div>
-
-                        <div class="two-row">
-
-                            <div class="dateTask">
-                                <label for="date" class="date"></label>
-                                <input type="date" name="date" id="date">
-                            </div>
-
-                            <div class="timeTask">
-                                <label for="time" class="time"></label>
-                                <input type="time" name="time" id="time">
-                            </div>
-
-                            <div class="prior">
-                                <label for="priority"></label>
-                                <select id="priority" name="color">
-                                    <option value="14dd28">Nízká</option>
-                                    <option value="3581f2">Střední</option>
-                                    <option value="f61f1f">Vysoká</option>
-                                </select>
-                            </div>
+                        <div class="count-task">
+                            <p>In-Progress</p>
+                            <p id="count-inProgress-task">12</p>
                         </div>
-                        <input type="submit" value="+" id="submit">
-                    </form>
+                        <div class="count-task">
+                            <p>Complete</p>
+                            <p id="count-complete-task">50</p>
+                        </div> -->
+                    </div>
+                    <div class="third-row-head">
+                        <input type="checkbox" id="dark-mode">
+                    </div>
                 </div>
 
                 <article class="all-todo">
 
                     <section class="to-start">
-                        <h2>To Start</h2>
+                        <h2>To Start</h2> <span class="to-start-heading">2</span>
                         <ul class="todo">
 
                             <li class="newTask">
@@ -119,7 +140,7 @@
                     </section>
 
                     <section class="in-progress">
-                        <h2>In Progress</h2>
+                        <h2 class="in-progress-heading">In Progress</h2>
                         <ul class="progressTask">
 
                             <li class="newTask">
@@ -231,7 +252,7 @@
                         </ul>
                     </section>
                     <section class="done">
-                        <h2>Done</h2>
+                        <h2 class="done-heading">Done</h2>
                         <ul class="completeTask">
                             <li class="newTask">
                                 <div class="head">

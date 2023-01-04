@@ -13,5 +13,8 @@ hamburger.addEventListener("click", (e) => {
 const addTaskBtn = document.querySelector("#add-task");
 addTaskBtn.addEventListener("click", (e) => {
   const createTask = document.querySelector(".create-task");
-  createTask.classList.toggle("pulse");
+  const btn_addTask = document.querySelector("#add-task");
+  createTask.classList.toggle("onBlured");
+  btn_addTask.classList.toggle("click");
+  btn_addTask.parentNode.parentElement.classList.toggle("moveUp");
 });

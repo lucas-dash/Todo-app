@@ -140,120 +140,170 @@ main {
       .head-create-task {
         width: 100%;
         height: 20vh;
+        padding: 0 1rem;
 
-        display: flex;
-        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
 
-        h2 {
-          padding: 1rem;
-          #add-task {
-            padding: 0 0.55rem;
-            margin: 0.4rem;
-            width: 9rem;
-            height: 9rem;
-            border-radius: 50%;
-            background-color: $secondary-light;
-            color: $fourth-light;
-            cursor: pointer;
-          }
+        .first-row-head.moveUp {
+          align-items: flex-start;
+          transition: all 1s ease-out;
         }
-        .create-task.pulse {
+
+        .first-row-head {
+          width: 100%;
           display: flex;
-          height: auto;
-          width: auto;
-          left: 0;
-          animation: pulse 900ms linear 0s 1 normal none;
-        }
-        .create-task {
-          position: relative;
-          top: 1rem;
-          left: -3rem;
-
-          height: 30px;
-          width: 30px;
-          overflow: hidden;
-          transition: all 400ms ease-out;
-
-          background-color: $primary-light;
-          border-radius: 15px;
-          padding: 0.6rem;
-          box-shadow: 1px 2px 5px $secondary-light;
-
-          display: none;
-          gap: 0.5rem;
           align-items: center;
           justify-content: center;
 
-          input,
-          select {
-            border: none;
-            padding: 0.2rem;
-            border-radius: 10px;
-            outline: none;
-            color: $secondary-light;
-            font-family: $lora;
-          }
+          // todo solve end animation
 
-          .one-row {
+          h2 {
+            padding: 1rem;
+
+            #add-task {
+              display: inline-block;
+              content: url(/icon/plus-circle.svg);
+              margin: 0 0.4rem;
+              width: 2.2rem;
+              height: 2.2rem;
+              border-radius: 50%;
+              background-color: $secondary-light;
+              color: $fourth-light;
+              cursor: pointer;
+              transform: translate(0, 5px);
+              transition: transform ease-out 300ms;
+            }
+            #add-task.click {
+              transform: rotate(45deg) translate(5px, 5px);
+            }
+          }
+          .create-task.onBlured {
             display: flex;
-            flex-direction: column;
+            height: initial;
+            width: initial;
+            animation: slide-in-blurred-tl 0.6s cubic-bezier(0.23, 1, 0.32, 1)
+              both;
+          }
+          .create-task {
+            position: fixed;
+            top: 4rem;
+            left: 8rem;
+            z-index: 100;
+
+            height: 30px;
+            width: 30px;
+            overflow: hidden;
+            transition: all 400ms ease-out;
+
+            background-color: $primary-light;
+            border-radius: 15px;
+            padding: 0.6rem;
+            box-shadow: 1px 2px 5px $secondary-light;
+
+            display: none;
+            gap: 0.5rem;
             align-items: center;
             justify-content: center;
-            #text {
-              width: 16rem;
-              margin-bottom: 0.5rem;
-            }
-            #description {
-              width: 16rem;
-            }
-          }
-          .two-row {
-            width: 9rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
 
-            .date {
-              content: url(/icon/calendar.svg);
-              height: 20px;
-              width: 20px;
+            input,
+            select {
+              border: none;
+              padding: 0.2rem;
+              border-radius: 10px;
+              outline: none;
+              color: $secondary-light;
+              font-family: $lora;
             }
-            #date {
-              margin-bottom: 0.5rem;
-              width: 6.5rem;
+
+            .one-row {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              #text {
+                width: 16rem;
+                margin-bottom: 0.5rem;
+              }
+              #description {
+                width: 16rem;
+              }
             }
-            .time {
-              content: url(/icon/clock.svg);
-              height: 20px;
-              width: 20px;
-            }
-            .prior {
-              padding-top: 0.3rem;
-              label {
-                content: url(/icon/alert-triangle.svg);
+            .two-row {
+              width: 9rem;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              justify-content: center;
+
+              .date {
+                content: url(/icon/calendar.svg);
                 height: 20px;
                 width: 20px;
               }
+              #date {
+                margin-bottom: 0.5rem;
+                width: 6.5rem;
+              }
+              .time {
+                content: url(/icon/clock.svg);
+                height: 20px;
+                width: 20px;
+              }
+              .prior {
+                padding-top: 0.3rem;
+                label {
+                  content: url(/icon/alert-triangle.svg);
+                  height: 20px;
+                  width: 20px;
+                }
+              }
+            }
+            #submit {
+              width: 1.5rem;
+              height: 1.5rem;
+              font-weight: bold;
+              border-radius: 50%;
+              background-color: $secondary-light;
+              color: #fff;
             }
           }
-          #submit {
-            width: 1.5rem;
-            height: 1.5rem;
-            font-weight: bold;
-            border-radius: 50%;
-            background-color: $secondary-light;
-            color: #fff;
+        }
+        .second-row-head {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          #count-toStart-task,
+          #count-inProgress-task,
+          #count-complete-task {
+            width: 30px;
+            height: 30px;
+            background-color: $primary-light;
+            border-radius: 10px;
+            margin: 0.5rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
+        }
+
+        .third-row-head {
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
 
       .all-todo {
         width: 100%;
         height: 80vh;
+        overflow: scroll;
 
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr 1fr 1fr;
         grid-template-areas: "start progress done";
         // justify-content: stretch;
 
@@ -263,6 +313,22 @@ main {
           font-size: $font-400;
           font-weight: 600;
           padding: 1rem 0;
+        }
+        .to-start-heading {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 30px;
+          height: 30px;
+          background-color: $primary-light;
+          border-radius: 10px;
+          font-size: 15px;
+          font-weight: bold;
+          padding: 0.2rem;
+          position: absolute;
+          left: 25%;
+          transform: translateY(50%);
+          z-index: 1;
         }
 
         .to-start {
@@ -439,49 +505,17 @@ main {
   }
 }
 
-@keyframes pulse {
+@keyframes slide-in-blurred-tl {
   0% {
-    animation-timing-function: ease-in;
-    opacity: 1;
-    transform: translateX(-48px);
+    transform: translate(-350px, -350px) skew(80deg, 10deg);
+    transform-origin: 100% 0;
+    filter: blur(45px);
+    opacity: 0;
   }
-
-  24% {
-    opacity: 1;
-  }
-
-  40% {
-    animation-timing-function: ease-in;
-    transform: translateX(-26px);
-  }
-
-  65% {
-    animation-timing-function: ease-in;
-    transform: translateX(-13px);
-  }
-
-  82% {
-    animation-timing-function: ease-in;
-    transform: translateX(-6.5px);
-  }
-
-  93% {
-    animation-timing-function: ease-in;
-    transform: translateX(-4px);
-  }
-
-  25%,
-  55%,
-  75%,
-  87%,
-  98% {
-    animation-timing-function: ease-out;
-    transform: translateX(0px);
-  }
-
   100% {
-    animation-timing-function: ease-out;
+    transform: translate(0, 0) skew(0deg, 0deg);
+    transform-origin: 50% 50%;
+    filter: blur(0);
     opacity: 1;
-    transform: translateX(0px);
   }
 }

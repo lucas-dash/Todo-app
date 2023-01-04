@@ -125,34 +125,51 @@ main .tabule .canvas {
 main .tabule .canvas .head-create-task {
   width: 100%;
   height: 20vh;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+main .tabule .canvas .head-create-task .first-row-head.moveUp {
+  align-items: flex-start;
+  transition: all 1s ease-out;
+}
+main .tabule .canvas .head-create-task .first-row-head {
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-main .tabule .canvas .head-create-task h2 {
+main .tabule .canvas .head-create-task .first-row-head h2 {
   padding: 1rem;
 }
-main .tabule .canvas .head-create-task h2 #add-task {
-  padding: 0 0.55rem;
-  margin: 0.4rem;
-  width: 9rem;
-  height: 9rem;
+main .tabule .canvas .head-create-task .first-row-head h2 #add-task {
+  display: inline-block;
+  content: url(/icon/plus-circle.svg);
+  margin: 0 0.4rem;
+  width: 2.2rem;
+  height: 2.2rem;
   border-radius: 50%;
   background-color: #24282c;
   color: #fff;
   cursor: pointer;
+  transform: translate(0, 5px);
+  transition: transform ease-out 300ms;
 }
-main .tabule .canvas .head-create-task .create-task.pulse {
+main .tabule .canvas .head-create-task .first-row-head h2 #add-task.click {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+main .tabule .canvas .head-create-task .first-row-head .create-task.onBlured {
   display: flex;
-  height: auto;
-  width: auto;
-  left: 0;
-  -webkit-animation: pulse 900ms linear 0s 1 normal none;
-          animation: pulse 900ms linear 0s 1 normal none;
+  height: initial;
+  width: initial;
+  -webkit-animation: slide-in-blurred-tl 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+          animation: slide-in-blurred-tl 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
-main .tabule .canvas .head-create-task .create-task {
-  position: relative;
-  top: 1rem;
-  left: -3rem;
+main .tabule .canvas .head-create-task .first-row-head .create-task {
+  position: fixed;
+  top: 4rem;
+  left: 8rem;
+  z-index: 100;
   height: 30px;
   width: 30px;
   overflow: hidden;
@@ -166,8 +183,8 @@ main .tabule .canvas .head-create-task .create-task {
   align-items: center;
   justify-content: center;
 }
-main .tabule .canvas .head-create-task .create-task input,
-main .tabule .canvas .head-create-task .create-task select {
+main .tabule .canvas .head-create-task .first-row-head .create-task input,
+main .tabule .canvas .head-create-task .first-row-head .create-task select {
   border: none;
   padding: 0.2rem;
   border-radius: 10px;
@@ -175,49 +192,49 @@ main .tabule .canvas .head-create-task .create-task select {
   color: #24282c;
   font-family: "Lora", serif;
 }
-main .tabule .canvas .head-create-task .create-task .one-row {
+main .tabule .canvas .head-create-task .first-row-head .create-task .one-row {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-main .tabule .canvas .head-create-task .create-task .one-row #text {
+main .tabule .canvas .head-create-task .first-row-head .create-task .one-row #text {
   width: 16rem;
   margin-bottom: 0.5rem;
 }
-main .tabule .canvas .head-create-task .create-task .one-row #description {
+main .tabule .canvas .head-create-task .first-row-head .create-task .one-row #description {
   width: 16rem;
 }
-main .tabule .canvas .head-create-task .create-task .two-row {
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row {
   width: 9rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
-main .tabule .canvas .head-create-task .create-task .two-row .date {
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .date {
   content: url(/icon/calendar.svg);
   height: 20px;
   width: 20px;
 }
-main .tabule .canvas .head-create-task .create-task .two-row #date {
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row #date {
   margin-bottom: 0.5rem;
   width: 6.5rem;
 }
-main .tabule .canvas .head-create-task .create-task .two-row .time {
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .time {
   content: url(/icon/clock.svg);
   height: 20px;
   width: 20px;
 }
-main .tabule .canvas .head-create-task .create-task .two-row .prior {
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .prior {
   padding-top: 0.3rem;
 }
-main .tabule .canvas .head-create-task .create-task .two-row .prior label {
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .prior label {
   content: url(/icon/alert-triangle.svg);
   height: 20px;
   width: 20px;
 }
-main .tabule .canvas .head-create-task .create-task #submit {
+main .tabule .canvas .head-create-task .first-row-head .create-task #submit {
   width: 1.5rem;
   height: 1.5rem;
   font-weight: bold;
@@ -225,11 +242,35 @@ main .tabule .canvas .head-create-task .create-task #submit {
   background-color: #24282c;
   color: #fff;
 }
+main .tabule .canvas .head-create-task .second-row-head {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .tabule .canvas .head-create-task .second-row-head #count-toStart-task,
+main .tabule .canvas .head-create-task .second-row-head #count-inProgress-task,
+main .tabule .canvas .head-create-task .second-row-head #count-complete-task {
+  width: 30px;
+  height: 30px;
+  background-color: #d3f36b;
+  border-radius: 10px;
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .tabule .canvas .head-create-task .third-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 main .tabule .canvas .all-todo {
   width: 100%;
   height: 80vh;
+  overflow: scroll;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "start progress done";
 }
 main .tabule .canvas .all-todo h2 {
@@ -238,6 +279,22 @@ main .tabule .canvas .all-todo h2 {
   font-size: clamp(1rem, 5vw, 1.375rem);
   font-weight: 600;
   padding: 1rem 0;
+}
+main .tabule .canvas .all-todo .to-start-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: #d3f36b;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 0.2rem;
+  position: absolute;
+  left: 25%;
+  transform: translateY(50%);
+  z-index: 1;
 }
 main .tabule .canvas .all-todo .to-start {
   grid-area: start;
@@ -428,88 +485,32 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete .delete {
   cursor: pointer;
 }
 
-@-webkit-keyframes pulse {
+@-webkit-keyframes slide-in-blurred-tl {
   0% {
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    opacity: 1;
-    transform: translateX(-48px);
-  }
-  24% {
-    opacity: 1;
-  }
-  40% {
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    transform: translateX(-26px);
-  }
-  65% {
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    transform: translateX(-13px);
-  }
-  82% {
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    transform: translateX(-6.5px);
-  }
-  93% {
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    transform: translateX(-4px);
-  }
-  25%, 55%, 75%, 87%, 98% {
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-    transform: translateX(0px);
+    transform: translate(-350px, -350px) skew(80deg, 10deg);
+    transform-origin: 100% 0;
+    filter: blur(45px);
+    opacity: 0;
   }
   100% {
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    transform: translate(0, 0) skew(0deg, 0deg);
+    transform-origin: 50% 50%;
+    filter: blur(0);
     opacity: 1;
-    transform: translateX(0px);
   }
 }
 
-@keyframes pulse {
+@keyframes slide-in-blurred-tl {
   0% {
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    opacity: 1;
-    transform: translateX(-48px);
-  }
-  24% {
-    opacity: 1;
-  }
-  40% {
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    transform: translateX(-26px);
-  }
-  65% {
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    transform: translateX(-13px);
-  }
-  82% {
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    transform: translateX(-6.5px);
-  }
-  93% {
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    transform: translateX(-4px);
-  }
-  25%, 55%, 75%, 87%, 98% {
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-    transform: translateX(0px);
+    transform: translate(-350px, -350px) skew(80deg, 10deg);
+    transform-origin: 100% 0;
+    filter: blur(45px);
+    opacity: 0;
   }
   100% {
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    transform: translate(0, 0) skew(0deg, 0deg);
+    transform-origin: 50% 50%;
+    filter: blur(0);
     opacity: 1;
-    transform: translateX(0px);
   }
 }/*# sourceMappingURL=style.css.map */
