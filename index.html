@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaQueries.css">
     <title>To-Do</title>
 </head>
 
@@ -39,6 +40,7 @@
             <div class="canvas">
 
                 <div class="head-create-task">
+                    <!-- ! create new task form -->
                     <div class="first-row-head">
 
                         <h2>Create Task<span id="add-task"></span></h2>
@@ -75,20 +77,22 @@
                         </form>
                     </div>
 
+                    <!-- ! counting tasks -->
                     <div class="second-row-head">
-                        <!-- <div class="count-task">
-                            <p>To-Do</p>
+                        <div class="count-task">
+                            <p class="to-start-icon"></p>
                             <p id="count-toStart-task">2</p>
                         </div>
                         <div class="count-task">
-                            <p>In-Progress</p>
+                            <p class="progress-icon"></p>
                             <p id="count-inProgress-task">12</p>
                         </div>
                         <div class="count-task">
-                            <p>Complete</p>
+                            <p class="complet-icon"></p>
                             <p id="count-complete-task">50</p>
-                        </div> -->
+                        </div>
                     </div>
+                    <!-- ! dark mode -->
                     <div class="third-row-head">
                         <input type="checkbox" id="dark-mode">
                     </div>
@@ -97,9 +101,149 @@
                 <article class="all-todo">
 
                     <section class="to-start">
-                        <h2>To Start</h2> <span class="to-start-heading">2</span>
+                        <h2>To Start</h2>
                         <ul class="todo">
 
+                            <li class="newTask">
+                                <div class="head">
+                                    <span class="priority"></span>
+                                    <div class="status">
+                                        <span class="to-do"></span>
+                                    </div>
+                                </div>
+
+                                <div class="task-info">
+
+                                    <div class="taskText">
+                                        <input type="text" id="taskName" readonly value="Vyluxovat pokoj">
+                                        <input type="text" id="note" readonly value="udělat až přijdu domů">
+                                    </div>
+
+                                    <div class="clock">
+                                        <input type="text" id="taskDate" value="17/12/2023" readonly>
+                                        <input type="text" id="taskTime" value="19:20" readonly>
+                                    </div>
+                                </div>
+                                <div class="complete">
+                                    <div class="check">
+                                        <input type="checkbox" id="done">
+                                        <label for="done">Done</label>
+                                    </div>
+
+                                    <button id="to-progress">In-progress</button>
+
+                                    <div class="settings">
+                                        <span class="edit"></span>
+                                        <span class="delete"></span>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li class="newTask">
+                                <div class="head">
+                                    <span class="priority"></span>
+                                    <div class="status">
+                                        <span class="to-do"></span>
+                                    </div>
+                                </div>
+
+                                <div class="task-info">
+
+                                    <div class="taskText">
+                                        <input type="text" id="taskName" readonly value="Vyluxovat pokoj">
+                                        <input type="text" id="note" readonly value="udělat až přijdu domů">
+                                    </div>
+
+                                    <div class="clock">
+                                        <input type="text" id="taskDate" value="17/12/2023" readonly>
+                                        <input type="text" id="taskTime" value="19:20" readonly>
+                                    </div>
+                                </div>
+                                <div class="complete">
+                                    <div class="check">
+                                        <input type="checkbox" id="done">
+                                        <label for="done">Done</label>
+                                    </div>
+
+                                    <button id="to-progress">In-progress</button>
+
+                                    <div class="settings">
+                                        <span class="edit"></span>
+                                        <span class="delete"></span>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li class="newTask">
+                                <div class="head">
+                                    <span class="priority"></span>
+                                    <div class="status">
+                                        <span class="to-do"></span>
+                                    </div>
+                                </div>
+
+                                <div class="task-info">
+
+                                    <div class="taskText">
+                                        <input type="text" id="taskName" readonly value="Vyluxovat pokoj">
+                                        <input type="text" id="note" readonly value="udělat až přijdu domů">
+                                    </div>
+
+                                    <div class="clock">
+                                        <input type="text" id="taskDate" value="17/12/2023" readonly>
+                                        <input type="text" id="taskTime" value="19:20" readonly>
+                                    </div>
+                                </div>
+                                <div class="complete">
+                                    <div class="check">
+                                        <input type="checkbox" id="done">
+                                        <label for="done">Done</label>
+                                    </div>
+
+                                    <button id="to-progress">In-progress</button>
+
+                                    <div class="settings">
+                                        <span class="edit"></span>
+                                        <span class="delete"></span>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li class="newTask">
+                                <div class="head">
+                                    <span class="priority"></span>
+                                    <div class="status">
+                                        <span class="to-do"></span>
+                                    </div>
+                                </div>
+
+                                <div class="task-info">
+
+                                    <div class="taskText">
+                                        <input type="text" id="taskName" readonly value="Vyluxovat pokoj">
+                                        <input type="text" id="note" readonly value="udělat až přijdu domů">
+                                    </div>
+
+                                    <div class="clock">
+                                        <input type="text" id="taskDate" value="17/12/2023" readonly>
+                                        <input type="text" id="taskTime" value="19:20" readonly>
+                                    </div>
+                                </div>
+                                <div class="complete">
+                                    <div class="check">
+                                        <input type="checkbox" id="done">
+                                        <label for="done">Done</label>
+                                    </div>
+
+                                    <button id="to-progress">In-progress</button>
+
+                                    <div class="settings">
+                                        <span class="edit"></span>
+                                        <span class="delete"></span>
+                                    </div>
+                                </div>
+
+                            </li>
                             <li class="newTask">
                                 <div class="head">
                                     <span class="priority"></span>
@@ -253,6 +397,7 @@
                     </section>
                     <section class="done">
                         <h2 class="done-heading">Done</h2>
+
                         <ul class="completeTask">
                             <li class="newTask">
                                 <div class="head">

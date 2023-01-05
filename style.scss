@@ -34,7 +34,7 @@ main {
     height: 100%;
     background-color: $fourth-light;
     border-radius: 0 50px 40px 0;
-    box-shadow: 0 2px 5px $secondary-light;
+    box-shadow: 0 2px 5px $shadow;
     transition: all 200ms ease-out;
 
     display: flex;
@@ -55,10 +55,9 @@ main {
       justify-content: space-between;
       position: absolute;
       top: 1.4rem;
-      left: 0.8rem;
+      left: 0.7rem;
       z-index: 50;
       transform: rotate(30deg);
-      // translate(25px, 15px)
       transition: all 200ms ease-out;
 
       span {
@@ -133,6 +132,7 @@ main {
     width: 95%;
     height: 100%;
     transition: all 200ms ease-out;
+    padding: 1rem 0;
 
     .canvas {
       width: 100%;
@@ -160,16 +160,20 @@ main {
 
           h2 {
             padding: 1rem;
+            text-align: center;
+            font-size: $font-400;
 
             #add-task {
-              display: inline-block;
               content: url(/icon/plus-circle.svg);
+              display: inline-block;
+              width: clamp(1.55rem, 6vw, 2.2rem);
+              height: clamp(1.55rem, 6vw, 2.2rem);
               margin: 0 0.4rem;
-              width: 2.2rem;
-              height: 2.2rem;
+
               border-radius: 50%;
               background-color: $secondary-light;
               color: $fourth-light;
+
               cursor: pointer;
               transform: translate(0, 5px);
               transition: transform ease-out 300ms;
@@ -199,7 +203,7 @@ main {
             background-color: $primary-light;
             border-radius: 15px;
             padding: 0.6rem;
-            box-shadow: 1px 2px 5px $secondary-light;
+            box-shadow: 1px 2px 5px $shadow;
 
             display: none;
             gap: 0.5rem;
@@ -273,16 +277,63 @@ main {
           width: 100%;
           display: flex;
           justify-content: center;
-          align-items: center;
+          align-items: flex-end;
+
+          .count-task {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .to-start-icon {
+            content: url(/icon/circle.svg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: clamp(20px, 5vw, 30px);
+            height: clamp(20px, 5vw, 30px);
+            padding: 0.2rem;
+            // border: 2px solid black;
+            background-color: $fourth-light;
+            border-radius: 15px;
+          }
+          .progress-icon {
+            content: url(/icon/progress.svg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: clamp(20px, 5vw, 30px);
+            height: clamp(20px, 5vw, 30px);
+            padding: 0.2rem;
+            // border: 1px solid black;
+            background-color: $fourth-light;
+            border-radius: 15px;
+          }
+          .complet-icon {
+            content: url(/icon/check-circle.svg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: clamp(20px, 5vw, 30px);
+            height: clamp(20px, 5vw, 30px);
+            padding: 0.2rem;
+            // border: 2px solid black;
+            background-color: $fourth-light;
+            border-radius: 15px;
+          }
 
           #count-toStart-task,
           #count-inProgress-task,
           #count-complete-task {
-            width: 30px;
-            height: 30px;
+            width: clamp(22px, 5vw, 30px);
+            height: clamp(22px, 5vw, 30px);
             background-color: $primary-light;
             border-radius: 10px;
             margin: 0.5rem;
+            font-weight: 500;
+            font-size: clamp(14px, 5vw, 16px);
 
             display: flex;
             align-items: center;
@@ -300,11 +351,9 @@ main {
       .all-todo {
         width: 100%;
         // height: 80%;
-        // overflow: scroll;
 
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        // grid-template-areas: "start progress done";
         h2 {
           text-align: center;
           font-family: $poppins;
@@ -312,62 +361,44 @@ main {
           font-weight: 600;
           padding: 1rem 0;
         }
-        .to-start-heading {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 30px;
-          height: 30px;
-          background-color: $primary-light;
-          border-radius: 10px;
-          font-size: 15px;
-          font-weight: bold;
-          padding: 0.2rem;
-          position: absolute;
-          left: 25%;
-          transform: translateY(50%);
-          z-index: 1;
-        }
 
         .to-start {
-          // grid-area: start;
           padding: 0 0.5rem;
           height: 100%;
 
           display: flex;
           flex-direction: column;
           overflow: scroll;
-          border: 2px solid green;
+          // border: 2px solid green;
         }
 
         .in-progress {
-          // grid-area: progress;
           padding: 0 0.5rem;
           height: 100%;
           display: flex;
           flex-direction: column;
           overflow: scroll;
-          border: 2px solid red;
+          // border: 2px solid red;
         }
 
         .done {
-          // grid-area: done;
           padding: 0 0.5rem;
           height: 100%;
           display: flex;
           flex-direction: column;
           overflow: scroll;
-          border: 2px solid black;
+          // border: 2px solid black;
         }
 
-        // ! create new Task
+        // ! create new Task list
         .todo,
         .progressTask,
         .completeTask {
           // border: 1px solid pink;
+          width: 100%;
           height: 100%;
+
           .newTask {
-            // width: 90%;
             list-style: none;
             width: clamp(285px, 5vw, 95%);
             height: 6rem;
@@ -379,7 +410,9 @@ main {
             overflow: hidden;
             border-radius: 10px;
 
-            box-shadow: 0 2px 7px $secondary-light;
+            font-size: clamp(15px, 6vw, 18px);
+
+            box-shadow: 0 2px 7px $shadow;
             transition: all 200ms ease-out;
 
             &:hover,
@@ -388,7 +421,7 @@ main {
             }
             .head {
               width: 100%;
-              height: 10px;
+              height: 9px;
               display: flex;
               justify-content: space-between;
               margin-bottom: 0.5rem;
@@ -396,24 +429,30 @@ main {
               .priority {
                 display: inline-block;
                 width: 50px;
-                height: 10px;
+                height: 8px;
                 border-radius: 5px;
                 background-color: $important1;
               }
-              .to-do {
-                content: url(/icon/circle.svg);
-                height: 15px;
-                width: 15px;
-              }
-              .progress {
-                content: url(/icon/progress.svg);
-                height: 15px;
-                width: 15px;
-              }
-              .complet {
-                content: url(/icon/check-circle.svg);
-                height: 15px;
-                width: 15px;
+              .status {
+                width: 25px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                .to-do {
+                  content: url(/icon/circle.svg);
+                  height: 15px;
+                  width: 15px;
+                }
+                .progress {
+                  content: url(/icon/progress.svg);
+                  height: 15px;
+                  width: 15px;
+                }
+                .complet {
+                  content: url(/icon/check-circle.svg);
+                  height: 15px;
+                  width: 15px;
+                }
               }
             }
             .task-info {
@@ -517,5 +556,3 @@ main {
     opacity: 1;
   }
 }
-
-@import "mediaQueries";
