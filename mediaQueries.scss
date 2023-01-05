@@ -50,10 +50,29 @@
       width: 100%;
       height: 90%;
       margin-top: 3rem;
+      padding-bottom: 1rem;
 
       .canvas {
-        .first-row-head h2 {
-          padding: 0.3rem;
+        .head-create-task {
+          grid-template-columns: 40% 60%;
+
+          .first-row-head {
+            .create-task {
+              top: 9.2rem;
+              left: 5%;
+              flex-direction: column;
+            }
+          }
+          .first-row-head.moveUp {
+            align-items: center;
+          }
+
+          .first-row-head h2 {
+            padding: 0.3rem;
+          }
+          .third-row-head {
+            display: none;
+          }
         }
         .all-todo {
           grid-template-columns: 1fr;
@@ -82,20 +101,27 @@
 }
 
 @media screen and (max-width: 600px) {
-  main .tabule .canvas .all-todo {
-    grid-template-columns: 1fr;
-
-    .to-start,
-    .in-progress,
-    .done {
-      align-items: flex-start;
+  main .tabule .canvas {
+    .head-create-task {
+      .second-row-head {
+        align-items: center;
+      }
     }
+    .all-todo {
+      grid-template-columns: 1fr;
 
-    .todo,
-    .progressTask,
-    .completeTask {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
+      .to-start,
+      .in-progress,
+      .done {
+        align-items: flex-start;
+      }
+
+      .todo,
+      .progressTask,
+      .completeTask {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
   }
 }

@@ -117,7 +117,6 @@ main .tabule {
   width: 95%;
   height: 100%;
   transition: all 200ms ease-out;
-  padding: 1rem 0;
 }
 main .tabule .canvas {
   width: 100%;
@@ -171,7 +170,7 @@ main .tabule .canvas .head-create-task .first-row-head .create-task.onBlured {
 main .tabule .canvas .head-create-task .first-row-head .create-task {
   position: fixed;
   top: 4rem;
-  left: 8rem;
+  left: 10%;
   z-index: 100;
   height: 30px;
   width: 30px;
@@ -360,7 +359,6 @@ main .tabule .canvas .all-todo .completeTask .newTask {
   color: #24282c;
   overflow: hidden;
   border-radius: 10px;
-  font-size: clamp(15px, 6vw, 18px);
   box-shadow: 0 2px 7px #6c6b6b;
   transition: all 200ms ease-out;
 }

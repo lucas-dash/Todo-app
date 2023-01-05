@@ -40,9 +40,24 @@
     width: 100%;
     height: 90%;
     margin-top: 3rem;
+    padding-bottom: 1rem;
   }
-  main .tabule .canvas .first-row-head h2 {
+  main .tabule .canvas .head-create-task {
+    grid-template-columns: 40% 60%;
+  }
+  main .tabule .canvas .head-create-task .first-row-head .create-task {
+    top: 9.2rem;
+    left: 5%;
+    flex-direction: column;
+  }
+  main .tabule .canvas .head-create-task .first-row-head.moveUp {
+    align-items: center;
+  }
+  main .tabule .canvas .head-create-task .first-row-head h2 {
     padding: 0.3rem;
+  }
+  main .tabule .canvas .head-create-task .third-row-head {
+    display: none;
   }
   main .tabule .canvas .all-todo {
     grid-template-columns: 1fr;
@@ -64,6 +79,9 @@ main .tabule .canvas .all-todo .completeTask {
   }
 }
 @media screen and (max-width: 600px) {
+  main .tabule .canvas .head-create-task .second-row-head {
+    align-items: center;
+  }
   main .tabule .canvas .all-todo {
     grid-template-columns: 1fr;
   }
