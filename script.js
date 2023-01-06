@@ -14,7 +14,40 @@ const addTaskBtn = document.querySelector("#add-task");
 addTaskBtn.addEventListener("click", (e) => {
   const createTask = document.querySelector(".create-task");
   const btn_addTask = document.querySelector("#add-task");
-  createTask.classList.toggle("onBlured");
+  const heading = document.querySelector(".heading-create-task");
+
   btn_addTask.classList.toggle("click");
-  btn_addTask.parentNode.parentElement.classList.toggle("moveUp");
+
+  // ? form box
+  if (createTask.classList.contains("onBlured")) {
+    createTask.classList.add("formOff");
+    setTimeout(() => {
+      createTask.classList.remove("onBlured");
+    }, 490);
+  } else {
+    createTask.classList.remove("formOff");
+    createTask.classList.add("onBlured");
+  }
+
+  // ? heading
+  if (heading.classList.contains("moveUp")) {
+    heading.classList.add("moveDown");
+    heading.classList.remove("moveUp");
+  } else {
+    heading.classList.remove("moveDown");
+    heading.classList.add("moveUp");
+  }
 });
+
+// ? close to click outside box
+
+// document.addEventListener("click", (e) => {
+//   const createTask = document.querySelector(".create-task");
+
+//   if (!addTaskBtn.contains(e.target) && e.target !== createTask) {
+//     createTask.classList.add("formOff");
+//     setTimeout(() => {
+//       createTask.classList.remove("onBlured");
+//     }, 490);
+//   }
+// });
