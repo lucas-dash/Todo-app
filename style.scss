@@ -9,11 +9,17 @@
 body {
   font-family: $lora;
   color: $secondary-light;
-  // dooted background
-  background: linear-gradient(90deg, $third-light (22px - 1px), transparent 1%)
+
+  // ? dooted background
+  background: linear-gradient(
+        90deg,
+        $dotted-bg ($dot-space - $dot-size),
+        transparent 1%
+      )
       center,
-    linear-gradient($third-light (22px - 1px), transparent 1%) center, grey;
-  background-size: 22px 22px;
+    linear-gradient($dotted-bg ($dot-space - $dot-size), transparent 1%) center,
+    $dot-color;
+  background-size: $dot-space $dot-space;
 }
 
 main {
@@ -105,7 +111,6 @@ main {
 
       h1 {
         font-size: $font-500;
-        // padding: 1rem 0.5rem;
       }
 
       .searchbox {
@@ -192,8 +197,8 @@ main {
             animation: formOut 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
           }
           .create-task {
-            position: fixed;
-            top: 4rem;
+            position: absolute;
+            top: 10%;
             left: 10%;
             z-index: 100;
 
@@ -201,10 +206,9 @@ main {
             width: 30px;
             padding: 0.9rem;
 
-            background-color: $primary-light;
+            background-color: $fourth-light;
             border-radius: 15px;
             box-shadow: 1px 2px 15px $shadow;
-            // transition: all 400ms ease-out;
 
             display: none;
             gap: 1rem;
@@ -217,6 +221,7 @@ main {
               border-radius: 10px;
               outline: none;
               color: $secondary-light;
+              background-color: $third-light;
               font-family: $lora;
               box-shadow: 0px 0px 10px rgb(93, 92, 92);
               transition: all 100ms ease-out;
@@ -260,28 +265,31 @@ main {
                 padding: 0.2rem 0.25rem;
                 margin: 0.4rem 0;
               }
-
-              .date {
-                content: url(/icon/calendar.svg);
-                height: 20px;
-                width: 20px;
-              }
               #date,
               #time,
               #priority {
                 text-align: center;
                 width: 6.7rem;
               }
-              .time {
-                content: url(/icon/clock.svg);
+
+              .date,
+              .time,
+              .prior label {
                 height: 20px;
                 width: 20px;
+                margin-right: 0.3rem;
+              }
+
+              .date {
+                content: url(/icon/calendar.svg);
+              }
+
+              .time {
+                content: url(/icon/clock.svg);
               }
               .prior {
                 label {
                   content: url(/icon/alert-triangle.svg);
-                  height: 20px;
-                  width: 20px;
                 }
               }
             }
@@ -295,6 +303,8 @@ main {
               display: flex;
               align-items: center;
               justify-content: center;
+
+              // todo loading
 
               #submit {
                 cursor: pointer;
@@ -349,12 +359,29 @@ main {
             display: flex;
             justify-content: center;
             align-items: center;
+
             width: clamp(20px, 5vw, 30px);
             height: clamp(20px, 5vw, 30px);
             padding: 0.2rem;
             // border: 2px solid black;
             background-color: $fourth-light;
             border-radius: 15px;
+
+            // todo this after
+            // &::after {
+            //   content: attr(data-complete);
+            //   height: 15px;
+            //   width: 15px;
+            //   position: absolute;
+            //   top: 10%;
+            //   left: 50%;
+            //   display: inline-block;
+            //   background-color: $primary-light;
+            //   color: $third-dark;
+            //   font-size: 14px;
+            //   border-radius: 50%;
+            //   padding: 5px;
+            // }
           }
 
           #count-toStart-task,
@@ -402,6 +429,7 @@ main {
           display: flex;
           flex-direction: column;
           overflow: scroll;
+          position: relative;
           // border: 2px solid green;
         }
 
@@ -492,7 +520,7 @@ main {
               width: 100%;
               display: grid;
               grid-template-columns: 1fr 0.5fr;
-              grid-auto-columns: auto;
+              // grid-auto-columns: auto;
               .taskText {
                 width: 100%;
                 input {
@@ -541,9 +569,35 @@ main {
               padding: 0.5rem 0.5rem 0 0.5rem;
 
               .check {
-                label {
-                  font-size: 0.9rem;
-                  font-weight: 600;
+                width: 25px;
+                display: block;
+
+                input {
+                  display: none;
+                }
+                // label {
+                //   font-size: 0.9rem;
+                //   font-weight: 600;
+                //   display: inline-block;
+                // }
+
+                .checkbox {
+                  display: block;
+                  width: 15px;
+                  height: 15px;
+                  border-radius: 2px;
+                  border: 2px solid $secondary-light;
+                  cursor: pointer;
+                  transition: 0.375s;
+                }
+                input:checked ~ .checkbox {
+                  rotate: 45deg;
+                  translate: 15px -8px;
+                  width: 8px;
+                  border-color: $important1;
+                  border-top-color: transparent;
+                  border-left-color: transparent;
+                  border-radius: 0;
                 }
               }
 
@@ -554,6 +608,12 @@ main {
                 outline: none;
                 font-size: 15px;
                 cursor: pointer;
+                transition: 200ms ease;
+
+                &:hover {
+                  color: $secondary-light;
+                  transform: scale(1.1);
+                }
               }
               .edit {
                 content: url(/icon/edit.svg);

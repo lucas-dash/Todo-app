@@ -8,7 +8,7 @@
 body {
   font-family: "Lora", serif;
   color: #24282c;
-  background: linear-gradient(90deg, #f7f6f0 21px, transparent 1%) center, linear-gradient(#f7f6f0 21px, transparent 1%) center, grey;
+  background: linear-gradient(90deg, #f7f6f0 20.7px, transparent 1%) center, linear-gradient(#f7f6f0 20.7px, transparent 1%) center, #6c6b6b;
   background-size: 22px 22px;
 }
 
@@ -176,14 +176,14 @@ main .tabule .canvas .head-create-task .first-row-head .create-task.formOff {
           animation: formOut 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 main .tabule .canvas .head-create-task .first-row-head .create-task {
-  position: fixed;
-  top: 4rem;
+  position: absolute;
+  top: 10%;
   left: 10%;
   z-index: 100;
   height: 30px;
   width: 30px;
   padding: 0.9rem;
-  background-color: #82f36b;
+  background-color: #fff;
   border-radius: 15px;
   box-shadow: 1px 2px 15px #6c6b6b;
   display: none;
@@ -197,6 +197,7 @@ main .tabule .canvas .head-create-task .first-row-head .create-task select {
   border-radius: 10px;
   outline: none;
   color: #24282c;
+  background-color: #f7f6f0;
   font-family: "Lora", serif;
   box-shadow: 0px 0px 10px rgb(93, 92, 92);
   transition: all 100ms ease-out;
@@ -237,26 +238,27 @@ main .tabule .canvas .head-create-task .first-row-head .create-task .two-row sel
   padding: 0.2rem 0.25rem;
   margin: 0.4rem 0;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .date {
-  content: url(/icon/calendar.svg);
-  height: 20px;
-  width: 20px;
-}
 main .tabule .canvas .head-create-task .first-row-head .create-task .two-row #date,
 main .tabule .canvas .head-create-task .first-row-head .create-task .two-row #time,
 main .tabule .canvas .head-create-task .first-row-head .create-task .two-row #priority {
   text-align: center;
   width: 6.7rem;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .time {
-  content: url(/icon/clock.svg);
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .date,
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .time,
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .prior label {
   height: 20px;
   width: 20px;
+  margin-right: 0.3rem;
+}
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .date {
+  content: url(/icon/calendar.svg);
+}
+main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .time {
+  content: url(/icon/clock.svg);
 }
 main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .prior label {
   content: url(/icon/alert-triangle.svg);
-  height: 20px;
-  width: 20px;
 }
 main .tabule .canvas .head-create-task .first-row-head .create-task .submit-btn {
   width: 2rem;
@@ -356,6 +358,7 @@ main .tabule .canvas .all-todo .to-start {
   display: flex;
   flex-direction: column;
   overflow: scroll;
+  position: relative;
 }
 main .tabule .canvas .all-todo .in-progress {
   padding: 0 0.5rem;
@@ -452,7 +455,6 @@ main .tabule .canvas .all-todo .completeTask .newTask .task-info {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 0.5fr;
-  grid-auto-columns: auto;
 }
 main .tabule .canvas .all-todo .todo .newTask .task-info .taskText,
 main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText,
@@ -512,11 +514,38 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete {
   align-items: center;
   padding: 0.5rem 0.5rem 0 0.5rem;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .check label,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .check label,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .check label {
-  font-size: 0.9rem;
-  font-weight: 600;
+main .tabule .canvas .all-todo .todo .newTask .complete .check,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .check,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .check {
+  width: 25px;
+  display: block;
+}
+main .tabule .canvas .all-todo .todo .newTask .complete .check input,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .check input,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .check input {
+  display: none;
+}
+main .tabule .canvas .all-todo .todo .newTask .complete .check .checkbox,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .check .checkbox,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .check .checkbox {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  border: 2px solid #24282c;
+  cursor: pointer;
+  transition: 0.375s;
+}
+main .tabule .canvas .all-todo .todo .newTask .complete .check input:checked ~ .checkbox,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .check input:checked ~ .checkbox,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .check input:checked ~ .checkbox {
+  rotate: 45deg;
+  translate: 15px -8px;
+  width: 8px;
+  border-color: #14dd28;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-radius: 0;
 }
 main .tabule .canvas .all-todo .todo .newTask .complete #to-progress,
 main .tabule .canvas .all-todo .progressTask .newTask .complete #to-progress,
@@ -527,6 +556,13 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete #to-progress {
   outline: none;
   font-size: 15px;
   cursor: pointer;
+  transition: 200ms ease;
+}
+main .tabule .canvas .all-todo .todo .newTask .complete #to-progress:hover,
+main .tabule .canvas .all-todo .progressTask .newTask .complete #to-progress:hover,
+main .tabule .canvas .all-todo .completeTask .newTask .complete #to-progress:hover {
+  color: #24282c;
+  transform: scale(1.1);
 }
 main .tabule .canvas .all-todo .todo .newTask .complete .edit,
 main .tabule .canvas .all-todo .progressTask .newTask .complete .edit,

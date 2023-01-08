@@ -51,3 +51,8 @@ addTaskBtn.addEventListener("click", (e) => {
 //     }, 490);
 //   }
 // });
+
+let arr = [1, 3, 5, 6, 6, 9];
+
+let todoLeft = document.querySelector(".complet-icon");
+todoLeft.setAttribute("data-complete", arr.length);
