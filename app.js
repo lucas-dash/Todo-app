@@ -43,14 +43,11 @@ class Task {
     this._time = newTime;
   }
 
-  complete() {
-    this._complete = true;
-  }
-
   edit() {}
 
   delete() {}
-
+}
+class Method {
   static formatDate(dateString) {
     if (!dateString) {
       return (dateString = "");
@@ -64,7 +61,7 @@ class Task {
   }
 
   static render(arrayFromLs, rootEl, oneTask) {
-    let { _name, _description, _date, _time, _priority } = oneTask;
+    // let { _name, _description, _date, _time, _priority } = oneTask;
 
     //? root element ul
     const rootElement = document.querySelector(rootEl);
@@ -76,7 +73,7 @@ class Task {
     list.appendChild(taskHead);
     const priority = document.createElement("span");
     priority.classList.add("priority");
-    priority.style.backgroundColor = "#" + _priority;
+    priority.style.backgroundColor = "#" + oneTask._priority;
     taskHead.appendChild(priority);
     const status = document.createElement("div");
     status.classList.add("status");
@@ -100,32 +97,37 @@ class Task {
     taskInputName.type = "text";
     taskInputName.id = "taskName";
     taskInputName.setAttribute("Readonly", "readonly");
-    taskInputName.value = _name;
+    taskInputName.value = oneTask._name;
     taskInputsDiv.appendChild(taskInputName);
     const taskInputNote = document.createElement("input");
     taskInputNote.type = "text";
     taskInputNote.id = "note";
     taskInputNote.setAttribute("Readonly", "readonly");
-    taskInputNote.value = _description;
+    taskInputNote.value = oneTask._description;
     taskInputsDiv.appendChild(taskInputNote);
+
     const clock = document.createElement("div");
     clock.classList.add("clock");
     taskInfo.appendChild(clock);
+
     const dateInput = document.createElement("input");
     dateInput.type = "text";
     dateInput.id = "taskDate";
     dateInput.setAttribute("Readonly", "readonly");
-    dateInput.value = _date;
+    dateInput.value = oneTask._date;
     clock.appendChild(dateInput);
+
     const timeInput = document.createElement("input");
-    dateInput.type = "text";
-    dateInput.id = "taskTime";
-    dateInput.setAttribute("Readonly", "readonly");
-    dateInput.value = _time;
+    timeInput.type = "text";
+    timeInput.id = "taskTime";
+    timeInput.setAttribute("Readonly", "readonly");
+    timeInput.value = oneTask._time;
     clock.appendChild(timeInput);
+
     const completeDiv = document.createElement("div");
     completeDiv.classList.add("complete");
     list.appendChild(completeDiv);
+
     const label = document.createElement("label");
     label.classList.add("check");
     completeDiv.appendChild(label);
@@ -154,23 +156,22 @@ class Task {
     checkbox.addEventListener("click", (e) => {
       if (e.target.checked) {
         oneTask._complete = true;
-        console.log(oneTask);
-
         setTimeout(() => {
-          // todo animation
           rootElement.removeChild(list);
-          let taskIndex = arrayFromLs.findIndex((task) => {
-            return task._complete === true;
+          let taskIndex = arrayFromLs.findIndex((someTask) => {
+            return someTask._complete === true;
           });
-          // ? remove task from local storage
+          //? remove task from local storage
           arrayFromLs.splice(taskIndex, 1);
+
           //? update locals storage
           localStorage.setItem("todo", JSON.stringify(arrayFromLs));
 
-          // ? update complete task
+          //?  update complete task
           completeTask.push(oneTask);
           localStorage.setItem("complete", JSON.stringify(completeTask));
-          // ! render complete TAsk
+          //? render complete Task
+          Method.render(completeTask, ".completeTask", oneTask);
         }, 1000);
       }
     });
@@ -192,7 +193,7 @@ creatingTask.addEventListener("submit", (e) => {
   // ? values from form
   const taskName = e.target.elements.name.value;
   const taskNote = e.target.elements.description.value;
-  const taskDate = Task.formatDate(e.target.elements.date.value);
+  const taskDate = Method.formatDate(e.target.elements.date.value);
   const taskTime = e.target.elements.time.value;
   const taskPriorityColor = e.target.elements.color.value;
 
@@ -213,19 +214,19 @@ creatingTask.addEventListener("submit", (e) => {
 
     localStorage.setItem("todo", JSON.stringify(todo));
 
-    Task.render(todo, ".todo", newTask);
+    Method.render(todo, ".todo", newTask);
 
     creatingTask.reset();
   }
 });
 
 todo.forEach((task) => {
-  Task.render(todo, ".todo", task);
+  Method.render(todo, ".todo", task);
 });
 
-completeTask.forEach((completeTask) => {
-  Task.render(todo, ".completeTask", completeTask);
+completeTask.forEach((doneTask) => {
+  Method.renderCompleteTask(".completeTask", doneTask);
 });
 
-// todo in complete Task must be checked input and možnost odstranit z complete
+// todo in complete Task must be checked input, nesmí se na něj kliknout and možnost odstranit z complete
 // todo focus on date = date.now
