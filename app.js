@@ -42,10 +42,6 @@ class Task {
   set time(newTime) {
     this._time = newTime;
   }
-
-  edit() {}
-
-  delete() {}
 }
 class Method {
   static formatDate(dateString) {
@@ -153,29 +149,44 @@ class Method {
     settings.appendChild(edit);
     settings.appendChild(delBtn);
 
-    checkbox.addEventListener("click", (e) => {
-      if (e.target.checked) {
-        oneTask._complete = true;
-        setTimeout(() => {
-          rootElement.removeChild(list);
-          let taskIndex = arrayFromLs.findIndex((someTask) => {
-            return someTask._complete === true;
-          });
-          //? remove task from local storage
-          arrayFromLs.splice(taskIndex, 1);
+    // todo edit
 
-          //? update locals storage
-          localStorage.setItem("todo", JSON.stringify(arrayFromLs));
+    // todo delete
 
-          //?  update complete task
-          completeTask.push(oneTask);
-          localStorage.setItem("complete", JSON.stringify(completeTask));
-          //? render complete Task
-          Method.render(completeTask, ".completeTask", oneTask);
-        }, 1000);
-      }
-    });
+    if (arrayFromLs === todo || arrayFromLs === inProgress) {
+      checkbox.addEventListener("click", (e) => {
+        if (e.target.checked) {
+          oneTask._complete = true;
+          setTimeout(() => {
+            rootElement.removeChild(list);
+            let taskIndex = arrayFromLs.findIndex((someTask) => {
+              return someTask._complete === true;
+            });
+            //? remove task from local storage
+            arrayFromLs.splice(taskIndex, 1);
+
+            //? update locals storage
+            localStorage.setItem("todo", JSON.stringify(arrayFromLs));
+
+            //?  update complete task
+            completeTask.push(oneTask);
+            localStorage.setItem("complete", JSON.stringify(completeTask));
+            //? render complete Task
+            Method.render(completeTask, ".completeTask", oneTask);
+          }, 1000);
+        }
+      });
+      // todo progress listener
+    } else {
+      checkboxSpan.classList.remove("checkbox");
+      checkboxSpan.classList.add("checkedInput");
+      toProgressBtn.textContent = "Complete";
+      toProgressBtn.style.textDecoration = "line-through";
+    }
   }
+  edit() {}
+
+  delete() {}
 }
 
 // ? new Task
@@ -223,10 +234,10 @@ creatingTask.addEventListener("submit", (e) => {
 todo.forEach((task) => {
   Method.render(todo, ".todo", task);
 });
-
+// todo progres render
 completeTask.forEach((doneTask) => {
-  Method.renderCompleteTask(".completeTask", doneTask);
+  Method.render(completeTask, ".completeTask", doneTask);
 });
 
-// todo in complete Task must be checked input, nesmí se na něj kliknout and možnost odstranit z complete
+// todo in complete Task možnost odstranit z complete
 // todo focus on date = date.now

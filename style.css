@@ -546,6 +546,21 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete .check input:che
   border-left-color: transparent;
   border-radius: 0;
 }
+main .tabule .canvas .all-todo .todo .newTask .complete .check .checkedInput,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .check .checkedInput,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .check .checkedInput {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #24282c;
+  rotate: 45deg;
+  translate: 15px -3px;
+  width: 8px;
+  border-color: #14dd28;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-radius: 0;
+}
 main .tabule .canvas .all-todo .todo .newTask .complete #to-progress,
 main .tabule .canvas .all-todo .progressTask .newTask .complete #to-progress,
 main .tabule .canvas .all-todo .completeTask .newTask .complete #to-progress {
@@ -563,17 +578,23 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete #to-progress:hov
   color: #24282c;
   transform: scale(1.1);
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .edit,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .edit,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .edit {
+main .tabule .canvas .all-todo .todo .newTask .complete .settings,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .settings,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .settings {
+  display: flex;
+  gap: 7px;
+}
+main .tabule .canvas .all-todo .todo .newTask .complete .settings .edit,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .settings .edit,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .settings .edit {
   content: url(/icon/edit.svg);
   height: 19px;
   width: 19px;
   cursor: pointer;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .delete,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .delete,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .delete {
+main .tabule .canvas .all-todo .todo .newTask .complete .settings .delete,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .settings .delete,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .settings .delete {
   content: url(/icon/trash-2.svg);
   height: 19px;
   width: 19px;
