@@ -61,6 +61,7 @@ class Method {
 
     //? root element ul
     const rootElement = document.querySelector(rootEl);
+
     const list = document.createElement("li");
     list.classList.add("newTask");
     rootElement.appendChild(list);
@@ -137,7 +138,7 @@ class Method {
     const toProgressBtn = document.createElement("button");
     toProgressBtn.id = "to-progress";
     toProgressBtn.type = "button";
-    toProgressBtn.textContent = "In-progress";
+    toProgressBtn.textContent = "In-progress?";
     completeDiv.appendChild(toProgressBtn);
     const settings = document.createElement("div");
     settings.classList.add("settings");
@@ -153,20 +154,29 @@ class Method {
 
     // todo delete
 
+    // ? avoid complete task
     if (arrayFromLs === todo || arrayFromLs === inProgress) {
+      //? if is task Complete listener
       checkbox.addEventListener("click", (e) => {
         if (e.target.checked) {
           oneTask._complete = true;
           setTimeout(() => {
             rootElement.removeChild(list);
+            //? find index at array
             let taskIndex = arrayFromLs.findIndex((someTask) => {
               return someTask._complete === true;
             });
+            console.log(taskIndex);
             //? remove task from local storage
             arrayFromLs.splice(taskIndex, 1);
 
-            //? update locals storage
-            localStorage.setItem("todo", JSON.stringify(arrayFromLs));
+            //? update todo local storage and avoid douple progress task
+            if (oneTask._inProgress === true) {
+              localStorage.setItem("progress", JSON.stringify(arrayFromLs));
+            } else {
+              localStorage.setItem("todo", JSON.stringify(arrayFromLs));
+            }
+            oneTask._inProgress = false;
 
             //?  update complete task
             completeTask.push(oneTask);
@@ -176,12 +186,39 @@ class Method {
           }, 1000);
         }
       });
-      // todo progress listener
+
+      //? if is task inProgress listener
+      toProgressBtn.addEventListener("click", () => {
+        oneTask._inProgress = true;
+
+        setTimeout(() => {
+          rootElement.removeChild(list);
+          //? find index at array
+          let taskIndex = arrayFromLs.findIndex((someTask) => {
+            return someTask._inProgress === true;
+          });
+          // todo přidat style to progress
+          // toProgressBtn.style.color = "red";
+          // toProgressBtn.textContent = "In-progress!";
+
+          //? remove task from todo array
+          arrayFromLs.splice(taskIndex, 1);
+
+          //? update todo localStorage
+          localStorage.setItem("todo", JSON.stringify(arrayFromLs));
+
+          //? push and update progress localStorage
+          inProgress.push(oneTask);
+          localStorage.setItem("progress", JSON.stringify(inProgress));
+          //? render inProgress tasks
+          Method.render(inProgress, ".progressTask", oneTask);
+        }, 1000);
+      });
     } else {
       checkboxSpan.classList.remove("checkbox");
       checkboxSpan.classList.add("checkedInput");
-      toProgressBtn.textContent = "Complete";
-      toProgressBtn.style.textDecoration = "line-through";
+      toProgressBtn.textContent = "Complete!";
+      toProgressBtn.style.cursor = "auto";
     }
   }
   edit() {}
@@ -192,7 +229,7 @@ class Method {
 // ? new Task
 const todo = JSON.parse(localStorage.getItem("todo")) || [];
 // ? progress task
-const inProgress = [];
+const inProgress = JSON.parse(localStorage.getItem("progress")) || [];
 // ? complete task
 const completeTask = JSON.parse(localStorage.getItem("complete")) || [];
 
@@ -235,9 +272,13 @@ todo.forEach((task) => {
   Method.render(todo, ".todo", task);
 });
 // todo progres render
+inProgress.forEach((progressTask) => {
+  Method.render(inProgress, ".progressTask", progressTask);
+});
 completeTask.forEach((doneTask) => {
   Method.render(completeTask, ".completeTask", doneTask);
 });
 
 // todo in complete Task možnost odstranit z complete
 // todo focus on date = date.now
+// todo click vpravo nahoře vrátit zpět do todo? nebo nějakou návratovou funkci

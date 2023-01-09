@@ -402,6 +402,12 @@ main .tabule .canvas .all-todo .completeTask .newTask:hover,
 main .tabule .canvas .all-todo .completeTask .newTask:focus {
   height: 8.5rem;
 }
+main .tabule .canvas .all-todo .todo .newTask:hover #to-progress,
+main .tabule .canvas .all-todo .progressTask .newTask:hover #to-progress,
+main .tabule .canvas .all-todo .completeTask .newTask:hover #to-progress {
+  -webkit-animation: callToAction 1s ease-in-out 400ms 1 both;
+          animation: callToAction 1s ease-in-out 400ms 1 both;
+}
 main .tabule .canvas .all-todo .todo .newTask .head,
 main .tabule .canvas .all-todo .progressTask .newTask .head,
 main .tabule .canvas .all-todo .completeTask .newTask .head {
@@ -474,7 +480,7 @@ main .tabule .canvas .all-todo .todo .newTask .task-info .taskText #taskName,
 main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText #taskName,
 main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText #taskName {
   color: #24282c;
-  font-size: clamp(0.9rem, 10vw, 1.1rem);
+  font-size: clamp(0.8rem, 10vw, 0.9rem);
   font-weight: 500;
 }
 main .tabule .canvas .all-todo .todo .newTask .task-info .taskText #note,
@@ -680,5 +686,45 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete .settings .delet
   }
   100% {
     transform: translate(0, 0);
+  }
+}
+@-webkit-keyframes callToAction {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+@keyframes callToAction {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
   }
 }/*# sourceMappingURL=style.css.map */
