@@ -61,20 +61,18 @@
   }
   main .tabule .canvas .all-todo {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 10% 10%;
   }
   main .tabule .canvas .all-todo h2 {
     padding-left: 0.5rem;
   }
-  main .tabule .canvas .all-todo .to-start,
-main .tabule .canvas .all-todo .in-progress,
+  main .tabule .canvas .all-todo .in-progress,
 main .tabule .canvas .all-todo .done {
-    align-items: flex-start;
+    grid-template-rows: 100% 0;
   }
   main .tabule .canvas .all-todo .todo,
 main .tabule .canvas .all-todo .progressTask,
 main .tabule .canvas .all-todo .completeTask {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 0 0.3rem;
   }
   @-webkit-keyframes formOut {

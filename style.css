@@ -6,6 +6,7 @@
 }
 
 body {
+  scroll-behavior: smooth;
   font-family: "Lora", serif;
   color: #24282c;
   background: linear-gradient(90deg, #f7f6f0 20.7px, transparent 1%) center, linear-gradient(#f7f6f0 20.7px, transparent 1%) center, #6c6b6b;
@@ -121,10 +122,12 @@ main .tabule {
 main .tabule .canvas {
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-rows: 20% 80%;
 }
 main .tabule .canvas .head-create-task {
   width: 100%;
-  height: 20%;
+  height: 100%;
   padding: 0 1rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -136,7 +139,6 @@ main .tabule .canvas .head-create-task .first-row-head {
   justify-content: center;
 }
 main .tabule .canvas .head-create-task .first-row-head h2 {
-  padding: 1rem;
   text-align: center;
   font-size: clamp(1rem, 5vw, 1.375rem);
 }
@@ -344,54 +346,57 @@ main .tabule .canvas .all-todo {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }
 main .tabule .canvas .all-todo h2 {
   text-align: center;
   font-family: "Poppins", sans-serif;
   font-size: clamp(1rem, 5vw, 1.375rem);
   font-weight: 600;
-  padding: 1rem 0;
+  align-self: center;
+  justify-self: center;
 }
 main .tabule .canvas .all-todo .to-start {
-  padding: 0 0.5rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-  position: relative;
+  display: grid;
+  grid-template-rows: 10% 90%;
+  overflow: hidden;
+  border-radius: 10px;
 }
 main .tabule .canvas .all-todo .in-progress {
-  padding: 0 0.5rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
+  display: grid;
+  grid-template-rows: 10% 90%;
+  overflow: hidden;
+  border-radius: 10px;
 }
 main .tabule .canvas .all-todo .done {
-  padding: 0 0.5rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
+  display: grid;
+  grid-template-rows: 10% 90%;
+  overflow: hidden;
+  border-radius: 10px;
 }
 main .tabule .canvas .all-todo .todo,
 main .tabule .canvas .all-todo .progressTask,
 main .tabule .canvas .all-todo .completeTask {
   width: 100%;
-  height: 100%;
+  display: grid;
+  grid-auto-rows: -webkit-max-content;
+  grid-auto-rows: max-content;
+  justify-items: center;
+  align-items: start;
+  overflow: scroll;
 }
 main .tabule .canvas .all-todo .todo .newTask,
 main .tabule .canvas .all-todo .progressTask .newTask,
 main .tabule .canvas .all-todo .completeTask .newTask {
   list-style: none;
-  width: clamp(285px, 5vw, 95%);
-  height: 6rem;
-  margin: 1rem auto;
-  padding: 1rem;
+  width: clamp(285px, 5vw, 100%);
+  height: 5.1rem;
+  padding: 0.8rem;
+  margin-top: 10px;
   background-color: #fff;
   color: #24282c;
-  overflow: hidden;
   border-radius: 10px;
+  overflow: hidden;
   box-shadow: 0 2px 7px #6c6b6b;
   transition: all 200ms ease-out;
 }
@@ -400,11 +405,11 @@ main .tabule .canvas .all-todo .progressTask .newTask:hover,
 main .tabule .canvas .all-todo .progressTask .newTask:focus,
 main .tabule .canvas .all-todo .completeTask .newTask:hover,
 main .tabule .canvas .all-todo .completeTask .newTask:focus {
-  height: 8.5rem;
+  height: 8.8rem;
 }
-main .tabule .canvas .all-todo .todo .newTask:hover #to-progress,
-main .tabule .canvas .all-todo .progressTask .newTask:hover #to-progress,
-main .tabule .canvas .all-todo .completeTask .newTask:hover #to-progress {
+main .tabule .canvas .all-todo .todo .newTask:hover .to-progress,
+main .tabule .canvas .all-todo .progressTask .newTask:hover .to-progress,
+main .tabule .canvas .all-todo .completeTask .newTask:hover .to-progress {
   -webkit-animation: callToAction 1s ease-in-out 400ms 1 both;
           animation: callToAction 1s ease-in-out 400ms 1 both;
 }
@@ -415,7 +420,7 @@ main .tabule .canvas .all-todo .completeTask .newTask .head {
   height: 9px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 main .tabule .canvas .all-todo .todo .newTask .head .priority,
 main .tabule .canvas .all-todo .progressTask .newTask .head .priority,
@@ -431,7 +436,7 @@ main .tabule .canvas .all-todo .completeTask .newTask .head .status {
   width: 25px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 main .tabule .canvas .all-todo .todo .newTask .head .status .to-do,
 main .tabule .canvas .all-todo .progressTask .newTask .head .status .to-do,
@@ -459,7 +464,7 @@ main .tabule .canvas .all-todo .progressTask .newTask .task-info,
 main .tabule .canvas .all-todo .completeTask .newTask .task-info {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 0.5fr;
+  grid-template-rows: 70% 30%;
 }
 main .tabule .canvas .all-todo .todo .newTask .task-info .taskText,
 main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText,
@@ -470,45 +475,78 @@ main .tabule .canvas .all-todo .todo .newTask .task-info .taskText input,
 main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText input,
 main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText input {
   border: none;
-  padding: 0.2rem;
+  padding: 0.1rem;
+  padding-left: 0.4rem;
   border-radius: 10px;
   outline: none;
   width: 100%;
   font-family: "Poppins", sans-serif;
 }
+main .tabule .canvas .all-todo .todo .newTask .task-info .taskText input:not(:-moz-read-only), main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText input:not(:-moz-read-only), main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText input:not(:-moz-read-only) {
+  background-color: #f7f6f0;
+}
+main .tabule .canvas .all-todo .todo .newTask .task-info .taskText input:not(:read-only),
+main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText input:not(:read-only),
+main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText input:not(:read-only) {
+  background-color: #f7f6f0;
+}
 main .tabule .canvas .all-todo .todo .newTask .task-info .taskText #taskName,
 main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText #taskName,
 main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText #taskName {
   color: #24282c;
-  font-size: clamp(0.8rem, 10vw, 0.9rem);
+  font-size: clamp(0.9375rem, 5vw, 1rem);
   font-weight: 500;
 }
 main .tabule .canvas .all-todo .todo .newTask .task-info .taskText #note,
 main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText #note,
 main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText #note {
   color: #5f5f5f;
+  margin-top: 2px;
+  font-size: clamp(0.7rem, 4vw, 0.8rem);
 }
 main .tabule .canvas .all-todo .todo .newTask .task-info .clock,
 main .tabule .canvas .all-todo .progressTask .newTask .task-info .clock,
 main .tabule .canvas .all-todo .completeTask .newTask .task-info .clock {
   width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #f7f6f0;
+  border-radius: 7px;
+  transition: all 200ms ease-out;
+  margin-top: 4px;
 }
 main .tabule .canvas .all-todo .todo .newTask .task-info .clock input,
 main .tabule .canvas .all-todo .progressTask .newTask .task-info .clock input,
 main .tabule .canvas .all-todo .completeTask .newTask .task-info .clock input {
-  text-align: center;
-  border: none;
   width: 6rem;
-  padding: 0.2rem;
+  text-align: right;
+  border: none;
   border-radius: 10px;
+  padding: 0 0.1rem;
   outline: none;
   color: #24282c;
+  background-color: #f7f6f0;
   font-family: "Lora", serif;
-  font-size: 0.93rem;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+main .tabule .canvas .all-todo .todo .newTask .task-info .clock #datePicker,
+main .tabule .canvas .all-todo .progressTask .newTask .task-info .clock #datePicker,
+main .tabule .canvas .all-todo .completeTask .newTask .task-info .clock #datePicker {
+  display: none;
+  width: 20px;
+  height: 20px;
+  transition: all 200ms ease-out;
+}
+main .tabule .canvas .all-todo .todo .newTask .task-info .clock #timePicker,
+main .tabule .canvas .all-todo .progressTask .newTask .task-info .clock #timePicker,
+main .tabule .canvas .all-todo .completeTask .newTask .task-info .clock #timePicker {
+  display: none;
+  width: 39px;
+  height: 100%;
+  padding-right: 10px;
+  transition: all 200ms ease-out;
 }
 main .tabule .canvas .all-todo .todo .newTask .complete,
 main .tabule .canvas .all-todo .progressTask .newTask .complete,
@@ -567,33 +605,49 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete .check .checkedI
   border-left-color: transparent;
   border-radius: 0;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete #to-progress,
-main .tabule .canvas .all-todo .progressTask .newTask .complete #to-progress,
-main .tabule .canvas .all-todo .completeTask .newTask .complete #to-progress {
-  color: #5f5f5f;
+main .tabule .canvas .all-todo .todo .newTask .complete .to-progress,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .to-progress,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .to-progress {
   border: none;
+  color: #5f5f5f;
   background-color: #fff;
-  outline: none;
-  font-size: 15px;
+  font-size: 0.875rem;
+  font-weight: 500;
   cursor: pointer;
   transition: 200ms ease;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete #to-progress:hover,
-main .tabule .canvas .all-todo .progressTask .newTask .complete #to-progress:hover,
-main .tabule .canvas .all-todo .completeTask .newTask .complete #to-progress:hover {
+main .tabule .canvas .all-todo .todo .newTask .complete .to-progress:hover,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .to-progress:hover,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .to-progress:hover {
   color: #24282c;
-  transform: scale(1.1);
+}
+main .tabule .canvas .all-todo .todo .newTask .complete .in-progress-done,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .in-progress-done,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .in-progress-done {
+  border: none;
+  color: #24282c;
+  background-color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 main .tabule .canvas .all-todo .todo .newTask .complete .settings,
 main .tabule .canvas .all-todo .progressTask .newTask .complete .settings,
 main .tabule .canvas .all-todo .completeTask .newTask .complete .settings {
   display: flex;
-  gap: 7px;
+  gap: 8px;
 }
 main .tabule .canvas .all-todo .todo .newTask .complete .settings .edit,
 main .tabule .canvas .all-todo .progressTask .newTask .complete .settings .edit,
 main .tabule .canvas .all-todo .completeTask .newTask .complete .settings .edit {
   content: url(/icon/edit.svg);
+  height: 19px;
+  width: 19px;
+  cursor: pointer;
+}
+main .tabule .canvas .all-todo .todo .newTask .complete .settings .edit-save,
+main .tabule .canvas .all-todo .progressTask .newTask .complete .settings .edit-save,
+main .tabule .canvas .all-todo .completeTask .newTask .complete .settings .edit-save {
+  content: url(/icon/save.svg);
   height: 19px;
   width: 19px;
   cursor: pointer;

@@ -76,22 +76,21 @@
         }
         .all-todo {
           grid-template-columns: 1fr;
+          grid-template-rows: 1fr 10% 10%;
 
           h2 {
             padding-left: 0.5rem;
           }
 
-          .to-start,
           .in-progress,
           .done {
-            align-items: flex-start;
+            grid-template-rows: 100% 0;
+            // todo udělat vyskakovací okna na dropdowns button
           }
 
           .todo,
           .progressTask,
           .completeTask {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
             gap: 0 0.3rem;
           }
         }

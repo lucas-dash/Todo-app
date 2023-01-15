@@ -16,7 +16,6 @@
         <nav id="nav">
 
             <div class="ham">
-
                 <a class="hamburger">
                     <span></span>
                     <span></span>
@@ -39,6 +38,7 @@
         <section class="tabule">
             <div class="canvas">
 
+                <!-- ? first item -->
                 <div class="head-create-task">
                     <!-- ! create new task form -->
                     <div class="first-row-head">
@@ -100,8 +100,13 @@
                     </div>
                 </div>
 
-                <article class="all-todo">
-
+                <!-- <article>
+                    <h2>ToDo</h2>
+                    <h2>In-progress</h2>
+                    <h2>Done</h2>
+                </article> -->
+                <!-- ? second item -->
+                <section class="all-todo">
                     <section class="to-start">
                         <h2>To Start</h2>
                         <ul class="todo">
@@ -123,7 +128,9 @@
 
                                     <div class="clock">
                                         <input type="text" id="taskDate" value="17/12/2023" readonly>
+                                        <input type="date" id="datePicker">
                                         <input type="text" id="taskTime" value="19:20" readonly>
+                                        <input type="time" id="timePicker">
                                     </div>
                                 </div>
                                 <div class="complete">
@@ -160,7 +167,7 @@
                         </ul>
                     </section>
 
-                </article>
+                </section>
 
 
             </div>

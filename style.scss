@@ -7,6 +7,7 @@
 }
 
 body {
+  scroll-behavior: smooth;
   font-family: $lora;
   color: $secondary-light;
 
@@ -141,9 +142,13 @@ main {
     .canvas {
       width: 100%;
       height: 100%;
+      display: grid;
+      grid-template-rows: 20% 80%;
+      // border: 1px solid orange;
+
       .head-create-task {
         width: 100%;
-        height: 20%;
+        height: 100%;
         padding: 0 1rem;
 
         display: grid;
@@ -156,7 +161,6 @@ main {
           justify-content: center;
 
           h2 {
-            padding: 1rem;
             text-align: center;
             font-size: $font-400;
 
@@ -186,6 +190,7 @@ main {
               transform: rotate(45deg) translate(5px, 5px);
             }
           }
+
           .create-task.onBlured {
             display: flex;
             height: initial;
@@ -408,80 +413,81 @@ main {
         }
       }
 
+      // ! Todos canvas
       .all-todo {
         width: 100%;
-        // height: 80%;
-
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        // border: 1px solid rgb(207, 56, 81);
+
         h2 {
           text-align: center;
           font-family: $poppins;
           font-size: $font-400;
           font-weight: 600;
-          padding: 1rem 0;
+          align-self: center;
+          justify-self: center;
         }
 
         .to-start {
-          padding: 0 0.5rem;
-          height: 100%;
+          display: grid;
+          grid-template-rows: 10% 90%;
+          overflow: hidden;
 
-          display: flex;
-          flex-direction: column;
-          overflow: scroll;
-          position: relative;
-          // border: 2px solid green;
+          border-radius: 10px;
+          // border: 2px solid rgb(68, 45, 143);
         }
 
         .in-progress {
-          padding: 0 0.5rem;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          overflow: scroll;
+          display: grid;
+          grid-template-rows: 10% 90%;
+          overflow: hidden;
+          border-radius: 10px;
           // border: 2px solid red;
         }
 
         .done {
-          padding: 0 0.5rem;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          overflow: scroll;
+          display: grid;
+          grid-template-rows: 10% 90%;
+          overflow: hidden;
+          border-radius: 10px;
           // border: 2px solid black;
         }
 
-        // ! create new Task list
+        // ! ul create new Task list
         .todo,
         .progressTask,
         .completeTask {
-          // border: 1px solid pink;
           width: 100%;
-          height: 100%;
+          display: grid;
+          grid-auto-rows: max-content;
+          justify-items: center;
+          align-items: start;
+          overflow: scroll;
+          // border: 1px solid pink;
 
+          // ! list
           .newTask {
             list-style: none;
-            width: clamp(285px, 5vw, 95%);
-            height: 6rem;
-            margin: 1rem auto;
-            padding: 1rem;
-
+            width: clamp(285px, 5vw, 100%);
+            height: 5.1rem;
+            padding: 0.8rem;
+            margin-top: 10px;
             background-color: $fourth-light;
             color: $secondary-light;
-            overflow: hidden;
             border-radius: 10px;
-
-            // font-size: clamp(15px, 6vw, 18px);
+            overflow: hidden;
 
             box-shadow: 0 2px 7px $shadow;
             transition: all 200ms ease-out;
 
             &:hover,
             &:focus {
-              height: 8.5rem;
+              height: 8.8rem;
             }
             &:hover {
-              #to-progress {
+              .to-progress {
                 animation: callToAction 1s ease-in-out 400ms 1 both;
               }
             }
@@ -490,20 +496,19 @@ main {
               height: 9px;
               display: flex;
               justify-content: space-between;
-              margin-bottom: 0.5rem;
+              margin-bottom: 0.3rem;
 
               .priority {
                 display: inline-block;
                 width: 50px;
                 height: 8px;
                 border-radius: 5px;
-                // background-color: $important1;
               }
               .status {
                 width: 25px;
                 display: inline-flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-end;
                 .to-do {
                   content: url(/icon/circle.svg);
                   height: 15px;
@@ -524,46 +529,71 @@ main {
             .task-info {
               width: 100%;
               display: grid;
-              grid-template-columns: 1fr 0.5fr;
-              // grid-auto-columns: auto;
+              grid-template-rows: 70% 30%;
+
               .taskText {
                 width: 100%;
                 input {
                   border: none;
-                  padding: 0.2rem;
+                  padding: 0.1rem;
+                  padding-left: 0.4rem;
                   border-radius: 10px;
                   outline: none;
                   width: 100%;
                   font-family: $poppins;
                 }
+                input:not(:read-only) {
+                  background-color: $third-light;
+                }
+
                 #taskName {
                   color: $secondary-light;
-                  font-size: $font-100;
-                  // todo upravit font size
-                  // font-size: clamp(15px, 6vw, 18px);
+                  font-size: clamp(0.9375rem, 5vw, 1rem);
                   font-weight: 500;
                 }
                 #note {
                   color: $description;
+                  margin-top: 2px;
+                  font-size: clamp(0.7rem, 4vw, 0.8rem);
                 }
               }
               .clock {
                 width: 100%;
                 display: flex;
-                flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                background-color: $third-light;
+                border-radius: 7px;
+                transition: all 200ms ease-out;
+                margin-top: 4px;
 
                 input {
-                  text-align: center;
-                  border: none;
                   width: 6rem;
-                  padding: 0.2rem;
+                  text-align: right;
+                  border: none;
                   border-radius: 10px;
+                  padding: 0 0.1rem;
                   outline: none;
                   color: $secondary-light;
+                  background-color: $third-light;
                   font-family: $lora;
-                  font-size: 0.93rem;
+                  font-weight: 500;
+                  font-size: 0.8rem;
+                }
+
+                #datePicker {
+                  display: none;
+                  width: 20px;
+                  height: 20px;
+                  transition: all 200ms ease-out;
+                }
+
+                #timePicker {
+                  display: none;
+                  width: 39px;
+                  height: 100%;
+                  padding-right: 10px;
+                  transition: all 200ms ease-out;
                 }
               }
             }
@@ -616,25 +646,39 @@ main {
                 }
               }
 
-              #to-progress {
-                color: $description;
+              .to-progress {
                 border: none;
+                color: $description;
                 background-color: $fourth-light;
-                outline: none;
-                font-size: 15px;
+                font-size: 0.875rem;
+                font-weight: 500;
+
                 cursor: pointer;
                 transition: 200ms ease;
 
                 &:hover {
                   color: $secondary-light;
-                  transform: scale(1.1);
                 }
+              }
+              .in-progress-done {
+                border: none;
+                color: $secondary-light;
+                background-color: $fourth-light;
+                font-size: 0.875rem;
+                font-weight: 500;
               }
               .settings {
                 display: flex;
-                gap: 7px;
+                gap: 8px;
                 .edit {
                   content: url(/icon/edit.svg);
+                  height: 19px;
+                  width: 19px;
+                  cursor: pointer;
+                }
+                .edit-save {
+                  content: url(/icon/save.svg);
+                  // todo change save icon
                   height: 19px;
                   width: 19px;
                   cursor: pointer;

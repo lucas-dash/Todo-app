@@ -9,12 +9,29 @@ hamburger.addEventListener("click", (e) => {
   mainContent.classList.toggle("active");
 });
 
+function dateNow() {
+  let today = new Date();
+  let defaultDate =
+    today.getFullYear() +
+    "-" +
+    ("0" + (today.getMonth() + 1)).slice(-2) +
+    "-" +
+    ("0" + today.getDate()).slice(-2);
+
+  return defaultDate;
+}
+
 // ? show and hide create task
 const addTaskBtn = document.querySelector("#add-task");
 addTaskBtn.addEventListener("click", (e) => {
   const createTask = document.querySelector(".create-task");
   const btn_addTask = document.querySelector("#add-task");
   const heading = document.querySelector(".heading-create-task");
+  const datePick = document.querySelector("#date");
+  // ? default time on create
+  datePick.addEventListener("click", () => {
+    datePick.value = dateNow();
+  });
 
   btn_addTask.classList.toggle("click");
 
