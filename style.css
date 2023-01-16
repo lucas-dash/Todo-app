@@ -11,32 +11,27 @@ body {
   color: #24282c;
   background: linear-gradient(90deg, #f7f6f0 20.7px, transparent 1%) center, linear-gradient(#f7f6f0 20.7px, transparent 1%) center, #6c6b6b;
   background-size: 22px 22px;
+  background-attachment: fixed;
 }
 
-main {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-}
-main .tabule.active {
-  width: 80% !important;
-}
-main #nav.active {
-  width: 20% !important;
-}
-main nav {
+nav {
   width: 5%;
+  width: 55px;
   height: 100%;
+  position: fixed;
+  z-index: 101;
   background-color: #fff;
-  border-radius: 0 50px 40px 0;
-  box-shadow: 0 2px 5px #6c6b6b;
-  transition: all 200ms ease-out;
+  box-shadow: 0 4px 10px #6c6b6b;
+  transition: all 400ms cubic-bezier(0.9, -0.03, 0.48, 0.99);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
-main nav .hamburger {
+nav.active {
+  width: 248px;
+}
+nav .hamburger {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -53,12 +48,12 @@ main nav .hamburger {
   justify-content: space-between;
   position: absolute;
   top: 1.4rem;
-  left: 0.7rem;
+  right: 0.7rem;
   z-index: 50;
   transform: rotate(30deg);
-  transition: all 200ms ease-out;
+  transition: all 200ms ease-in;
 }
-main nav .hamburger span {
+nav .hamburger span {
   display: block;
   width: 33px;
   height: 3px;
@@ -70,36 +65,35 @@ main nav .hamburger span {
   transform-origin: 0 0;
   transition: 0.4s;
 }
-main nav .hamburger span:nth-child(1) {
+nav .hamburger span:nth-child(1) {
   width: 23px;
 }
-main nav .hamburger span:nth-child(3) {
+nav .hamburger span:nth-child(3) {
   width: 23px;
   transform: translateX(10px);
 }
-main nav .hamburger.hamburger.is-active {
-  left: 15%;
-  top: 2rem;
+nav .hamburger.hamburger.is-active {
+  right: 0.7rem;
 }
-main nav .hamburger.is-active span:nth-child(1) {
+nav .hamburger.is-active span:nth-child(1) {
   transform: translate(-1px, 8.5px) rotate(-55deg);
 }
-main nav .hamburger.is-active span:nth-child(2) {
+nav .hamburger.is-active span:nth-child(2) {
   transform: rotate(-30deg);
 }
-main nav .hamburger.is-active span:nth-child(3) {
+nav .hamburger.is-active span:nth-child(3) {
   transform: translate(0px, -8px) rotate(-3deg);
 }
-main nav .navbar {
+nav .navbar {
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-main nav .navbar h1 {
+nav .navbar h1 {
   font-size: clamp(1rem, 5vw, 1.5rem);
 }
-main nav .navbar .searchbox input {
+nav .navbar .searchbox input {
   width: 150px;
   height: 1.5rem;
   border-radius: 40px;
@@ -107,50 +101,48 @@ main nav .navbar .searchbox input {
   color: #24282c;
   padding: 0 1rem;
 }
-main nav .navbar .calendar-box {
+nav .navbar .calendar-box {
   border: 2px solid #24282c;
   width: 9rem;
   height: 9rem;
   border-radius: 10px;
   margin: 1rem;
 }
-main .tabule {
-  width: 95%;
-  height: 100%;
-  transition: all 200ms ease-out;
+
+main {
+  height: 100vh;
+  width: 100vw;
+  padding-left: 55px;
+  overflow: scroll;
 }
-main .tabule .canvas {
-  width: 100%;
-  height: 100%;
+main .canvas {
+  min-height: 100%;
   display: grid;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 140px 1fr;
 }
-main .tabule .canvas .head-create-task {
-  width: 100%;
-  height: 100%;
-  padding: 0 1rem;
+main .canvas .head-create-task {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  padding: 0 1rem;
 }
-main .tabule .canvas .head-create-task .first-row-head {
-  width: 100%;
+main .canvas .head-create-task .first-col-head {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-main .tabule .canvas .head-create-task .first-row-head h2 {
+main .canvas .head-create-task .first-col-head h2 {
   text-align: center;
   font-size: clamp(1rem, 5vw, 1.375rem);
 }
-main .tabule .canvas .head-create-task .first-row-head h2.moveUp {
+main .canvas .head-create-task .first-col-head h2.moveUp {
   -webkit-animation: textUp 250ms ease-in both;
           animation: textUp 250ms ease-in both;
 }
-main .tabule .canvas .head-create-task .first-row-head h2.moveDown {
+main .canvas .head-create-task .first-col-head h2.moveDown {
   -webkit-animation: textDown 300ms ease-in both;
           animation: textDown 300ms ease-in both;
 }
-main .tabule .canvas .head-create-task .first-row-head h2 #add-task {
+main .canvas .head-create-task .first-col-head h2 #add-task {
   content: url(/icon/plus-circle.svg);
   display: inline-block;
   width: clamp(1.55rem, 6vw, 2.2rem);
@@ -163,27 +155,25 @@ main .tabule .canvas .head-create-task .first-row-head h2 #add-task {
   transform: translate(0, 5px);
   transition: all 300ms ease-out;
 }
-main .tabule .canvas .head-create-task .first-row-head h2 #add-task.click {
+main .canvas .head-create-task .first-col-head h2 #add-task.click {
   transform: rotate(45deg) translate(5px, 5px);
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task.onBlured {
+main .canvas .head-create-task .first-col-head .create-task.onBlured {
   display: flex;
   height: initial;
   width: initial;
   -webkit-animation: slide-in-blurred-tl 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
           animation: slide-in-blurred-tl 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task.formOff {
+main .canvas .head-create-task .first-col-head .create-task.formOff {
   -webkit-animation: formOut 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
           animation: formOut 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task {
+main .canvas .head-create-task .first-col-head .create-task {
   position: absolute;
   top: 10%;
   left: 10%;
   z-index: 100;
-  height: 30px;
-  width: 30px;
   padding: 0.9rem;
   background-color: #fff;
   border-radius: 15px;
@@ -193,8 +183,8 @@ main .tabule .canvas .head-create-task .first-row-head .create-task {
   align-items: center;
   justify-content: center;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task input,
-main .tabule .canvas .head-create-task .first-row-head .create-task select {
+main .canvas .head-create-task .first-col-head .create-task input,
+main .canvas .head-create-task .first-col-head .create-task select {
   border: none;
   border-radius: 10px;
   outline: none;
@@ -204,65 +194,65 @@ main .tabule .canvas .head-create-task .first-row-head .create-task select {
   box-shadow: 0px 0px 10px rgb(93, 92, 92);
   transition: all 100ms ease-out;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task input:focus,
-main .tabule .canvas .head-create-task .first-row-head .create-task select:focus {
+main .canvas .head-create-task .first-col-head .create-task input:focus,
+main .canvas .head-create-task .first-col-head .create-task select:focus {
   border: 1px solid #24282c;
   box-shadow: none;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .one-row {
+main .canvas .head-create-task .first-col-head .create-task .one-row {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .one-row #text {
+main .canvas .head-create-task .first-col-head .create-task .one-row #text {
   width: 16rem;
   margin-bottom: 0.5rem;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .one-row #description {
+main .canvas .head-create-task .first-col-head .create-task .one-row #description {
   width: 16rem;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .one-row input {
+main .canvas .head-create-task .first-col-head .create-task .one-row input {
   padding: 0.3rem 0.5rem;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row {
+main .canvas .head-create-task .first-col-head .create-task .two-row {
   width: 9rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row label {
+main .canvas .head-create-task .first-col-head .create-task .two-row label {
   transform: translateY(5px);
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row input,
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row select {
+main .canvas .head-create-task .first-col-head .create-task .two-row input,
+main .canvas .head-create-task .first-col-head .create-task .two-row select {
   padding: 0.2rem 0.25rem;
   margin: 0.4rem 0;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row #date,
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row #time,
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row #priority {
+main .canvas .head-create-task .first-col-head .create-task .two-row #date,
+main .canvas .head-create-task .first-col-head .create-task .two-row #time,
+main .canvas .head-create-task .first-col-head .create-task .two-row #priority {
   text-align: center;
   width: 6.7rem;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .date,
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .time,
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .prior label {
+main .canvas .head-create-task .first-col-head .create-task .two-row .date,
+main .canvas .head-create-task .first-col-head .create-task .two-row .time,
+main .canvas .head-create-task .first-col-head .create-task .two-row .prior label {
   height: 20px;
   width: 20px;
   margin-right: 0.3rem;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .date {
+main .canvas .head-create-task .first-col-head .create-task .two-row .date {
   content: url(/icon/calendar.svg);
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .time {
+main .canvas .head-create-task .first-col-head .create-task .two-row .time {
   content: url(/icon/clock.svg);
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .two-row .prior label {
+main .canvas .head-create-task .first-col-head .create-task .two-row .prior label {
   content: url(/icon/alert-triangle.svg);
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .submit-btn {
+main .canvas .head-create-task .first-col-head .create-task .submit-btn {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -271,26 +261,26 @@ main .tabule .canvas .head-create-task .first-row-head .create-task .submit-btn 
   align-items: center;
   justify-content: center;
 }
-main .tabule .canvas .head-create-task .first-row-head .create-task .submit-btn #submit {
+main .canvas .head-create-task .first-col-head .create-task .submit-btn #submit {
   cursor: pointer;
   width: 1.2rem;
   height: 1.2rem;
   opacity: 0.1;
   background-color: #24282c;
 }
-main .tabule .canvas .head-create-task .second-row-head {
+main .canvas .head-create-task .second-row-head {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
-main .tabule .canvas .head-create-task .second-row-head .count-task {
+main .canvas .head-create-task .second-row-head .count-task {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-main .tabule .canvas .head-create-task .second-row-head .to-start-icon {
+main .canvas .head-create-task .second-row-head .to-start-icon {
   content: url(/icon/circle.svg);
   display: flex;
   justify-content: center;
@@ -301,7 +291,7 @@ main .tabule .canvas .head-create-task .second-row-head .to-start-icon {
   background-color: #fff;
   border-radius: 15px;
 }
-main .tabule .canvas .head-create-task .second-row-head .progress-icon {
+main .canvas .head-create-task .second-row-head .progress-icon {
   content: url(/icon/progress.svg);
   display: flex;
   justify-content: center;
@@ -312,7 +302,7 @@ main .tabule .canvas .head-create-task .second-row-head .progress-icon {
   background-color: #fff;
   border-radius: 15px;
 }
-main .tabule .canvas .head-create-task .second-row-head .complet-icon {
+main .canvas .head-create-task .second-row-head .complet-icon {
   content: url(/icon/check-circle.svg);
   display: flex;
   justify-content: center;
@@ -323,9 +313,9 @@ main .tabule .canvas .head-create-task .second-row-head .complet-icon {
   background-color: #fff;
   border-radius: 15px;
 }
-main .tabule .canvas .head-create-task .second-row-head #count-toStart-task,
-main .tabule .canvas .head-create-task .second-row-head #count-inProgress-task,
-main .tabule .canvas .head-create-task .second-row-head #count-complete-task {
+main .canvas .head-create-task .second-row-head #count-toStart-task,
+main .canvas .head-create-task .second-row-head #count-inProgress-task,
+main .canvas .head-create-task .second-row-head #count-complete-task {
   width: clamp(22px, 5vw, 30px);
   height: clamp(22px, 5vw, 30px);
   background-color: #82f36b;
@@ -337,18 +327,70 @@ main .tabule .canvas .head-create-task .second-row-head #count-complete-task {
   align-items: center;
   justify-content: center;
 }
-main .tabule .canvas .head-create-task .third-row-head {
+main .canvas .head-create-task .third-row-head {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-main .tabule .canvas .all-todo {
-  width: 100%;
+main .canvas .nav-mobile-task {
+  display: none;
+  position: relative;
+}
+main .canvas .nav-mobile-task h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: clamp(14px, 4vw, 17px);
+  color: #5f5f5f;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+}
+main .canvas .nav-mobile-task h3.visible {
+  z-index: 1;
+  color: #fff;
+  padding: 0.1rem 0.5rem;
+  text-align: center;
+  transition: all 250ms ease-out;
+}
+main .canvas .nav-mobile-task .bg-nav::after {
+  content: "";
+  position: absolute;
+  top: 1%;
+  left: 15%;
+  width: 62.5px;
+  height: 28.7px;
+  border-radius: 20px;
+  background-color: #161616;
+  z-index: -1;
+  box-shadow: 9px 9px 16px #f7f6f0, -9px -9px 16px #fff, inset 10px 10px 15px -10px #837b7b, inset -10px -10px 15px -10px rgb(127, 127, 127);
+}
+main .canvas .nav-mobile-task:nth-child(1).visible ~ .bg-nav::after {
+  transform: translateX(0);
+}
+main .canvas .nav-mobile-task:nth-child(2).visible ~ .bg-nav::after {
+  transform: translateX(62.5);
+}
+main .canvas .nav-mobile-task:nth-child(3).visible ~ .bg-nav::after {
+  transform: translateX(125);
+}
+main .canvas .all-todo {
+  height: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
 }
-main .tabule .canvas .all-todo h2 {
+main .canvas .all-todo .to-start,
+main .canvas .all-todo .in-progress,
+main .canvas .all-todo .done {
+  max-height: -webkit-max-content;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+main .canvas .all-todo .heading-for-Task {
+  padding-block: 0.6rem;
+}
+main .canvas .all-todo .heading-for-Task h2 {
   text-align: center;
   font-family: "Poppins", sans-serif;
   font-size: clamp(1rem, 5vw, 1.375rem);
@@ -356,40 +398,24 @@ main .tabule .canvas .all-todo h2 {
   align-self: center;
   justify-self: center;
 }
-main .tabule .canvas .all-todo .to-start {
+main .canvas .all-todo .todo,
+main .canvas .all-todo .progressTask,
+main .canvas .all-todo .completeTask {
   display: grid;
-  grid-template-rows: 10% 90%;
-  overflow: hidden;
-  border-radius: 10px;
-}
-main .tabule .canvas .all-todo .in-progress {
-  display: grid;
-  grid-template-rows: 10% 90%;
-  overflow: hidden;
-  border-radius: 10px;
-}
-main .tabule .canvas .all-todo .done {
-  display: grid;
-  grid-template-rows: 10% 90%;
-  overflow: hidden;
-  border-radius: 10px;
-}
-main .tabule .canvas .all-todo .todo,
-main .tabule .canvas .all-todo .progressTask,
-main .tabule .canvas .all-todo .completeTask {
-  width: 100%;
-  display: grid;
+  grid-auto-flow: row;
   grid-auto-rows: -webkit-max-content;
   grid-auto-rows: max-content;
+  row-gap: 10px;
   justify-items: center;
   align-items: start;
-  overflow: scroll;
+  -webkit-margin-after: 3.5rem;
+          margin-block-end: 3.5rem;
 }
-main .tabule .canvas .all-todo .todo .newTask,
-main .tabule .canvas .all-todo .progressTask .newTask,
-main .tabule .canvas .all-todo .completeTask .newTask {
+main .canvas .all-todo .todo .newTask,
+main .canvas .all-todo .progressTask .newTask,
+main .canvas .all-todo .completeTask .newTask {
   list-style: none;
-  width: clamp(285px, 5vw, 100%);
+  width: clamp(17.267rem, 80%, 400px);
   height: 5.1rem;
   padding: 0.8rem;
   margin-top: 10px;
@@ -400,80 +426,80 @@ main .tabule .canvas .all-todo .completeTask .newTask {
   box-shadow: 0 2px 7px #6c6b6b;
   transition: all 200ms ease-out;
 }
-main .tabule .canvas .all-todo .todo .newTask:hover, main .tabule .canvas .all-todo .todo .newTask:focus,
-main .tabule .canvas .all-todo .progressTask .newTask:hover,
-main .tabule .canvas .all-todo .progressTask .newTask:focus,
-main .tabule .canvas .all-todo .completeTask .newTask:hover,
-main .tabule .canvas .all-todo .completeTask .newTask:focus {
+main .canvas .all-todo .todo .newTask:hover, main .canvas .all-todo .todo .newTask:focus,
+main .canvas .all-todo .progressTask .newTask:hover,
+main .canvas .all-todo .progressTask .newTask:focus,
+main .canvas .all-todo .completeTask .newTask:hover,
+main .canvas .all-todo .completeTask .newTask:focus {
   height: 8.8rem;
 }
-main .tabule .canvas .all-todo .todo .newTask:hover .to-progress,
-main .tabule .canvas .all-todo .progressTask .newTask:hover .to-progress,
-main .tabule .canvas .all-todo .completeTask .newTask:hover .to-progress {
+main .canvas .all-todo .todo .newTask:hover .to-progress,
+main .canvas .all-todo .progressTask .newTask:hover .to-progress,
+main .canvas .all-todo .completeTask .newTask:hover .to-progress {
   -webkit-animation: callToAction 1s ease-in-out 400ms 1 both;
           animation: callToAction 1s ease-in-out 400ms 1 both;
 }
-main .tabule .canvas .all-todo .todo .newTask .head,
-main .tabule .canvas .all-todo .progressTask .newTask .head,
-main .tabule .canvas .all-todo .completeTask .newTask .head {
+main .canvas .all-todo .todo .newTask .head,
+main .canvas .all-todo .progressTask .newTask .head,
+main .canvas .all-todo .completeTask .newTask .head {
   width: 100%;
   height: 9px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.3rem;
 }
-main .tabule .canvas .all-todo .todo .newTask .head .priority,
-main .tabule .canvas .all-todo .progressTask .newTask .head .priority,
-main .tabule .canvas .all-todo .completeTask .newTask .head .priority {
+main .canvas .all-todo .todo .newTask .head .priority,
+main .canvas .all-todo .progressTask .newTask .head .priority,
+main .canvas .all-todo .completeTask .newTask .head .priority {
   display: inline-block;
   width: 50px;
   height: 8px;
   border-radius: 5px;
 }
-main .tabule .canvas .all-todo .todo .newTask .head .status,
-main .tabule .canvas .all-todo .progressTask .newTask .head .status,
-main .tabule .canvas .all-todo .completeTask .newTask .head .status {
+main .canvas .all-todo .todo .newTask .head .status,
+main .canvas .all-todo .progressTask .newTask .head .status,
+main .canvas .all-todo .completeTask .newTask .head .status {
   width: 25px;
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
 }
-main .tabule .canvas .all-todo .todo .newTask .head .status .to-do,
-main .tabule .canvas .all-todo .progressTask .newTask .head .status .to-do,
-main .tabule .canvas .all-todo .completeTask .newTask .head .status .to-do {
+main .canvas .all-todo .todo .newTask .head .status .to-do,
+main .canvas .all-todo .progressTask .newTask .head .status .to-do,
+main .canvas .all-todo .completeTask .newTask .head .status .to-do {
   content: url(/icon/circle.svg);
   height: 15px;
   width: 15px;
 }
-main .tabule .canvas .all-todo .todo .newTask .head .status .progress,
-main .tabule .canvas .all-todo .progressTask .newTask .head .status .progress,
-main .tabule .canvas .all-todo .completeTask .newTask .head .status .progress {
+main .canvas .all-todo .todo .newTask .head .status .progress,
+main .canvas .all-todo .progressTask .newTask .head .status .progress,
+main .canvas .all-todo .completeTask .newTask .head .status .progress {
   content: url(/icon/progress.svg);
   height: 15px;
   width: 15px;
 }
-main .tabule .canvas .all-todo .todo .newTask .head .status .complet,
-main .tabule .canvas .all-todo .progressTask .newTask .head .status .complet,
-main .tabule .canvas .all-todo .completeTask .newTask .head .status .complet {
+main .canvas .all-todo .todo .newTask .head .status .complet,
+main .canvas .all-todo .progressTask .newTask .head .status .complet,
+main .canvas .all-todo .completeTask .newTask .head .status .complet {
   content: url(/icon/check-circle.svg);
   height: 15px;
   width: 15px;
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info,
-main .tabule .canvas .all-todo .progressTask .newTask .task-info,
-main .tabule .canvas .all-todo .completeTask .newTask .task-info {
+main .canvas .all-todo .todo .newTask .task-info,
+main .canvas .all-todo .progressTask .newTask .task-info,
+main .canvas .all-todo .completeTask .newTask .task-info {
   width: 100%;
   display: grid;
   grid-template-rows: 70% 30%;
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info .taskText,
-main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText,
-main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText {
+main .canvas .all-todo .todo .newTask .task-info .taskText,
+main .canvas .all-todo .progressTask .newTask .task-info .taskText,
+main .canvas .all-todo .completeTask .newTask .task-info .taskText {
   width: 100%;
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info .taskText input,
-main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText input,
-main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText input {
+main .canvas .all-todo .todo .newTask .task-info .taskText input,
+main .canvas .all-todo .progressTask .newTask .task-info .taskText input,
+main .canvas .all-todo .completeTask .newTask .task-info .taskText input {
   border: none;
   padding: 0.1rem;
   padding-left: 0.4rem;
@@ -482,31 +508,31 @@ main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText input
   width: 100%;
   font-family: "Poppins", sans-serif;
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info .taskText input:not(:-moz-read-only), main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText input:not(:-moz-read-only), main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText input:not(:-moz-read-only) {
+main .canvas .all-todo .todo .newTask .task-info .taskText input:not(:-moz-read-only), main .canvas .all-todo .progressTask .newTask .task-info .taskText input:not(:-moz-read-only), main .canvas .all-todo .completeTask .newTask .task-info .taskText input:not(:-moz-read-only) {
   background-color: #f7f6f0;
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info .taskText input:not(:read-only),
-main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText input:not(:read-only),
-main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText input:not(:read-only) {
+main .canvas .all-todo .todo .newTask .task-info .taskText input:not(:read-only),
+main .canvas .all-todo .progressTask .newTask .task-info .taskText input:not(:read-only),
+main .canvas .all-todo .completeTask .newTask .task-info .taskText input:not(:read-only) {
   background-color: #f7f6f0;
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info .taskText #taskName,
-main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText #taskName,
-main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText #taskName {
+main .canvas .all-todo .todo .newTask .task-info .taskText #taskName,
+main .canvas .all-todo .progressTask .newTask .task-info .taskText #taskName,
+main .canvas .all-todo .completeTask .newTask .task-info .taskText #taskName {
   color: #24282c;
   font-size: clamp(0.9375rem, 5vw, 1rem);
   font-weight: 500;
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info .taskText #note,
-main .tabule .canvas .all-todo .progressTask .newTask .task-info .taskText #note,
-main .tabule .canvas .all-todo .completeTask .newTask .task-info .taskText #note {
+main .canvas .all-todo .todo .newTask .task-info .taskText #note,
+main .canvas .all-todo .progressTask .newTask .task-info .taskText #note,
+main .canvas .all-todo .completeTask .newTask .task-info .taskText #note {
   color: #5f5f5f;
   margin-top: 2px;
   font-size: clamp(0.7rem, 4vw, 0.8rem);
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info .clock,
-main .tabule .canvas .all-todo .progressTask .newTask .task-info .clock,
-main .tabule .canvas .all-todo .completeTask .newTask .task-info .clock {
+main .canvas .all-todo .todo .newTask .task-info .clock,
+main .canvas .all-todo .progressTask .newTask .task-info .clock,
+main .canvas .all-todo .completeTask .newTask .task-info .clock {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -516,9 +542,9 @@ main .tabule .canvas .all-todo .completeTask .newTask .task-info .clock {
   transition: all 200ms ease-out;
   margin-top: 4px;
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info .clock input,
-main .tabule .canvas .all-todo .progressTask .newTask .task-info .clock input,
-main .tabule .canvas .all-todo .completeTask .newTask .task-info .clock input {
+main .canvas .all-todo .todo .newTask .task-info .clock input,
+main .canvas .all-todo .progressTask .newTask .task-info .clock input,
+main .canvas .all-todo .completeTask .newTask .task-info .clock input {
   width: 6rem;
   text-align: right;
   border: none;
@@ -531,46 +557,46 @@ main .tabule .canvas .all-todo .completeTask .newTask .task-info .clock input {
   font-weight: 500;
   font-size: 0.8rem;
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info .clock #datePicker,
-main .tabule .canvas .all-todo .progressTask .newTask .task-info .clock #datePicker,
-main .tabule .canvas .all-todo .completeTask .newTask .task-info .clock #datePicker {
+main .canvas .all-todo .todo .newTask .task-info .clock #datePicker,
+main .canvas .all-todo .progressTask .newTask .task-info .clock #datePicker,
+main .canvas .all-todo .completeTask .newTask .task-info .clock #datePicker {
   display: none;
   width: 20px;
   height: 20px;
   transition: all 200ms ease-out;
 }
-main .tabule .canvas .all-todo .todo .newTask .task-info .clock #timePicker,
-main .tabule .canvas .all-todo .progressTask .newTask .task-info .clock #timePicker,
-main .tabule .canvas .all-todo .completeTask .newTask .task-info .clock #timePicker {
+main .canvas .all-todo .todo .newTask .task-info .clock #timePicker,
+main .canvas .all-todo .progressTask .newTask .task-info .clock #timePicker,
+main .canvas .all-todo .completeTask .newTask .task-info .clock #timePicker {
   display: none;
   width: 39px;
   height: 100%;
   padding-right: 10px;
   transition: all 200ms ease-out;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete,
-main .tabule .canvas .all-todo .progressTask .newTask .complete,
-main .tabule .canvas .all-todo .completeTask .newTask .complete {
+main .canvas .all-todo .todo .newTask .complete,
+main .canvas .all-todo .progressTask .newTask .complete,
+main .canvas .all-todo .completeTask .newTask .complete {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0.5rem 0 0.5rem;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .check,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .check,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .check {
+main .canvas .all-todo .todo .newTask .complete .check,
+main .canvas .all-todo .progressTask .newTask .complete .check,
+main .canvas .all-todo .completeTask .newTask .complete .check {
   width: 25px;
   display: block;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .check input,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .check input,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .check input {
+main .canvas .all-todo .todo .newTask .complete .check input,
+main .canvas .all-todo .progressTask .newTask .complete .check input,
+main .canvas .all-todo .completeTask .newTask .complete .check input {
   display: none;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .check .checkbox,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .check .checkbox,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .check .checkbox {
+main .canvas .all-todo .todo .newTask .complete .check .checkbox,
+main .canvas .all-todo .progressTask .newTask .complete .check .checkbox,
+main .canvas .all-todo .completeTask .newTask .complete .check .checkbox {
   display: block;
   width: 15px;
   height: 15px;
@@ -579,9 +605,9 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete .check .checkbox
   cursor: pointer;
   transition: 0.375s;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .check input:checked ~ .checkbox,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .check input:checked ~ .checkbox,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .check input:checked ~ .checkbox {
+main .canvas .all-todo .todo .newTask .complete .check input:checked ~ .checkbox,
+main .canvas .all-todo .progressTask .newTask .complete .check input:checked ~ .checkbox,
+main .canvas .all-todo .completeTask .newTask .complete .check input:checked ~ .checkbox {
   rotate: 45deg;
   translate: 15px -8px;
   width: 8px;
@@ -590,9 +616,9 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete .check input:che
   border-left-color: transparent;
   border-radius: 0;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .check .checkedInput,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .check .checkedInput,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .check .checkedInput {
+main .canvas .all-todo .todo .newTask .complete .check .checkedInput,
+main .canvas .all-todo .progressTask .newTask .complete .check .checkedInput,
+main .canvas .all-todo .completeTask .newTask .complete .check .checkedInput {
   display: block;
   width: 15px;
   height: 15px;
@@ -605,9 +631,9 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete .check .checkedI
   border-left-color: transparent;
   border-radius: 0;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .to-progress,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .to-progress,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .to-progress {
+main .canvas .all-todo .todo .newTask .complete .to-progress,
+main .canvas .all-todo .progressTask .newTask .complete .to-progress,
+main .canvas .all-todo .completeTask .newTask .complete .to-progress {
   border: none;
   color: #5f5f5f;
   background-color: #fff;
@@ -616,45 +642,45 @@ main .tabule .canvas .all-todo .completeTask .newTask .complete .to-progress {
   cursor: pointer;
   transition: 200ms ease;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .to-progress:hover,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .to-progress:hover,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .to-progress:hover {
+main .canvas .all-todo .todo .newTask .complete .to-progress:hover,
+main .canvas .all-todo .progressTask .newTask .complete .to-progress:hover,
+main .canvas .all-todo .completeTask .newTask .complete .to-progress:hover {
   color: #24282c;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .in-progress-done,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .in-progress-done,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .in-progress-done {
+main .canvas .all-todo .todo .newTask .complete .in-progress-done,
+main .canvas .all-todo .progressTask .newTask .complete .in-progress-done,
+main .canvas .all-todo .completeTask .newTask .complete .in-progress-done {
   border: none;
   color: #24282c;
   background-color: #fff;
   font-size: 0.875rem;
   font-weight: 500;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .settings,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .settings,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .settings {
+main .canvas .all-todo .todo .newTask .complete .settings,
+main .canvas .all-todo .progressTask .newTask .complete .settings,
+main .canvas .all-todo .completeTask .newTask .complete .settings {
   display: flex;
   gap: 8px;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .settings .edit,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .settings .edit,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .settings .edit {
+main .canvas .all-todo .todo .newTask .complete .settings .edit,
+main .canvas .all-todo .progressTask .newTask .complete .settings .edit,
+main .canvas .all-todo .completeTask .newTask .complete .settings .edit {
   content: url(/icon/edit.svg);
   height: 19px;
   width: 19px;
   cursor: pointer;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .settings .edit-save,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .settings .edit-save,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .settings .edit-save {
+main .canvas .all-todo .todo .newTask .complete .settings .edit-save,
+main .canvas .all-todo .progressTask .newTask .complete .settings .edit-save,
+main .canvas .all-todo .completeTask .newTask .complete .settings .edit-save {
   content: url(/icon/save.svg);
   height: 19px;
   width: 19px;
   cursor: pointer;
 }
-main .tabule .canvas .all-todo .todo .newTask .complete .settings .delete,
-main .tabule .canvas .all-todo .progressTask .newTask .complete .settings .delete,
-main .tabule .canvas .all-todo .completeTask .newTask .complete .settings .delete {
+main .canvas .all-todo .todo .newTask .complete .settings .delete,
+main .canvas .all-todo .progressTask .newTask .complete .settings .delete,
+main .canvas .all-todo .completeTask .newTask .complete .settings .delete {
   content: url(/icon/trash-2.svg);
   height: 19px;
   width: 19px;

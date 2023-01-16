@@ -11,107 +11,110 @@
 </head>
 
 <body>
+
+    <nav class="nav">
+
+        <div class="ham">
+            <a class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+
+        <div class="navbar">
+            <h1>To-Do</h1>
+            <div class="searchbox">
+                <label for="search"></label>
+                <input type="text" name="search" id="search" placeholder="Search">
+            </div>
+            <div class="calendar-box">
+
+            </div>
+        </div>
+    </nav>
+
     <main>
+        <section class="canvas">
 
-        <nav id="nav">
+            <!-- ? first item -->
+            <section class="head-create-task">
+                <!-- ! create new task form -->
+                <div class="first-col-head">
 
-            <div class="ham">
-                <a class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
-            </div>
+                    <h2 class="heading-create-task">Create Task<span id="add-task"></span></h2>
 
-            <div class="navbar">
-                <h1>To-Do</h1>
-                <div class="searchbox">
-                    <label for="search"></label>
-                    <input type="text" name="search" id="search" placeholder="Search">
-                </div>
-                <div class="calendar-box">
+                    <form class="create-task">
+                        <div class="one-row">
+                            <input type="text" name="name" id="text" placeholder="What would you like to do?">
 
-                </div>
-            </div>
-        </nav>
+                            <input name="description" id="description" placeholder="Description" maxlength="24">
+                        </div>
 
-        <section class="tabule">
-            <div class="canvas">
+                        <div class="two-row">
 
-                <!-- ? first item -->
-                <div class="head-create-task">
-                    <!-- ! create new task form -->
-                    <div class="first-row-head">
-
-                        <h2 class="heading-create-task">Create Task<span id="add-task"></span></h2>
-
-                        <form class="create-task">
-                            <div class="one-row">
-                                <input type="text" name="name" id="text" placeholder="What would you like to do?">
-
-                                <input name="description" id="description" placeholder="Description" maxlength="24">
+                            <div class="dateTask">
+                                <label for="date" class="date"></label>
+                                <input type="date" name="date" id="date">
                             </div>
 
-                            <div class="two-row">
-
-                                <div class="dateTask">
-                                    <label for="date" class="date"></label>
-                                    <input type="date" name="date" id="date">
-                                </div>
-
-                                <div class="timeTask">
-                                    <label for="time" class="time"></label>
-                                    <input type="time" name="time" id="time">
-                                </div>
-
-                                <div class="prior">
-                                    <label for="priority"></label>
-                                    <select id="priority" name="color">
-                                        <option value="14dd28">Nízká</option>
-                                        <option value="3581f2">Střední</option>
-                                        <option value="f61f1f">Vysoká</option>
-                                    </select>
-                                </div>
+                            <div class="timeTask">
+                                <label for="time" class="time"></label>
+                                <input type="time" name="time" id="time">
                             </div>
-                            <div class="submit-btn">
-                                <input type="submit" value="" id="submit">
-                            </div>
-                        </form>
-                    </div>
 
-                    <!-- ! counting tasks -->
-                    <div class="second-row-head">
-                        <div class="count-task">
-                            <p class="to-start-icon"></p>
-                            <p id="count-toStart-task">2</p>
+                            <div class="prior">
+                                <label for="priority"></label>
+                                <select id="priority" name="color">
+                                    <option value="14dd28">Nízká</option>
+                                    <option value="3581f2">Střední</option>
+                                    <option value="f61f1f">Vysoká</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="count-task">
-                            <p class="progress-icon"></p>
-                            <p id="count-inProgress-task">12</p>
+                        <div class="submit-btn">
+                            <input type="submit" value="" id="submit">
                         </div>
-                        <div class="count-task">
-                            <p data-complete="0" class="complet-icon"></p>
-                            <p id="count-complete-task">50</p>
-                        </div>
-                    </div>
-                    <!-- ! dark mode -->
-                    <div class="third-row-head">
-                        <input type="checkbox" id="dark-mode">
-                    </div>
+                    </form>
                 </div>
 
-                <!-- <article>
-                    <h2>ToDo</h2>
-                    <h2>In-progress</h2>
-                    <h2>Done</h2>
-                </article> -->
-                <!-- ? second item -->
-                <section class="all-todo">
-                    <section class="to-start">
+                <!-- ! counting tasks -->
+                <div class="second-row-head">
+                    <div class="count-task">
+                        <p class="to-start-icon"></p>
+                        <p id="count-toStart-task">2</p>
+                    </div>
+                    <div class="count-task">
+                        <p class="progress-icon"></p>
+                        <p id="count-inProgress-task">12</p>
+                    </div>
+                    <div class="count-task">
+                        <p data-complete="0" class="complet-icon"></p>
+                        <p id="count-complete-task">50</p>
+                    </div>
+                </div>
+                <!-- ! dark mode -->
+                <div class="third-row-head">
+                    <input type="checkbox" id="dark-mode">
+                </div>
+            </section>
+
+            <!-- view only on screen < 935 -->
+            <section class="nav-mobile-task">
+                <h3 class="visible bg-nav">ToDo</h3>
+                <h3>In-progress</h3>
+                <h3>Done</h3>
+            </section>
+
+            <!-- ? second item -->
+            <section class="all-todo">
+                <section class="to-start">
+                    <div class="heading-for-Task">
                         <h2>To Start</h2>
-                        <ul class="todo">
+                    </div>
+                    <ul class="todo">
 
-                            <!-- <li class="newTask">
+                        <!-- <li class="newTask">
                                 <div class="head">
                                     <span class="priority"></span>
                                     <div class="status">
@@ -148,31 +151,35 @@
                                 </div>
                             </li> -->
 
-                        </ul>
-                    </section>
-
-                    <section class="in-progress">
-                        <h2 class="in-progress-heading">In Progress</h2>
-                        <ul class="progressTask">
-                            <!-- ! here progress task  -->
-
-                        </ul>
-                    </section>
-
-                    <section class="done">
-                        <h2 class="done-heading">Done</h2>
-
-                        <ul class="completeTask">
-                            <!-- ! here complete task -->
-                        </ul>
-                    </section>
-
+                    </ul>
                 </section>
 
+                <section class="in-progress">
+                    <div class="heading-for-Task">
+                        <h2 class="in-progress-heading">In Progress</h2>
+                    </div>
+                    <ul class="progressTask">
+                        <!-- ! here progress task  -->
 
-            </div>
+                    </ul>
+                </section>
+
+                <section class="done">
+                    <div class="heading-for-Task">
+                        <h2 class="done-heading">Done</h2>
+                    </div>
+
+                    <ul class="completeTask">
+                        <!-- ! here complete task -->
+                    </ul>
+                </section>
+
+            </section>
+
 
         </section>
+
+
     </main>
 
 

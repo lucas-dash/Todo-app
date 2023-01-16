@@ -21,675 +21,708 @@ body {
     linear-gradient($dotted-bg ($dot-space - $dot-size), transparent 1%) center,
     $dot-color;
   background-size: $dot-space $dot-space;
+  background-attachment: fixed;
+}
+
+nav {
+  width: min(5%);
+  width: max(55px);
+  height: 100%;
+  position: fixed;
+  z-index: 101;
+  background-color: $fourth-light;
+  box-shadow: 0 4px 10px $shadow;
+  transition: all 400ms cubic-bezier(0.9, -0.03, 0.48, 0.99);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  &.active {
+    width: 248px;
+  }
+
+  .hamburger {
+    user-select: none;
+    appearance: none;
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 1.4rem;
+    right: 0.7rem;
+    z-index: 50;
+    transform: rotate(30deg);
+    transition: all 200ms ease-in;
+
+    span {
+      display: block;
+      width: 33px;
+      height: 3px;
+      margin-bottom: 5px;
+      position: relative;
+      background-color: #000;
+      border-radius: 6px;
+      z-index: 50;
+      transform-origin: 0 0;
+      transition: 0.4s;
+    }
+  }
+
+  .hamburger span:nth-child(1) {
+    width: 23px;
+  }
+  .hamburger span:nth-child(3) {
+    width: 23px;
+    transform: translateX(10px);
+  }
+  .hamburger.hamburger.is-active {
+    right: 0.7rem;
+  }
+
+  .hamburger.is-active span:nth-child(1) {
+    transform: translate(-1px, 8.5px) rotate(-55deg);
+  }
+  .hamburger.is-active span:nth-child(2) {
+    transform: rotate(-30deg);
+  }
+  .hamburger.is-active span:nth-child(3) {
+    transform: translate(0px, -8px) rotate(-3deg);
+  }
+
+  //  ? nav content
+  .navbar {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-size: $font-500;
+    }
+
+    .searchbox {
+      input {
+        width: 150px;
+        height: 1.5rem;
+        border-radius: 40px;
+        border: 2px solid $secondary-light;
+        color: $secondary-light;
+        padding: 0 1rem;
+      }
+    }
+    .calendar-box {
+      border: 2px solid $secondary-light;
+      width: 9rem;
+      height: 9rem;
+      border-radius: 10px;
+      margin: 1rem;
+    }
+  }
 }
 
 main {
   height: 100vh;
   width: 100vw;
-  display: flex;
+  padding-left: 55px;
+  overflow: scroll;
 
-  .tabule.active {
-    width: 80% !important;
-  }
+  // ? container for head and all task 2 rows
+  .canvas {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 140px 1fr;
 
-  #nav.active {
-    width: 20% !important;
-  }
+    // border: 1px solid rgb(242, 41, 75);
 
-  nav {
-    width: 5%;
-    height: 100%;
-    background-color: $fourth-light;
-    border-radius: 0 50px 40px 0;
-    box-shadow: 0 2px 5px $shadow;
-    transition: all 200ms ease-out;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    .hamburger {
-      user-select: none;
-      appearance: none;
-      outline: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: absolute;
-      top: 1.4rem;
-      left: 0.7rem;
-      z-index: 50;
-      transform: rotate(30deg);
-      transition: all 200ms ease-out;
-
-      span {
-        display: block;
-        width: 33px;
-        height: 3px;
-        margin-bottom: 5px;
-        position: relative;
-        background-color: #000;
-        border-radius: 6px;
-        z-index: 50;
-        transform-origin: 0 0;
-        transition: 0.4s;
-      }
-    }
-
-    .hamburger span:nth-child(1) {
-      width: 23px;
-    }
-    .hamburger span:nth-child(3) {
-      width: 23px;
-      transform: translateX(10px);
-    }
-    .hamburger.hamburger.is-active {
-      // transform: rotate(30deg) translate(220px, 40px);
-      left: 15%;
-      top: 2rem;
-    }
-
-    .hamburger.is-active span:nth-child(1) {
-      transform: translate(-1px, 8.5px) rotate(-55deg);
-    }
-    .hamburger.is-active span:nth-child(2) {
-      transform: rotate(-30deg);
-    }
-    .hamburger.is-active span:nth-child(3) {
-      transform: translate(0px, -8px) rotate(-3deg);
-    }
-
-    .navbar {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      h1 {
-        font-size: $font-500;
-      }
-
-      .searchbox {
-        input {
-          width: 150px;
-          height: 1.5rem;
-          border-radius: 40px;
-          border: 2px solid $secondary-light;
-          color: $secondary-light;
-          padding: 0 1rem;
-        }
-      }
-      .calendar-box {
-        border: 2px solid $secondary-light;
-        width: 9rem;
-        height: 9rem;
-        border-radius: 10px;
-        margin: 1rem;
-      }
-    }
-  }
-
-  .tabule {
-    width: 95%;
-    height: 100%;
-    transition: all 200ms ease-out;
-
-    .canvas {
-      width: 100%;
-      height: 100%;
+    .head-create-task {
       display: grid;
-      grid-template-rows: 20% 80%;
-      // border: 1px solid orange;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 0 1rem;
 
-      .head-create-task {
-        width: 100%;
-        height: 100%;
-        padding: 0 1rem;
+      .first-col-head {
+        // width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        h2 {
+          text-align: center;
+          font-size: $font-400;
 
-        .first-row-head {
-          width: 100%;
+          &.moveUp {
+            animation: textUp 250ms ease-in both;
+          }
+          &.moveDown {
+            animation: textDown 300ms ease-in both;
+          }
+
+          #add-task {
+            content: url(/icon/plus-circle.svg);
+            display: inline-block;
+            width: clamp(1.55rem, 6vw, 2.2rem);
+            height: clamp(1.55rem, 6vw, 2.2rem);
+            margin: 0 0.4rem;
+
+            border-radius: 50%;
+            background-color: $secondary-light;
+            color: $fourth-light;
+
+            cursor: pointer;
+            transform: translate(0, 5px);
+            transition: all 300ms ease-out;
+          }
+          #add-task.click {
+            transform: rotate(45deg) translate(5px, 5px);
+          }
+        }
+
+        .create-task.onBlured {
           display: flex;
+          height: initial;
+          width: initial;
+          animation: slide-in-blurred-tl 0.6s cubic-bezier(0.23, 1, 0.32, 1)
+            both;
+        }
+        .create-task.formOff {
+          animation: formOut 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+        }
+        .create-task {
+          position: absolute;
+          top: 10%;
+          left: 10%;
+          z-index: 100;
+
+          // height: 30px;
+          // width: 30px;
+          padding: 0.9rem;
+
+          background-color: $fourth-light;
+          border-radius: 15px;
+          box-shadow: 1px 2px 15px $shadow;
+
+          display: none;
+          gap: 1rem;
           align-items: center;
           justify-content: center;
 
-          h2 {
-            text-align: center;
-            font-size: $font-400;
+          input,
+          select {
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            color: $secondary-light;
+            background-color: $third-light;
+            font-family: $lora;
+            box-shadow: 0px 0px 10px rgb(93, 92, 92);
+            transition: all 100ms ease-out;
 
-            &.moveUp {
-              animation: textUp 250ms ease-in both;
-            }
-            &.moveDown {
-              animation: textDown 300ms ease-in both;
-            }
-
-            #add-task {
-              content: url(/icon/plus-circle.svg);
-              display: inline-block;
-              width: clamp(1.55rem, 6vw, 2.2rem);
-              height: clamp(1.55rem, 6vw, 2.2rem);
-              margin: 0 0.4rem;
-
-              border-radius: 50%;
-              background-color: $secondary-light;
-              color: $fourth-light;
-
-              cursor: pointer;
-              transform: translate(0, 5px);
-              transition: all 300ms ease-out;
-            }
-            #add-task.click {
-              transform: rotate(45deg) translate(5px, 5px);
+            &:focus {
+              border: 1px solid $secondary-light;
+              box-shadow: none;
             }
           }
-
-          .create-task.onBlured {
-            display: flex;
-            height: initial;
-            width: initial;
-            animation: slide-in-blurred-tl 0.6s cubic-bezier(0.23, 1, 0.32, 1)
-              both;
-          }
-          .create-task.formOff {
-            animation: formOut 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-          }
-          .create-task {
-            position: absolute;
-            top: 10%;
-            left: 10%;
-            z-index: 100;
-
-            height: 30px;
-            width: 30px;
-            padding: 0.9rem;
-
-            background-color: $fourth-light;
-            border-radius: 15px;
-            box-shadow: 1px 2px 15px $shadow;
-
-            display: none;
-            gap: 1rem;
-            align-items: center;
-            justify-content: center;
-
-            input,
-            select {
-              border: none;
-              border-radius: 10px;
-              outline: none;
-              color: $secondary-light;
-              background-color: $third-light;
-              font-family: $lora;
-              box-shadow: 0px 0px 10px rgb(93, 92, 92);
-              transition: all 100ms ease-out;
-
-              &:focus {
-                border: 1px solid $secondary-light;
-                box-shadow: none;
-              }
-            }
-            // ? name and description
-            .one-row {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              #text {
-                width: 16rem;
-                margin-bottom: 0.5rem;
-              }
-              #description {
-                width: 16rem;
-              }
-
-              input {
-                padding: 0.3rem 0.5rem;
-              }
-            }
-            // ? date, time, priority
-            .two-row {
-              width: 9rem;
-              display: flex;
-              flex-direction: column;
-              align-items: flex-start;
-              justify-content: center;
-
-              label {
-                transform: translateY(5px);
-              }
-              input,
-              select {
-                padding: 0.2rem 0.25rem;
-                margin: 0.4rem 0;
-              }
-              #date,
-              #time,
-              #priority {
-                text-align: center;
-                width: 6.7rem;
-              }
-
-              .date,
-              .time,
-              .prior label {
-                height: 20px;
-                width: 20px;
-                margin-right: 0.3rem;
-              }
-
-              .date {
-                content: url(/icon/calendar.svg);
-              }
-
-              .time {
-                content: url(/icon/clock.svg);
-              }
-              .prior {
-                label {
-                  content: url(/icon/alert-triangle.svg);
-                }
-              }
-            }
-            .submit-btn {
-              width: 2rem;
-              height: 2rem;
-              border-radius: 50%;
-              background: $secondary-light center center
-                url(/icon/plus-circle.svg);
-
-              display: flex;
-              align-items: center;
-              justify-content: center;
-
-              // todo loading
-
-              #submit {
-                cursor: pointer;
-                width: 1.2rem;
-                height: 1.2rem;
-                opacity: 0.1;
-                background-color: $secondary-light;
-              }
-            }
-          }
-        }
-        .second-row-head {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: flex-end;
-
-          .count-task {
+          // ? name and description
+          .one-row {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-          }
+            justify-content: center;
+            #text {
+              width: 16rem;
+              margin-bottom: 0.5rem;
+            }
+            #description {
+              width: 16rem;
+            }
 
-          .to-start-icon {
-            content: url(/icon/circle.svg);
+            input {
+              padding: 0.3rem 0.5rem;
+            }
+          }
+          // ? date, time, priority
+          .two-row {
+            width: 9rem;
             display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             justify-content: center;
-            align-items: center;
-            width: clamp(20px, 5vw, 30px);
-            height: clamp(20px, 5vw, 30px);
-            padding: 0.2rem;
-            // border: 2px solid black;
-            background-color: $fourth-light;
-            border-radius: 15px;
+
+            label {
+              transform: translateY(5px);
+            }
+            input,
+            select {
+              padding: 0.2rem 0.25rem;
+              margin: 0.4rem 0;
+            }
+            #date,
+            #time,
+            #priority {
+              text-align: center;
+              width: 6.7rem;
+            }
+
+            .date,
+            .time,
+            .prior label {
+              height: 20px;
+              width: 20px;
+              margin-right: 0.3rem;
+            }
+
+            .date {
+              content: url(/icon/calendar.svg);
+            }
+
+            .time {
+              content: url(/icon/clock.svg);
+            }
+            .prior {
+              label {
+                content: url(/icon/alert-triangle.svg);
+              }
+            }
           }
-          .progress-icon {
-            content: url(/icon/progress.svg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            width: clamp(20px, 5vw, 30px);
-            height: clamp(20px, 5vw, 30px);
-            padding: 0.2rem;
-            // border: 1px solid black;
-            background-color: $fourth-light;
-            border-radius: 15px;
-          }
-          .complet-icon {
-            content: url(/icon/check-circle.svg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            width: clamp(20px, 5vw, 30px);
-            height: clamp(20px, 5vw, 30px);
-            padding: 0.2rem;
-            // border: 2px solid black;
-            background-color: $fourth-light;
-            border-radius: 15px;
-
-            // todo this after
-            // &::after {
-            //   content: attr(data-complete);
-            //   height: 15px;
-            //   width: 15px;
-            //   position: absolute;
-            //   top: 10%;
-            //   left: 50%;
-            //   display: inline-block;
-            //   background-color: $primary-light;
-            //   color: $third-dark;
-            //   font-size: 14px;
-            //   border-radius: 50%;
-            //   padding: 5px;
-            // }
-          }
-
-          #count-toStart-task,
-          #count-inProgress-task,
-          #count-complete-task {
-            width: clamp(22px, 5vw, 30px);
-            height: clamp(22px, 5vw, 30px);
-            background-color: $primary-light;
-            border-radius: 10px;
-            margin: 0.5rem;
-            font-weight: 500;
-            font-size: clamp(14px, 5vw, 16px);
+          .submit-btn {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: $secondary-light center center
+              url(/icon/plus-circle.svg);
 
             display: flex;
             align-items: center;
             justify-content: center;
+
+            // todo loading
+
+            #submit {
+              cursor: pointer;
+              width: 1.2rem;
+              height: 1.2rem;
+              opacity: 0.1;
+              background-color: $secondary-light;
+            }
           }
         }
+      }
+      .second-row-head {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
 
-        .third-row-head {
+        .count-task {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .to-start-icon {
+          content: url(/icon/circle.svg);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: clamp(20px, 5vw, 30px);
+          height: clamp(20px, 5vw, 30px);
+          padding: 0.2rem;
+          // border: 2px solid black;
+          background-color: $fourth-light;
+          border-radius: 15px;
+        }
+        .progress-icon {
+          content: url(/icon/progress.svg);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          width: clamp(20px, 5vw, 30px);
+          height: clamp(20px, 5vw, 30px);
+          padding: 0.2rem;
+          // border: 1px solid black;
+          background-color: $fourth-light;
+          border-radius: 15px;
+        }
+        .complet-icon {
+          content: url(/icon/check-circle.svg);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          width: clamp(20px, 5vw, 30px);
+          height: clamp(20px, 5vw, 30px);
+          padding: 0.2rem;
+          // border: 2px solid black;
+          background-color: $fourth-light;
+          border-radius: 15px;
+
+          // todo this after
+          // &::after {
+          //   content: attr(data-complete);
+          //   height: 15px;
+          //   width: 15px;
+          //   position: absolute;
+          //   top: 10%;
+          //   left: 50%;
+          //   display: inline-block;
+          //   background-color: $primary-light;
+          //   color: $third-dark;
+          //   font-size: 14px;
+          //   border-radius: 50%;
+          //   padding: 5px;
+          // }
+        }
+
+        #count-toStart-task,
+        #count-inProgress-task,
+        #count-complete-task {
+          width: clamp(22px, 5vw, 30px);
+          height: clamp(22px, 5vw, 30px);
+          background-color: $primary-light;
+          border-radius: 10px;
+          margin: 0.5rem;
+          font-weight: 500;
+          font-size: clamp(14px, 5vw, 16px);
+
           display: flex;
           align-items: center;
           justify-content: center;
         }
       }
 
-      // ! Todos canvas
-      .all-todo {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        // border: 1px solid rgb(207, 56, 81);
+      .third-row-head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
 
+    // ? mobile screen section
+    .nav-mobile-task {
+      display: none;
+      position: relative;
+      h3 {
+        font-family: $poppins;
+        font-weight: 500;
+        font-size: clamp(14px, 4vw, 17px);
+        color: $description;
+        letter-spacing: 0.8px;
+        cursor: pointer;
+      }
+      h3.visible {
+        z-index: 1;
+        color: $fourth-light;
+        padding: 0.1rem 0.5rem;
+        text-align: center;
+        transition: all 250ms ease-out;
+      }
+      // todo slide bar
+      .bg-nav::after {
+        content: "";
+        position: absolute;
+        top: 1%;
+        left: 15%;
+        width: 62.5px;
+        height: 28.7px;
+        border-radius: 20px;
+        background-color: $bg-primary;
+        z-index: -1;
+        box-shadow: 9px 9px 16px $third-light, -9px -9px 16px $fourth-light,
+          inset 10px 10px 15px -10px #837b7b,
+          inset -10px -10px 15px -10px rgb(127, 127, 127);
+      }
+
+      &:nth-child(1).visible ~ .bg-nav::after {
+        transform: translateX(calc(62.5 * 0));
+      }
+      &:nth-child(2).visible ~ .bg-nav::after {
+        transform: translateX(calc(62.5 * 1));
+      }
+      &:nth-child(3).visible ~ .bg-nav::after {
+        transform: translateX(calc(62.5 * 2));
+      }
+    }
+
+    // ! Todos canvas
+    .all-todo {
+      height: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      // border: 1px solid rgb(56, 71, 207);
+
+      // ! containers for heading and ul
+      .to-start,
+      .in-progress,
+      .done {
+        max-height: max-content;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        // border: 2px solid rgb(171, 18, 195);
+      }
+
+      // ! heading container
+      .heading-for-Task {
+        padding-block: 0.6rem;
         h2 {
           text-align: center;
           font-family: $poppins;
           font-size: $font-400;
           font-weight: 600;
+
           align-self: center;
           justify-self: center;
         }
+      }
 
-        .to-start {
-          display: grid;
-          grid-template-rows: 10% 90%;
+      // ! ul create new Task list
+      .todo,
+      .progressTask,
+      .completeTask {
+        // min-height: 90%;
+        // max-height: max-content;
+        display: grid;
+        grid-auto-flow: row;
+        grid-auto-rows: max-content;
+        row-gap: 10px;
+        justify-items: center;
+        align-items: start;
+        margin-block-end: 3.5rem;
+
+        // border: 1px solid pink;
+
+        // ! list
+        .newTask {
+          list-style: none;
+          // width: min(80%, 400px);
+          width: clamp(17.267rem, 80%, 400px);
+          height: 5.1rem;
+          padding: 0.8rem;
+          margin-top: 10px;
+
+          background-color: $fourth-light;
+          color: $secondary-light;
+          border-radius: 10px;
           overflow: hidden;
 
-          border-radius: 10px;
-          // border: 2px solid rgb(68, 45, 143);
-        }
+          box-shadow: 0 2px 7px $shadow;
+          transition: all 200ms ease-out;
 
-        .in-progress {
-          display: grid;
-          grid-template-rows: 10% 90%;
-          overflow: hidden;
-          border-radius: 10px;
-          // border: 2px solid red;
-        }
-
-        .done {
-          display: grid;
-          grid-template-rows: 10% 90%;
-          overflow: hidden;
-          border-radius: 10px;
-          // border: 2px solid black;
-        }
-
-        // ! ul create new Task list
-        .todo,
-        .progressTask,
-        .completeTask {
-          width: 100%;
-          display: grid;
-          grid-auto-rows: max-content;
-          justify-items: center;
-          align-items: start;
-          overflow: scroll;
-          // border: 1px solid pink;
-
-          // ! list
-          .newTask {
-            list-style: none;
-            width: clamp(285px, 5vw, 100%);
-            height: 5.1rem;
-            padding: 0.8rem;
-            margin-top: 10px;
-            background-color: $fourth-light;
-            color: $secondary-light;
-            border-radius: 10px;
-            overflow: hidden;
-
-            box-shadow: 0 2px 7px $shadow;
-            transition: all 200ms ease-out;
-
-            &:hover,
-            &:focus {
-              height: 8.8rem;
+          &:hover,
+          &:focus {
+            height: 8.8rem;
+          }
+          &:hover {
+            .to-progress {
+              animation: callToAction 1s ease-in-out 400ms 1 both;
             }
-            &:hover {
-              .to-progress {
-                animation: callToAction 1s ease-in-out 400ms 1 both;
-              }
+          }
+          .head {
+            width: 100%;
+            height: 9px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+
+            .priority {
+              display: inline-block;
+              width: 50px;
+              height: 8px;
+              border-radius: 5px;
             }
-            .head {
-              width: 100%;
-              height: 9px;
-              display: flex;
-              justify-content: space-between;
-              margin-bottom: 0.3rem;
-
-              .priority {
-                display: inline-block;
-                width: 50px;
-                height: 8px;
-                border-radius: 5px;
-              }
-              .status {
-                width: 25px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: flex-end;
-                .to-do {
-                  content: url(/icon/circle.svg);
-                  height: 15px;
-                  width: 15px;
-                }
-                .progress {
-                  content: url(/icon/progress.svg);
-                  height: 15px;
-                  width: 15px;
-                }
-                .complet {
-                  content: url(/icon/check-circle.svg);
-                  height: 15px;
-                  width: 15px;
-                }
-              }
-            }
-            .task-info {
-              width: 100%;
-              display: grid;
-              grid-template-rows: 70% 30%;
-
-              .taskText {
-                width: 100%;
-                input {
-                  border: none;
-                  padding: 0.1rem;
-                  padding-left: 0.4rem;
-                  border-radius: 10px;
-                  outline: none;
-                  width: 100%;
-                  font-family: $poppins;
-                }
-                input:not(:read-only) {
-                  background-color: $third-light;
-                }
-
-                #taskName {
-                  color: $secondary-light;
-                  font-size: clamp(0.9375rem, 5vw, 1rem);
-                  font-weight: 500;
-                }
-                #note {
-                  color: $description;
-                  margin-top: 2px;
-                  font-size: clamp(0.7rem, 4vw, 0.8rem);
-                }
-              }
-              .clock {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: $third-light;
-                border-radius: 7px;
-                transition: all 200ms ease-out;
-                margin-top: 4px;
-
-                input {
-                  width: 6rem;
-                  text-align: right;
-                  border: none;
-                  border-radius: 10px;
-                  padding: 0 0.1rem;
-                  outline: none;
-                  color: $secondary-light;
-                  background-color: $third-light;
-                  font-family: $lora;
-                  font-weight: 500;
-                  font-size: 0.8rem;
-                }
-
-                #datePicker {
-                  display: none;
-                  width: 20px;
-                  height: 20px;
-                  transition: all 200ms ease-out;
-                }
-
-                #timePicker {
-                  display: none;
-                  width: 39px;
-                  height: 100%;
-                  padding-right: 10px;
-                  transition: all 200ms ease-out;
-                }
-              }
-            }
-            .complete {
-              width: 100%;
-              display: flex;
-              justify-content: space-between;
+            .status {
+              width: 25px;
+              display: inline-flex;
               align-items: center;
-              padding: 0.5rem 0.5rem 0 0.5rem;
+              justify-content: flex-end;
+              .to-do {
+                content: url(/icon/circle.svg);
+                height: 15px;
+                width: 15px;
+              }
+              .progress {
+                content: url(/icon/progress.svg);
+                height: 15px;
+                width: 15px;
+              }
+              .complet {
+                content: url(/icon/check-circle.svg);
+                height: 15px;
+                width: 15px;
+              }
+            }
+          }
+          .task-info {
+            width: 100%;
+            display: grid;
+            grid-template-rows: 70% 30%;
 
-              .check {
-                width: 25px;
-                display: block;
-
-                input {
-                  display: none;
-                }
-
-                .checkbox {
-                  display: block;
-                  width: 15px;
-                  height: 15px;
-                  border-radius: 2px;
-                  border: 2px solid $secondary-light;
-                  cursor: pointer;
-                  transition: 0.375s;
-                }
-                input:checked ~ .checkbox {
-                  rotate: 45deg;
-                  translate: 15px -8px;
-                  width: 8px;
-                  border-color: $important1;
-                  border-top-color: transparent;
-                  border-left-color: transparent;
-                  border-radius: 0;
-                }
-                .checkedInput {
-                  display: block;
-                  width: 15px;
-                  height: 15px;
-                  border: 2px solid $secondary-light;
-
-                  rotate: 45deg;
-                  translate: 15px -3px;
-                  width: 8px;
-                  border-color: $important1;
-                  border-top-color: transparent;
-                  border-left-color: transparent;
-                  border-radius: 0;
-                }
+            .taskText {
+              width: 100%;
+              input {
+                border: none;
+                padding: 0.1rem;
+                padding-left: 0.4rem;
+                border-radius: 10px;
+                outline: none;
+                width: 100%;
+                font-family: $poppins;
+              }
+              input:not(:read-only) {
+                background-color: $third-light;
               }
 
-              .to-progress {
-                border: none;
-                color: $description;
-                background-color: $fourth-light;
-                font-size: 0.875rem;
-                font-weight: 500;
-
-                cursor: pointer;
-                transition: 200ms ease;
-
-                &:hover {
-                  color: $secondary-light;
-                }
-              }
-              .in-progress-done {
-                border: none;
+              #taskName {
                 color: $secondary-light;
-                background-color: $fourth-light;
-                font-size: 0.875rem;
+                font-size: clamp(0.9375rem, 5vw, 1rem);
                 font-weight: 500;
               }
-              .settings {
-                display: flex;
-                gap: 8px;
-                .edit {
-                  content: url(/icon/edit.svg);
-                  height: 19px;
-                  width: 19px;
-                  cursor: pointer;
-                }
-                .edit-save {
-                  content: url(/icon/save.svg);
-                  // todo change save icon
-                  height: 19px;
-                  width: 19px;
-                  cursor: pointer;
-                }
+              #note {
+                color: $description;
+                margin-top: 2px;
+                font-size: clamp(0.7rem, 4vw, 0.8rem);
+              }
+            }
+            .clock {
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: $third-light;
+              border-radius: 7px;
+              transition: all 200ms ease-out;
+              margin-top: 4px;
 
-                .delete {
-                  content: url(/icon/trash-2.svg);
-                  height: 19px;
-                  width: 19px;
-                  cursor: pointer;
-                }
+              input {
+                width: 6rem;
+                text-align: right;
+                border: none;
+                border-radius: 10px;
+                padding: 0 0.1rem;
+                outline: none;
+                color: $secondary-light;
+                background-color: $third-light;
+                font-family: $lora;
+                font-weight: 500;
+                font-size: 0.8rem;
+              }
+
+              #datePicker {
+                display: none;
+                width: 20px;
+                height: 20px;
+                transition: all 200ms ease-out;
+              }
+
+              #timePicker {
+                display: none;
+                width: 39px;
+                height: 100%;
+                padding-right: 10px;
+                transition: all 200ms ease-out;
+              }
+            }
+          }
+          .complete {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0.5rem 0 0.5rem;
+
+            .check {
+              width: 25px;
+              display: block;
+
+              input {
+                display: none;
+              }
+
+              .checkbox {
+                display: block;
+                width: 15px;
+                height: 15px;
+                border-radius: 2px;
+                border: 2px solid $secondary-light;
+                cursor: pointer;
+                transition: 0.375s;
+              }
+              input:checked ~ .checkbox {
+                rotate: 45deg;
+                translate: 15px -8px;
+                width: 8px;
+                border-color: $important1;
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-radius: 0;
+              }
+              .checkedInput {
+                display: block;
+                width: 15px;
+                height: 15px;
+                border: 2px solid $secondary-light;
+
+                rotate: 45deg;
+                translate: 15px -3px;
+                width: 8px;
+                border-color: $important1;
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-radius: 0;
+              }
+            }
+
+            .to-progress {
+              border: none;
+              color: $description;
+              background-color: $fourth-light;
+              font-size: 0.875rem;
+              font-weight: 500;
+
+              cursor: pointer;
+              transition: 200ms ease;
+
+              &:hover {
+                color: $secondary-light;
+              }
+            }
+            .in-progress-done {
+              border: none;
+              color: $secondary-light;
+              background-color: $fourth-light;
+              font-size: 0.875rem;
+              font-weight: 500;
+            }
+            .settings {
+              display: flex;
+              gap: 8px;
+              .edit {
+                content: url(/icon/edit.svg);
+                height: 19px;
+                width: 19px;
+                cursor: pointer;
+              }
+              .edit-save {
+                content: url(/icon/save.svg);
+                // todo change save icon
+                height: 19px;
+                width: 19px;
+                cursor: pointer;
+              }
+
+              .delete {
+                content: url(/icon/trash-2.svg);
+                height: 19px;
+                width: 19px;
+                cursor: pointer;
               }
             }
           }

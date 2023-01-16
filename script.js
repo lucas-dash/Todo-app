@@ -1,12 +1,32 @@
 // ? show and hide navbar
 const hamburger = document.querySelector(".hamburger");
 hamburger.addEventListener("click", (e) => {
-  const nav = document.querySelector("#nav");
-  const mainContent = document.querySelector(".tabule");
-
-  hamburger.classList.toggle("is-active");
+  const nav = document.querySelector(".nav");
   nav.classList.toggle("active");
-  mainContent.classList.toggle("active");
+  hamburger.classList.toggle("is-active");
+});
+
+// ! changing task section in mobile screen
+const taskList = document.querySelectorAll("nav-mobile-task, h3");
+console.log(taskList);
+// taskList.forEach((heading) => {
+//   heading.addEventListener("click", (e) => {
+//     heading.forEach((list) => {
+//       list.classList.remove("visible");
+//       this.classList.add("visible");
+//     });
+//   });
+// });
+
+function activeLink() {
+  taskList.forEach((item) => {
+    item.classList.remove("visible");
+    this.classList.add("visible");
+  });
+}
+
+taskList.forEach((item) => {
+  item.addEventListener("click", activeLink);
 });
 
 function dateNow() {
