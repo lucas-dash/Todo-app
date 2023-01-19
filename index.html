@@ -79,7 +79,7 @@
                 </div>
 
                 <!-- ! counting tasks -->
-                <div class="second-row-head">
+                <!-- <div class="second-row-head">
                     <div class="count-task">
                         <p class="to-start-icon"></p>
                         <p id="count-toStart-task">2</p>
@@ -92,25 +92,25 @@
                         <p data-complete="0" class="complet-icon"></p>
                         <p id="count-complete-task">50</p>
                     </div>
-                </div>
-                <!-- ! dark mode -->
+                </div> -->
+                <!-- ! search input -->
                 <div class="third-row-head">
-                    <input type="checkbox" id="dark-mode">
+                    <input type="text" id="search-task" name="search">
                 </div>
             </section>
 
             <!-- view only on screen < 935 -->
             <section class="nav-mobile-task">
-                <h3 class="visible bg-nav">ToDo</h3>
-                <h3>In-progress</h3>
-                <h3>Done</h3>
+                <h3 data-listItem data-todo="0" class="visible">ToDo</h3>
+                <h3 data-listItem data-progress="0">In-progress</h3>
+                <h3 data-listItem data-complete="0">Done</h3>
             </section>
 
             <!-- ? second item -->
             <section class="all-todo">
-                <section class="to-start">
+                <section data-slide class="to-start">
                     <div class="heading-for-Task">
-                        <h2>To Start</h2>
+                        <h2 data-todo="0">To Start</h2>
                     </div>
                     <ul class="todo">
 
@@ -154,9 +154,9 @@
                     </ul>
                 </section>
 
-                <section class="in-progress">
+                <section data-slide class="in-progress">
                     <div class="heading-for-Task">
-                        <h2 class="in-progress-heading">In Progress</h2>
+                        <h2 data-progress="0" class="in-progress-heading">In Progress</h2>
                     </div>
                     <ul class="progressTask">
                         <!-- ! here progress task  -->
@@ -164,9 +164,9 @@
                     </ul>
                 </section>
 
-                <section class="done">
+                <section data-slide class="done">
                     <div class="heading-for-Task">
-                        <h2 class="done-heading">Done</h2>
+                        <h2 data-complete="0" class="done-heading">Done</h2>
                     </div>
 
                     <ul class="completeTask">

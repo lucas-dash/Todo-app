@@ -7,26 +7,37 @@ hamburger.addEventListener("click", (e) => {
 });
 
 // ! changing task section in mobile screen
-const taskList = document.querySelectorAll("nav-mobile-task, h3");
-console.log(taskList);
-// taskList.forEach((heading) => {
-//   heading.addEventListener("click", (e) => {
-//     heading.forEach((list) => {
-//       list.classList.remove("visible");
-//       this.classList.add("visible");
-//     });
-//   });
-// });
+const track = document.querySelector(".all-todo");
+const taskSections = document.querySelectorAll("[data-listItem]");
 
-function activeLink() {
-  taskList.forEach((item) => {
-    item.classList.remove("visible");
-    this.classList.add("visible");
+// ? click on heading (dots)
+taskSections.forEach((section, index) => {
+  section.addEventListener("click", (e) => {
+    const containerWidth = track.getBoundingClientRect().width;
+
+    if (e.target === taskSections[index]) {
+      track.scrollTo({
+        left: Math.round(containerWidth) * index,
+        behavior: "smooth",
+      });
+    }
   });
-}
+});
+// ? scrolling lists
+track.addEventListener("scroll", (e) => {
+  const slides = document.querySelectorAll("[data-slide]");
 
-taskList.forEach((item) => {
-  item.addEventListener("click", activeLink);
+  taskSections.forEach((section) => {
+    section.classList.remove("visible");
+  });
+
+  const currentX = track.scrollLeft;
+  // ? actual width slide
+  const scrolllength = slides[1].offsetLeft - slides[0].offsetLeft;
+  //? determine which index is active
+  const nthchild = Math.round(currentX / scrolllength);
+
+  taskSections[nthchild].classList.add("visible");
 });
 
 function dateNow() {
@@ -47,15 +58,21 @@ addTaskBtn.addEventListener("click", (e) => {
   const createTask = document.querySelector(".create-task");
   const btn_addTask = document.querySelector("#add-task");
   const heading = document.querySelector(".heading-create-task");
-  const datePick = document.querySelector("#date");
-  // ? default time on create
+  const datePick = document.getElementById("date");
+  const timePick = document.getElementById("time");
+
+  // ? default date on create
   datePick.addEventListener("click", () => {
+    datePick.value = dateNow();
+  });
+  // ? set date on click time
+  timePick.addEventListener("click", () => {
     datePick.value = dateNow();
   });
 
   btn_addTask.classList.toggle("click");
 
-  // ? form box
+  // * form animation
   if (createTask.classList.contains("onBlured")) {
     createTask.classList.add("formOff");
     setTimeout(() => {
@@ -66,7 +83,7 @@ addTaskBtn.addEventListener("click", (e) => {
     createTask.classList.add("onBlured");
   }
 
-  // ? heading
+  // * heading move up animation
   if (heading.classList.contains("moveUp")) {
     heading.classList.add("moveDown");
     heading.classList.remove("moveUp");
@@ -88,8 +105,3 @@ addTaskBtn.addEventListener("click", (e) => {
 //     }, 490);
 //   }
 // });
-
-let arr = [1, 3, 5, 6, 6, 9];
-
-let todoLeft = document.querySelector(".complet-icon");
-todoLeft.setAttribute("data-complete", arr.length);

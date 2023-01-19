@@ -178,6 +178,10 @@ class Method {
         timePicker.addEventListener("change", (e) => {
           timeInput.value = e.target.value;
           oneTask._time = timeInput.value;
+          if (!dateInput.value) {
+            dateInput.value = Method.formatDate(dateNow());
+            oneTask._date = dateInput.value;
+          }
           Method.saveStorage(arrayFromLs);
         });
 
@@ -213,6 +217,7 @@ class Method {
         arrayFromLs.splice(removeIndex, 1);
 
         Method.saveStorage(arrayFromLs);
+        getCountTask();
       }, 1000);
     });
 
@@ -242,6 +247,8 @@ class Method {
             //?  update complete task
             completeTask.push(oneTask);
             localStorage.setItem("complete", JSON.stringify(completeTask));
+            // ? update count task
+            getCountTask();
             //? render complete Task
             Method.render(completeTask, ".completeTask", oneTask);
           }, 1000);
@@ -273,6 +280,7 @@ class Method {
             inProgress.push(oneTask);
             localStorage.setItem("progress", JSON.stringify(inProgress));
             //? render inProgress tasks
+            getCountTask();
             Method.render(inProgress, ".progressTask", oneTask);
           }, 1000);
         });
@@ -327,6 +335,7 @@ creatingTask.addEventListener("submit", (e) => {
     localStorage.setItem("todo", JSON.stringify(todo));
 
     Method.render(todo, ".todo", newTask);
+    getCountTask();
 
     creatingTask.reset();
   }
@@ -346,3 +355,22 @@ completeTask.forEach((doneTask) => {
 
 // todo in complete Task možnost odstranit z complete
 // todo click vpravo nahoře vrátit zpět do todo? nebo nějakou návratovou funkci
+
+// ? show how much task are in which array
+const todoCount = document.querySelectorAll("[data-todo]");
+const progresssCount = document.querySelectorAll("[data-progress]");
+const completeCount = document.querySelectorAll("[data-complete]");
+
+function getCountTask() {
+  todoCount.forEach((item) => {
+    item.setAttribute("data-todo", todo.length);
+  });
+  progresssCount.forEach((item) => {
+    item.setAttribute("data-progress", inProgress.length);
+  });
+  completeCount.forEach((item) => {
+    item.setAttribute("data-complete", completeTask.length);
+  });
+}
+
+getCountTask();

@@ -8,7 +8,7 @@
 
 body {
   scroll-behavior: smooth;
-  font-family: $lora;
+  font-family: $ft-base;
   color: $secondary-light;
 
   // ? dooted background
@@ -219,7 +219,7 @@ main {
             outline: none;
             color: $secondary-light;
             background-color: $third-light;
-            font-family: $lora;
+            font-family: $ft-base;
             box-shadow: 0px 0px 10px rgb(93, 92, 92);
             transition: all 100ms ease-out;
 
@@ -408,14 +408,82 @@ main {
     // ? mobile screen section
     .nav-mobile-task {
       display: none;
-      position: relative;
       h3 {
-        font-family: $poppins;
+        position: relative;
+        font-family: $ft-accent;
         font-weight: 500;
         font-size: clamp(14px, 4vw, 17px);
         color: $description;
-        letter-spacing: 0.8px;
+        letter-spacing: 1px;
         cursor: pointer;
+        border-radius: 20px;
+
+        &[data-todo]::after {
+          content: attr(data-todo);
+          width: clamp(15px, 5vw, 18px);
+          height: clamp(15px, 5vw, 18px);
+          background-color: $clr-info;
+          border-radius: 20px;
+          padding: 0.1rem;
+
+          font-weight: 400;
+          font-size: clamp(0.5875rem, 10vw, 0.8125rem);
+          font-size: 0.8125rem;
+          color: $clr-fnt-white;
+          letter-spacing: 0;
+
+          position: absolute;
+          top: 0;
+          left: 82%;
+          transform: translate(0, -50%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        &[data-progress]::after {
+          content: attr(data-progress);
+          width: clamp(15px, 5vw, 18px);
+          height: clamp(15px, 5vw, 18px);
+          background-color: $clr-info;
+          border-radius: 20px;
+          padding: 0.1rem;
+
+          font-weight: 400;
+          font-size: clamp(0.5875rem, 10vw, 0.8125rem);
+          font-size: 0.8125rem;
+          color: $clr-fnt-white;
+          letter-spacing: 0;
+
+          position: absolute;
+          top: 0;
+          left: 95%;
+          transform: translate(0, -50%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        &[data-complete]::after {
+          content: attr(data-complete);
+          width: clamp(15px, 5vw, 18px);
+          height: clamp(15px, 5vw, 18px);
+          background-color: $clr-info;
+          border-radius: 20px;
+          padding: 0.1rem;
+
+          font-weight: 400;
+          font-size: clamp(0.5875rem, 10vw, 0.8125rem);
+          font-size: 0.8125rem;
+          color: $clr-fnt-white;
+          letter-spacing: 0;
+
+          position: absolute;
+          top: 0;
+          left: 87%;
+          transform: translate(0, -50%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
       h3.visible {
         z-index: 1;
@@ -423,31 +491,10 @@ main {
         padding: 0.1rem 0.5rem;
         text-align: center;
         transition: all 250ms ease-out;
-      }
-      // todo slide bar
-      .bg-nav::after {
-        content: "";
-        position: absolute;
-        top: 1%;
-        left: 15%;
-        width: 62.5px;
-        height: 28.7px;
-        border-radius: 20px;
         background-color: $bg-primary;
-        z-index: -1;
         box-shadow: 9px 9px 16px $third-light, -9px -9px 16px $fourth-light,
           inset 10px 10px 15px -10px #837b7b,
           inset -10px -10px 15px -10px rgb(127, 127, 127);
-      }
-
-      &:nth-child(1).visible ~ .bg-nav::after {
-        transform: translateX(calc(62.5 * 0));
-      }
-      &:nth-child(2).visible ~ .bg-nav::after {
-        transform: translateX(calc(62.5 * 1));
-      }
-      &:nth-child(3).visible ~ .bg-nav::after {
-        transform: translateX(calc(62.5 * 2));
       }
     }
 
@@ -472,14 +519,80 @@ main {
       // ! heading container
       .heading-for-Task {
         padding-block: 0.6rem;
+        position: relative;
         h2 {
           text-align: center;
-          font-family: $poppins;
+          font-family: $ft-accent;
           font-size: $font-400;
           font-weight: 600;
 
           align-self: center;
           justify-self: center;
+
+          &[data-todo]::after {
+            content: attr(data-todo);
+            width: clamp(15px, 5vw, 18px);
+            height: clamp(15px, 5vw, 18px);
+            background-color: $clr-info;
+            border-radius: 20px;
+            padding: 0.1rem;
+
+            font-weight: 400;
+            font-size: clamp(0.5875rem, 10vw, 0.8125rem);
+            font-size: 0.8125rem;
+            color: $clr-fnt-white;
+            letter-spacing: 0;
+
+            position: absolute;
+            top: 0;
+            left: 63%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          &[data-progress]::after {
+            content: attr(data-progress);
+            width: clamp(15px, 5vw, 18px);
+            height: clamp(15px, 5vw, 18px);
+            background-color: $clr-info;
+            border-radius: 20px;
+            padding: 0.1rem;
+
+            font-weight: 400;
+            font-size: clamp(0.5875rem, 10vw, 0.8125rem);
+            font-size: 0.8125rem;
+            color: $clr-fnt-white;
+            letter-spacing: 0;
+
+            position: absolute;
+            top: 0;
+            left: 68%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          &[data-complete]::after {
+            content: attr(data-complete);
+            width: clamp(15px, 5vw, 18px);
+            height: clamp(15px, 5vw, 18px);
+            background-color: $clr-info;
+            border-radius: 20px;
+            padding: 0.1rem;
+
+            font-weight: 400;
+            font-size: clamp(0.5875rem, 10vw, 0.8125rem);
+            font-size: 0.8125rem;
+            color: $clr-fnt-white;
+            letter-spacing: 0;
+
+            position: absolute;
+            top: 0;
+            left: 57%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
       }
 
@@ -574,7 +687,7 @@ main {
                 border-radius: 10px;
                 outline: none;
                 width: 100%;
-                font-family: $poppins;
+                font-family: $ft-accent;
               }
               input:not(:read-only) {
                 background-color: $third-light;
@@ -610,7 +723,7 @@ main {
                 outline: none;
                 color: $secondary-light;
                 background-color: $third-light;
-                font-family: $lora;
+                font-family: $ft-base;
                 font-weight: 500;
                 font-size: 0.8rem;
               }

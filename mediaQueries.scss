@@ -45,8 +45,9 @@
 
       .all-todo {
         display: flex;
-        overflow: auto;
-        scroll-snap-type: x mandatory;
+        // overflow: auto;
+        overflow-x: scroll;
+        scroll-snap-type: inline mandatory;
         gap: 15px;
 
         .to-start,
@@ -55,7 +56,6 @@
           flex: 0 0 100%;
           scroll-snap-align: start;
           scroll-snap-stop: always;
-
           .heading-for-Task {
             display: none;
           }
