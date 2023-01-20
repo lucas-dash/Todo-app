@@ -338,6 +338,17 @@ creatingTask.addEventListener("submit", (e) => {
     getCountTask();
 
     creatingTask.reset();
+
+    // * form animation
+    creatingTask.classList.add("formOff");
+    setTimeout(() => {
+      creatingTask.classList.remove("onBlured");
+    }, 490);
+
+    // * heading move up animation
+    const heading = document.querySelector(".heading-create-task");
+    heading.classList.add("moveDown");
+    heading.classList.remove("moveUp");
   }
 });
 

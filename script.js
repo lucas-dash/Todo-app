@@ -52,12 +52,11 @@ function dateNow() {
   return defaultDate;
 }
 
-// ? show and hide create task
+// ! show and hide create task
 const addTaskBtn = document.querySelector("#add-task");
 addTaskBtn.addEventListener("click", (e) => {
-  const createTask = document.querySelector(".create-task");
-  const btn_addTask = document.querySelector("#add-task");
-  const heading = document.querySelector(".heading-create-task");
+  addTaskBtn.classList.toggle("click");
+
   const datePick = document.getElementById("date");
   const timePick = document.getElementById("time");
 
@@ -70,9 +69,8 @@ addTaskBtn.addEventListener("click", (e) => {
     datePick.value = dateNow();
   });
 
-  btn_addTask.classList.toggle("click");
-
   // * form animation
+  const createTask = document.querySelector(".create-task");
   if (createTask.classList.contains("onBlured")) {
     createTask.classList.add("formOff");
     setTimeout(() => {
@@ -84,6 +82,7 @@ addTaskBtn.addEventListener("click", (e) => {
   }
 
   // * heading move up animation
+  const heading = document.querySelector(".heading-create-task");
   if (heading.classList.contains("moveUp")) {
     heading.classList.add("moveDown");
     heading.classList.remove("moveUp");
