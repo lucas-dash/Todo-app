@@ -13,23 +13,23 @@ class Task {
 class Method {
   static formatDate(dateString) {
     if (!dateString) {
-      return (dateString = "");
+      return (dateString = '');
     }
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
+    return date.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
     });
   }
 
   static saveStorage(arrayToSave) {
     if (arrayToSave === todo) {
-      localStorage.setItem("todo", JSON.stringify(arrayToSave));
+      localStorage.setItem('todo', JSON.stringify(arrayToSave));
     } else if (arrayToSave === inProgress) {
-      localStorage.setItem("progress", JSON.stringify(arrayToSave));
+      localStorage.setItem('progress', JSON.stringify(arrayToSave));
     } else if (arrayToSave === completeTask) {
-      localStorage.setItem("complete", JSON.stringify(arrayToSave));
+      localStorage.setItem('complete', JSON.stringify(arrayToSave));
     }
   }
 
@@ -39,143 +39,143 @@ class Method {
     //? root element ul
     const rootElement = document.querySelector(rootEl);
 
-    const list = document.createElement("li");
-    list.classList.add("newTask");
+    const list = document.createElement('li');
+    list.classList.add('newTask');
     rootElement.appendChild(list);
 
-    const taskHead = document.createElement("div");
-    taskHead.classList.add("head");
+    const taskHead = document.createElement('div');
+    taskHead.classList.add('head');
     list.appendChild(taskHead);
 
-    const priority = document.createElement("span");
-    priority.classList.add("priority");
-    priority.style.backgroundColor = "#" + oneTask._priority;
+    const priority = document.createElement('span');
+    priority.classList.add('priority');
+    priority.style.backgroundColor = '#' + oneTask._priority;
     taskHead.appendChild(priority);
 
-    const status = document.createElement("div");
-    status.classList.add("status");
+    const status = document.createElement('div');
+    status.classList.add('status');
     taskHead.appendChild(status);
 
-    const process = document.createElement("span");
+    const process = document.createElement('span');
     if (oneTask._inProgress) {
-      process.classList.add("progress");
+      process.classList.add('progress');
     } else if (oneTask._complete) {
-      process.classList.add("complet");
+      process.classList.add('complet');
     } else {
-      process.classList.add("to-do");
+      process.classList.add('to-do');
     }
     status.appendChild(process);
-    const taskInfo = document.createElement("div");
-    taskInfo.classList.add("task-info");
+    const taskInfo = document.createElement('div');
+    taskInfo.classList.add('task-info');
 
     list.appendChild(taskInfo);
-    const taskInputsDiv = document.createElement("div");
-    taskInputsDiv.classList.add("taskText");
+    const taskInputsDiv = document.createElement('div');
+    taskInputsDiv.classList.add('taskText');
     taskInfo.appendChild(taskInputsDiv);
 
-    const taskInputName = document.createElement("input");
-    taskInputName.type = "text";
-    taskInputName.id = "taskName";
-    taskInputName.setAttribute("Readonly", "readonly");
+    const taskInputName = document.createElement('input');
+    taskInputName.type = 'text';
+    taskInputName.id = 'taskName';
+    taskInputName.setAttribute('Readonly', 'readonly');
     taskInputName.value = oneTask._name;
     taskInputsDiv.appendChild(taskInputName);
 
-    const taskInputNote = document.createElement("input");
-    taskInputNote.type = "text";
-    taskInputNote.id = "note";
-    taskInputNote.setAttribute("Readonly", "readonly");
+    const taskInputNote = document.createElement('input');
+    taskInputNote.type = 'text';
+    taskInputNote.id = 'note';
+    taskInputNote.setAttribute('Readonly', 'readonly');
     taskInputNote.value = oneTask._description;
     taskInputsDiv.appendChild(taskInputNote);
 
-    const clock = document.createElement("div");
-    clock.classList.add("clock");
+    const clock = document.createElement('div');
+    clock.classList.add('clock');
     taskInfo.appendChild(clock);
 
-    const datePicker = document.createElement("input");
-    datePicker.type = "date";
-    datePicker.id = "datePicker";
+    const datePicker = document.createElement('input');
+    datePicker.type = 'date';
+    datePicker.id = 'datePicker';
     clock.appendChild(datePicker);
 
-    const dateInput = document.createElement("input");
-    dateInput.type = "text";
-    dateInput.id = "taskDate";
-    dateInput.setAttribute("Readonly", "readonly");
+    const dateInput = document.createElement('input');
+    dateInput.type = 'text';
+    dateInput.id = 'taskDate';
+    dateInput.setAttribute('Readonly', 'readonly');
     dateInput.value = oneTask._date;
     clock.appendChild(dateInput);
 
-    const timeInput = document.createElement("input");
-    timeInput.type = "text";
-    timeInput.id = "taskTime";
-    timeInput.setAttribute("readonly", "readonly");
+    const timeInput = document.createElement('input');
+    timeInput.type = 'text';
+    timeInput.id = 'taskTime';
+    timeInput.setAttribute('readonly', 'readonly');
     timeInput.value = oneTask._time;
     clock.appendChild(timeInput);
 
-    const timePicker = document.createElement("input");
-    timePicker.type = "time";
-    timePicker.id = "timePicker";
+    const timePicker = document.createElement('input');
+    timePicker.type = 'time';
+    timePicker.id = 'timePicker';
     clock.appendChild(timePicker);
 
-    const completeDiv = document.createElement("div");
-    completeDiv.classList.add("complete");
+    const completeDiv = document.createElement('div');
+    completeDiv.classList.add('complete');
     list.appendChild(completeDiv);
 
-    const label = document.createElement("label");
-    label.classList.add("check");
+    const label = document.createElement('label');
+    label.classList.add('check');
     completeDiv.appendChild(label);
 
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = "done";
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'done';
     label.appendChild(checkbox);
 
-    const checkboxSpan = document.createElement("span");
-    checkboxSpan.classList.add("checkbox");
+    const checkboxSpan = document.createElement('span');
+    checkboxSpan.classList.add('checkbox');
     label.appendChild(checkboxSpan);
 
-    const toProgressBtn = document.createElement("button");
-    toProgressBtn.classList.add("to-progress");
-    toProgressBtn.type = "button";
-    toProgressBtn.textContent = "In-progress?";
+    const toProgressBtn = document.createElement('button');
+    toProgressBtn.classList.add('to-progress');
+    toProgressBtn.type = 'button';
+    toProgressBtn.textContent = 'In-progress?';
     completeDiv.appendChild(toProgressBtn);
 
-    const settings = document.createElement("div");
-    settings.classList.add("settings");
+    const settings = document.createElement('div');
+    settings.classList.add('settings');
     completeDiv.appendChild(settings);
 
-    const edit = document.createElement("span");
-    edit.classList.add("edit");
-    const delBtn = document.createElement("span");
-    delBtn.classList.add("delete");
+    const edit = document.createElement('span');
+    edit.classList.add('edit');
+    const delBtn = document.createElement('span');
+    delBtn.classList.add('delete');
     settings.appendChild(edit);
     settings.appendChild(delBtn);
 
     // ! edit button and function
-    edit.addEventListener("click", (e) => {
-      if (edit.className === "edit") {
-        edit.classList.remove("edit");
-        edit.classList.add("edit-save");
-        taskInputName.removeAttribute("readonly");
-        taskInputNote.removeAttribute("readonly");
-        datePicker.style.display = "block";
-        timePicker.style.display = "block";
+    edit.addEventListener('click', (e) => {
+      if (edit.className === 'edit') {
+        edit.classList.remove('edit');
+        edit.classList.add('edit-save');
+        taskInputName.removeAttribute('readonly');
+        taskInputNote.removeAttribute('readonly');
+        datePicker.style.display = 'block';
+        timePicker.style.display = 'block';
         taskInputName.focus();
 
-        taskInputName.addEventListener("change", (e) => {
+        taskInputName.addEventListener('change', (e) => {
           oneTask._name = taskInputName.value.trim();
           Method.saveStorage(arrayFromLs);
         });
-        taskInputNote.addEventListener("change", (e) => {
+        taskInputNote.addEventListener('change', (e) => {
           oneTask._description = taskInputNote.value.trim();
           Method.saveStorage(arrayFromLs);
         });
 
-        datePicker.addEventListener("change", (e) => {
+        datePicker.addEventListener('change', (e) => {
           dateInput.value = Method.formatDate(datePicker.value);
           oneTask._date = dateInput.value;
           Method.saveStorage(arrayFromLs);
         });
 
-        timePicker.addEventListener("change", (e) => {
+        timePicker.addEventListener('change', (e) => {
           timeInput.value = e.target.value;
           oneTask._time = timeInput.value;
           if (!dateInput.value) {
@@ -185,28 +185,28 @@ class Method {
           Method.saveStorage(arrayFromLs);
         });
 
-        document.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") {
-            taskInputName.setAttribute("Readonly", "readonly");
-            taskInputNote.setAttribute("Readonly", "readonly");
-            datePicker.style.display = "none";
-            timePicker.style.display = "none";
-            edit.classList.remove("edit-save");
-            edit.classList.add("edit");
+        document.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            taskInputName.setAttribute('Readonly', 'readonly');
+            taskInputNote.setAttribute('Readonly', 'readonly');
+            datePicker.style.display = 'none';
+            timePicker.style.display = 'none';
+            edit.classList.remove('edit-save');
+            edit.classList.add('edit');
           }
         });
-      } else if (edit.className === "edit-save") {
-        taskInputName.setAttribute("Readonly", "readonly");
-        taskInputNote.setAttribute("Readonly", "readonly");
-        datePicker.style.display = "none";
-        timePicker.style.display = "none";
-        edit.classList.remove("edit-save");
-        edit.classList.add("edit");
+      } else if (edit.className === 'edit-save') {
+        taskInputName.setAttribute('Readonly', 'readonly');
+        taskInputNote.setAttribute('Readonly', 'readonly');
+        datePicker.style.display = 'none';
+        timePicker.style.display = 'none';
+        edit.classList.remove('edit-save');
+        edit.classList.add('edit');
       }
     });
 
     // ! delete button
-    delBtn.addEventListener("click", () => {
+    delBtn.addEventListener('click', () => {
       // todo animation
       setTimeout(() => {
         rootElement.removeChild(list);
@@ -224,7 +224,7 @@ class Method {
     // ? avoid complete task
     if (arrayFromLs === todo || arrayFromLs === inProgress) {
       //! if is task Complete listener
-      checkbox.addEventListener("click", (e) => {
+      checkbox.addEventListener('click', (e) => {
         if (e.target.checked) {
           oneTask._complete = true;
 
@@ -238,31 +238,31 @@ class Method {
 
             //? update todo local storage and avoid douple progress task
             if (oneTask._inProgress === true) {
-              localStorage.setItem("progress", JSON.stringify(arrayFromLs));
+              localStorage.setItem('progress', JSON.stringify(arrayFromLs));
             } else {
-              localStorage.setItem("todo", JSON.stringify(arrayFromLs));
+              localStorage.setItem('todo', JSON.stringify(arrayFromLs));
             }
             oneTask._inProgress = false;
 
             //?  update complete task
             completeTask.push(oneTask);
-            localStorage.setItem("complete", JSON.stringify(completeTask));
+            localStorage.setItem('complete', JSON.stringify(completeTask));
             // ? update count task
             getCountTask();
             //? render complete Task
-            Method.render(completeTask, ".completeTask", oneTask);
+            Method.render(completeTask, '.completeTask', oneTask);
           }, 1000);
         }
       });
       // ? event in progres if is in todo
       if (arrayFromLs === inProgress) {
         toProgressBtn.removeEventListener;
-        toProgressBtn.classList.remove("to-progress");
-        toProgressBtn.classList.add("in-progress-done");
-        toProgressBtn.textContent = "In-progress!";
+        toProgressBtn.classList.remove('to-progress');
+        toProgressBtn.classList.add('in-progress-done');
+        toProgressBtn.textContent = 'In-progress!';
       } else {
         //? if is task inProgress listener
-        toProgressBtn.addEventListener("click", () => {
+        toProgressBtn.addEventListener('click', () => {
           oneTask._inProgress = true;
 
           setTimeout(() => {
@@ -278,18 +278,18 @@ class Method {
             Method.saveStorage(arrayFromLs);
             //? push and update progress localStorage
             inProgress.push(oneTask);
-            localStorage.setItem("progress", JSON.stringify(inProgress));
+            localStorage.setItem('progress', JSON.stringify(inProgress));
             //? render inProgress tasks
             getCountTask();
-            Method.render(inProgress, ".progressTask", oneTask);
+            Method.render(inProgress, '.progressTask', oneTask);
           }, 1000);
         });
       }
     } else {
-      checkboxSpan.classList.remove("checkbox");
-      checkboxSpan.classList.add("checkedInput");
-      toProgressBtn.textContent = "Complete!";
-      toProgressBtn.style.cursor = "auto";
+      checkboxSpan.classList.remove('checkbox');
+      checkboxSpan.classList.add('checkedInput');
+      toProgressBtn.textContent = 'Complete!';
+      toProgressBtn.style.cursor = 'auto';
       // todo change complete style
     }
   }
@@ -298,15 +298,15 @@ class Method {
 // ! arrays
 
 // ? new Task
-const todo = JSON.parse(localStorage.getItem("todo")) || [];
+const todo = JSON.parse(localStorage.getItem('todo')) || [];
 // ? progress task
-const inProgress = JSON.parse(localStorage.getItem("progress")) || [];
+const inProgress = JSON.parse(localStorage.getItem('progress')) || [];
 // ? complete task
-const completeTask = JSON.parse(localStorage.getItem("complete")) || [];
+const completeTask = JSON.parse(localStorage.getItem('complete')) || [];
 
 // ! creating new Task with Form
-const creatingTask = document.querySelector(".create-task");
-creatingTask.addEventListener("submit", (e) => {
+const creatingTask = document.querySelector('.create-task');
+creatingTask.addEventListener('submit', (e) => {
   e.preventDefault();
 
   // ? values from form
@@ -317,7 +317,7 @@ creatingTask.addEventListener("submit", (e) => {
   const taskPriorityColor = e.target.elements.color.value;
 
   if (!taskName) {
-    return (e.target.elements.name.placeholder = "Add some text");
+    return (e.target.elements.name.placeholder = 'Add some text');
     // todo přidat Alert style and shake
   } else {
     // ! creating new object
@@ -328,60 +328,64 @@ creatingTask.addEventListener("submit", (e) => {
       taskTime,
       taskPriorityColor
     );
-    console.table(newTask);
+    // console.table(newTask);
 
     todo.push(newTask);
 
-    localStorage.setItem("todo", JSON.stringify(todo));
+    localStorage.setItem('todo', JSON.stringify(todo));
 
-    Method.render(todo, ".todo", newTask);
+    Method.render(todo, '.todo', newTask);
     getCountTask();
 
     creatingTask.reset();
 
     // * form animation
-    creatingTask.classList.add("formOff");
+    creatingTask.classList.add('formOff');
     setTimeout(() => {
-      creatingTask.classList.remove("onBlured");
+      creatingTask.classList.remove('onBlured');
     }, 490);
 
     // * heading move up animation
-    const heading = document.querySelector(".heading-create-task");
-    heading.classList.add("moveDown");
-    heading.classList.remove("moveUp");
+    const heading = document.querySelector('.heading-create-task');
+    heading.classList.add('moveDown');
+    heading.classList.remove('moveUp');
   }
 });
 
+// ! render tasks after reload
 todo.forEach((task) => {
-  Method.render(todo, ".todo", task);
+  Method.render(todo, '.todo', task);
 });
 
 inProgress.forEach((progressTask) => {
-  Method.render(inProgress, ".progressTask", progressTask);
+  Method.render(inProgress, '.progressTask', progressTask);
 });
 
 completeTask.forEach((doneTask) => {
-  Method.render(completeTask, ".completeTask", doneTask);
+  Method.render(completeTask, '.completeTask', doneTask);
 });
 
 // todo in complete Task možnost odstranit z complete
 // todo click vpravo nahoře vrátit zpět do todo? nebo nějakou návratovou funkci
 
 // ? show how much task are in which array
-const todoCount = document.querySelectorAll("[data-todo]");
-const progresssCount = document.querySelectorAll("[data-progress]");
-const completeCount = document.querySelectorAll("[data-complete]");
-
 function getCountTask() {
+  const todoCount = document.querySelectorAll('[data-todo]');
+  const progresssCount = document.querySelectorAll('[data-progress]');
+  const completeCount = document.querySelectorAll('[data-complete]');
+  const sideBarCount = document.getElementById('count_task_side');
+
   todoCount.forEach((item) => {
-    item.setAttribute("data-todo", todo.length);
+    item.setAttribute('data-todo', todo.length);
   });
   progresssCount.forEach((item) => {
-    item.setAttribute("data-progress", inProgress.length);
+    item.setAttribute('data-progress', inProgress.length);
   });
   completeCount.forEach((item) => {
-    item.setAttribute("data-complete", completeTask.length);
+    item.setAttribute('data-complete', completeTask.length);
   });
+
+  sideBarCount.textContent = todo.length;
 }
 
 getCountTask();

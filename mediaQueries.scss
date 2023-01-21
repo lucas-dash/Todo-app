@@ -3,11 +3,6 @@
 // ? Media queries
 
 @media screen and (max-width: 935px) {
-  nav {
-    .hamburger {
-      top: 1.2rem;
-    }
-  }
   main {
     .canvas {
       grid-template-rows: 140px 3% 1fr;

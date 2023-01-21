@@ -19,7 +19,7 @@ body {
 }
 
 nav {
-  width: 248px;
+  width: 55px;
   position: fixed;
   top: 0;
   left: 0;
@@ -30,10 +30,10 @@ nav {
   transition: all 400ms cubic-bezier(0.9, -0.03, 0.48, 0.99);
   font-family: "Poppins", sans-serif;
 }
-nav.active {
+nav.active-width {
   width: 248px;
 }
-nav .hamburger {
+nav .open-side .arrow-sidebar {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -45,46 +45,29 @@ nav .hamburger {
   background: none;
   border: none;
   cursor: pointer;
+  height: 25px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: hsl(0deg, 4%, 82%);
+  border-radius: 10px 0 0 10px;
+  box-shadow: -4px 0px 10px 0px hsl(0deg, 11%, 88%);
   position: absolute;
-  top: 1.4rem;
-  right: 0.7rem;
+  top: 5.4rem;
+  right: 0;
   z-index: 50;
-  transform: rotate(30deg);
   transition: all 200ms ease-in;
 }
-nav .hamburger span {
-  display: block;
-  width: 33px;
-  height: 3px;
-  margin-bottom: 5px;
+nav .open-side .arrow-sidebar .arrow {
+  content: url(/icon/vuesax/linear/arrow-right.svg);
+  display: inline-block;
+  width: 25px;
   position: relative;
-  background-color: #000;
-  border-radius: 6px;
   z-index: 50;
-  transform-origin: 0 0;
   transition: 0.4s;
 }
-nav .hamburger span:nth-child(1) {
-  width: 23px;
-}
-nav .hamburger span:nth-child(3) {
-  width: 23px;
-  transform: translateX(10px);
-}
-nav .hamburger.hamburger.is-active {
-  right: 0.7rem;
-}
-nav .hamburger.is-active span:nth-child(1) {
-  transform: translate(-1px, 8.5px) rotate(-55deg);
-}
-nav .hamburger.is-active span:nth-child(2) {
-  transform: rotate(-30deg);
-}
-nav .hamburger.is-active span:nth-child(3) {
-  transform: translate(0px, -8px) rotate(-3deg);
+nav .open-side .arrow-sidebar .arrow.rotate {
+  transform: rotate(180deg);
 }
 nav .navbar-content {
   height: min(100% - 2rem);
@@ -93,6 +76,7 @@ nav .navbar-content {
   justify-content: space-between;
   margin-inline: 1rem;
   margin-block: 1rem;
+  transition: all 300ms ease-out;
 }
 nav .navbar-content .section_side {
   font-size: 0.875rem;
@@ -113,6 +97,26 @@ nav .navbar-content .logo h2 {
   font-size: 1.25rem;
   font-weight: 500;
 }
+nav .navbar-content.active {
+  margin-inline: 0.75rem;
+}
+nav .navbar-content.active .logo h2 {
+  display: none;
+}
+nav .navbar-content.active ul li span {
+  display: none;
+}
+nav .navbar-content.active ul li {
+  margin-left: 0;
+  padding: 0.35rem 0;
+  justify-content: center;
+}
+nav .navbar-content.active .section_side {
+  display: none;
+}
+nav .navbar-content.active .darkmode_group {
+  display: none;
+}
 nav .navbar-content .menu_group #count_task_side,
 nav .navbar-content .info_group #count_task_side,
 nav .navbar-content .other #count_task_side {
@@ -120,8 +124,8 @@ nav .navbar-content .other #count_task_side {
   background-color: #ff385c;
   color: #fff;
   border-radius: 20px;
-  padding: 0 0.25rem;
-  align-self: center;
+  width: 20px;
+  text-align: center;
 }
 nav .navbar-content .menu_group > li,
 nav .navbar-content .info_group > li,
@@ -141,7 +145,7 @@ nav .navbar-content .other > li {
 nav .navbar-content .menu_group > li:hover:not(.info_group > li),
 nav .navbar-content .info_group > li:hover:not(.info_group > li),
 nav .navbar-content .other > li:hover:not(.info_group > li) {
-  background-color: hsl(0deg, 1%, 56%);
+  background-color: hsl(0deg, 1%, 80%);
 }
 nav .navbar-content .menu_group a,
 nav .navbar-content .info_group a,
@@ -154,7 +158,7 @@ nav .navbar-content .other a {
 nav .navbar-content .menu_group a:focus,
 nav .navbar-content .info_group a:focus,
 nav .navbar-content .other a:focus {
-  border: 1px solid hsl(0deg, 1%, 56%);
+  border: 1px solid hsl(0deg, 1%, 80%);
   border-radius: 10px;
   padding: 0.2rem;
   outline: none;
@@ -194,7 +198,7 @@ nav .navbar-content .other .info_priority.high {
 nav .navbar-content .menu_group .darkmode_group,
 nav .navbar-content .info_group .darkmode_group,
 nav .navbar-content .other .darkmode_group {
-  background-color: hsl(0deg, 1%, 56%);
+  background-color: hsl(0deg, 1%, 80%);
 }
 
 main {

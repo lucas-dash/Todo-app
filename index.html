@@ -14,14 +14,12 @@
 
     <nav class="nav">
 
-        <div class="ham">
-            <a class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+        <div class="open-side">
+            <a class="arrow-sidebar">
+                <i class="arrow"></i>
             </a>
         </div>
-        <div class="navbar-content">
+        <div class="navbar-content active">
             <div class="logo">
                 <img src="/icon/vuesax/bold/3dcube.svg" alt="todoApp">
                 <h2>Task Lab</h2>
@@ -40,7 +38,7 @@
                         <img src="/icon/vuesax/linear/task.svg" alt="tasks">
                         <span>Task</span>
                     </a>
-                    <span id="count_task_side">14</span>
+                    <span id="count_task_side">0</span>
                 </li>
                 <li class="calendar_side">
                     <a href="">
@@ -53,9 +51,9 @@
                 <p class="section_side">Info</p>
                 <p class="section_side p-left">Priority</p>
 
-                <li><span class="info_priority low"></span>Nízká</li>
-                <li><span class="info_priority medium"></span>Střední</li>
-                <li><span class="info_priority high"></span>Vysoká</li>
+                <li><a class="info_priority low"></a><span>Nízká</span></li>
+                <li><a class="info_priority medium"></a><span>Střední</span></li>
+                <li><a class="info_priority high"></a><span>Vysoká</span></li>
             </ul>
 
             <ul class="other">
@@ -208,7 +206,7 @@
 
 
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
     <script src="app.js" async></script>
 </body>
 
