@@ -12,9 +12,6 @@
     justify-content: space-evenly;
     align-items: center;
   }
-  main .canvas .head-create-task {
-    grid-template-columns: 40% 60%;
-  }
   main .canvas .head-create-task .first-col-head .create-task {
     top: 6rem;
     left: 17%;
@@ -22,12 +19,6 @@
   }
   main .canvas .head-create-task .first-col-head.moveUp {
     align-items: center;
-  }
-  main .canvas .head-create-task .second-row-head {
-    align-items: center;
-  }
-  main .canvas .head-create-task .third-row-head {
-    display: none;
   }
   main .canvas .all-todo {
     display: flex;

@@ -21,8 +21,6 @@
 
       // ! heading
       .head-create-task {
-        grid-template-columns: 40% 60%;
-
         .first-col-head {
           .create-task {
             top: 6rem;
@@ -32,14 +30,6 @@
         }
         .first-col-head.moveUp {
           align-items: center;
-        }
-
-        .second-row-head {
-          align-items: center;
-        }
-        // ? dark mode none
-        .third-row-head {
-          display: none;
         }
       }
 
@@ -126,20 +116,7 @@
             }
           }
         }
-        // .second-row-head {
-        // }
       }
-      // .all-todo {
-      //   .to-start,
-      //   .in-progress,
-      //   .done {
-      //   }
-
-      // .todo,
-      // .progressTask,
-      // .completeTask {
-      // }
-      // }
     }
   }
 }

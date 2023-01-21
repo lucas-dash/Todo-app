@@ -1,10 +1,10 @@
 // ? show and hide navbar
-const hamburger = document.querySelector(".hamburger");
-hamburger.addEventListener("click", (e) => {
-  const nav = document.querySelector(".nav");
-  nav.classList.toggle("active");
-  hamburger.classList.toggle("is-active");
-});
+// const hamburger = document.querySelector(".hamburger");
+// hamburger.addEventListener("click", (e) => {
+//   const nav = document.querySelector(".nav");
+//   nav.classList.toggle("active");
+//   hamburger.classList.toggle("is-active");
+// });
 
 // ! changing task section in mobile screen
 const track = document.querySelector(".all-todo");

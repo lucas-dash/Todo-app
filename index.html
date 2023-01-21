@@ -21,16 +21,55 @@
                 <span></span>
             </a>
         </div>
-
-        <div class="navbar">
-            <h1>To-Do</h1>
-            <div class="searchbox">
-                <label for="search"></label>
-                <input type="text" name="search" id="search" placeholder="Search">
+        <div class="navbar-content">
+            <div class="logo">
+                <img src="/icon/vuesax/bold/3dcube.svg" alt="todoApp">
+                <h2>Task Lab</h2>
             </div>
-            <div class="calendar-box">
 
-            </div>
+            <ul class="menu_group">
+                <p class="section_side">Menu</p>
+                <li class="dashboard_side">
+                    <a href="">
+                        <img src="/icon/vuesax/linear/dashboard.svg" alt="Dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="task_side">
+                    <a href="">
+                        <img src="/icon/vuesax/linear/task.svg" alt="tasks">
+                        <span>Task</span>
+                    </a>
+                    <span id="count_task_side">14</span>
+                </li>
+                <li class="calendar_side">
+                    <a href="">
+                        <img src="/icon/vuesax/linear/calendar.svg" alt="calendar">
+                        <span>Calendar</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="info_group">
+                <p class="section_side">Info</p>
+                <p class="section_side p-left">Priority</p>
+
+                <li><span class="info_priority low"></span>Nízká</li>
+                <li><span class="info_priority medium"></span>Střední</li>
+                <li><span class="info_priority high"></span>Vysoká</li>
+            </ul>
+
+            <ul class="other">
+                <li class="darkmode_group">
+                    <input type="checkbox" id="darkmode_toggle">
+                    <label for="darkmode_toggle">
+                        <span class="lightMode">Light</span>
+                        <span class="darkMode">Dark</span>
+                    </label>
+                </li>
+                <li class="setting-side">
+                    <a href=""><img src="/icon/vuesax/linear/settings.svg" alt="setting"><span>Setting</span></a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -78,21 +117,6 @@
                     </form>
                 </div>
 
-                <!-- ! counting tasks -->
-                <!-- <div class="second-row-head">
-                    <div class="count-task">
-                        <p class="to-start-icon"></p>
-                        <p id="count-toStart-task">2</p>
-                    </div>
-                    <div class="count-task">
-                        <p class="progress-icon"></p>
-                        <p id="count-inProgress-task">12</p>
-                    </div>
-                    <div class="count-task">
-                        <p data-complete="0" class="complet-icon"></p>
-                        <p id="count-complete-task">50</p>
-                    </div>
-                </div> -->
                 <!-- ! search input -->
                 <div class="third-row-head">
                     <input type="text" id="search-task" name="search">
