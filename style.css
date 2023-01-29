@@ -62,9 +62,13 @@ nav .open-side .arrow-sidebar .arrow {
   content: url(/icon/vuesax/linear/arrow-right.svg);
   display: inline-block;
   width: 25px;
+  height: 25px;
   position: relative;
   z-index: 50;
   transition: 0.4s;
+}
+nav .open-side .arrow-sidebar .arrow:hover {
+  width: 30px;
 }
 nav .open-side .arrow-sidebar .arrow.rotate {
   transform: rotate(180deg);
@@ -74,8 +78,7 @@ nav .navbar-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-inline: 1rem;
-  margin-block: 1rem;
+  margin: 1rem;
   transition: all 300ms ease-out;
 }
 nav .navbar-content .section_side {
@@ -96,26 +99,6 @@ nav .navbar-content .logo h2 {
   display: inline-block;
   font-size: 1.25rem;
   font-weight: 500;
-}
-nav .navbar-content.active {
-  margin-inline: 0.75rem;
-}
-nav .navbar-content.active .logo h2 {
-  display: none;
-}
-nav .navbar-content.active ul li span {
-  display: none;
-}
-nav .navbar-content.active ul li {
-  margin-left: 0;
-  padding: 0.35rem 0;
-  justify-content: center;
-}
-nav .navbar-content.active .section_side {
-  display: none;
-}
-nav .navbar-content.active .darkmode_group {
-  display: none;
 }
 nav .navbar-content .menu_group #count_task_side,
 nav .navbar-content .info_group #count_task_side,
@@ -140,7 +123,6 @@ nav .navbar-content .other > li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 150ms ease;
 }
 nav .navbar-content .menu_group > li:hover:not(.info_group > li),
 nav .navbar-content .info_group > li:hover:not(.info_group > li),
@@ -154,14 +136,6 @@ nav .navbar-content .other a {
   color: #24282c;
   display: inline-flex;
   align-items: center;
-}
-nav .navbar-content .menu_group a:focus,
-nav .navbar-content .info_group a:focus,
-nav .navbar-content .other a:focus {
-  border: 1px solid hsl(0deg, 1%, 80%);
-  border-radius: 10px;
-  padding: 0.2rem;
-  outline: none;
 }
 nav .navbar-content .menu_group a img,
 nav .navbar-content .info_group a img,
@@ -199,6 +173,26 @@ nav .navbar-content .menu_group .darkmode_group,
 nav .navbar-content .info_group .darkmode_group,
 nav .navbar-content .other .darkmode_group {
   background-color: hsl(0deg, 1%, 80%);
+}
+nav .navbar-content.active {
+  margin-inline: 0.75rem;
+}
+nav .navbar-content.active .logo h2 {
+  display: none;
+}
+nav .navbar-content.active ul li span {
+  display: none;
+}
+nav .navbar-content.active ul li {
+  margin-left: 0;
+  padding: 0.35rem 0rem;
+  justify-content: center;
+}
+nav .navbar-content.active .section_side {
+  display: none;
+}
+nav .navbar-content.active .darkmode_group {
+  display: none;
 }
 
 main {
@@ -266,10 +260,10 @@ main .canvas .head-create-task .first-col-head .create-task {
   top: 10%;
   left: 10%;
   z-index: 100;
-  padding: 0.9rem;
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 1px 2px 15px #6c6b6b;
+  padding: 0.9rem;
   display: none;
   gap: 1rem;
   align-items: center;
@@ -297,14 +291,21 @@ main .canvas .head-create-task .first-col-head .create-task .one-row {
   align-items: center;
   justify-content: center;
 }
-main .canvas .head-create-task .first-col-head .create-task .one-row #text {
-  width: 16rem;
+main .canvas .head-create-task .first-col-head .create-task .one-row .text {
   margin-bottom: 0.5rem;
 }
-main .canvas .head-create-task .first-col-head .create-task .one-row #description {
-  width: 16rem;
+main .canvas .head-create-task .first-col-head .create-task .one-row .text:valid {
+  border-color: #24282c;
+  -webkit-animation: none;
+          animation: none;
+}
+main .canvas .head-create-task .first-col-head .create-task .one-row .text.not-valid {
+  border: 1px solid #f61f1f;
+  -webkit-animation: shake 0.14s 3;
+          animation: shake 0.14s 3;
 }
 main .canvas .head-create-task .first-col-head .create-task .one-row input {
+  width: 16rem;
   padding: 0.3rem 0.5rem;
 }
 main .canvas .head-create-task .first-col-head .create-task .two-row {
@@ -801,7 +802,7 @@ main .canvas .all-todo .todo .newTask .complete .check input:checked ~ .checkbox
 main .canvas .all-todo .progressTask .newTask .complete .check input:checked ~ .checkbox,
 main .canvas .all-todo .completeTask .newTask .complete .check input:checked ~ .checkbox {
   rotate: 45deg;
-  translate: 15px -8px;
+  translate: 7px -5px;
   width: 8px;
   border-color: #14dd28;
   border-top-color: transparent;
@@ -879,6 +880,29 @@ main .canvas .all-todo .completeTask .newTask .complete .settings .delete {
   cursor: pointer;
 }
 
+@-webkit-keyframes shake {
+  0%, 100% {
+    translate: 0;
+  }
+  25% {
+    translate: 8px 0;
+  }
+  75% {
+    translate: -8px 0;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    translate: 0;
+  }
+  25% {
+    translate: 8px 0;
+  }
+  75% {
+    translate: -8px 0;
+  }
+}
 @-webkit-keyframes slide-in-blurred-tl {
   0% {
     transform: translate(-350px, -350px) skew(80deg, 10deg);
@@ -893,7 +917,6 @@ main .canvas .all-todo .completeTask .newTask .complete .settings .delete {
     opacity: 1;
   }
 }
-
 @keyframes slide-in-blurred-tl {
   0% {
     transform: translate(-350px, -350px) skew(80deg, 10deg);
@@ -998,5 +1021,31 @@ main .canvas .all-todo .completeTask .newTask .complete .settings .delete {
   }
   100% {
     transform: scale(1.1);
+  }
+}
+.slide-to-right {
+  -webkit-animation: slide-to-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: slide-to-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-to-right {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(450px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-to-right {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(450px);
+    opacity: 0;
   }
 }/*# sourceMappingURL=style.css.map */

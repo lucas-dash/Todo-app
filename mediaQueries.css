@@ -20,8 +20,8 @@
   main .canvas .all-todo {
     display: flex;
     overflow-x: scroll;
-    -ms-scroll-snap-type: inline mandatory;
-        scroll-snap-type: inline mandatory;
+    -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
     gap: 15px;
   }
   main .canvas .all-todo .to-start,
@@ -30,6 +30,7 @@ main .canvas .all-todo .done {
     flex: 0 0 100%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    scroll-behavior: smooth;
   }
   main .canvas .all-todo .to-start .heading-for-Task,
 main .canvas .all-todo .in-progress .heading-for-Task,
@@ -94,15 +95,39 @@ main .canvas .all-todo .done .heading-for-Task {
   }
 }
 @media screen and (max-width: 550px) {
-  nav.active {
+  nav.active-width {
     height: 90%;
-    width: 100% !important;
+    width: 100%;
   }
   nav {
-    top: 0;
-    width: 100% !important;
+    width: 100%;
     height: 45px;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 10px 10px;
+  }
+  nav .open-side .arrow-sidebar {
+    top: 0.5rem;
+  }
+  nav .open-side .arrow-sidebar .arrow {
+    transform: rotate(90deg);
+  }
+  nav .open-side .arrow-sidebar .arrow.rotate {
+    transform: rotate(270deg);
+  }
+  nav .navbar-content {
+    margin: 0.5rem;
+  }
+  nav .navbar-content .logo img {
+    width: 30px;
+  }
+  nav .navbar-content .menu_group,
+nav .navbar-content .info_group,
+nav .navbar-content .other {
+    display: none;
+  }
+  nav .navbar-content.mobile-width .menu_group,
+nav .navbar-content.mobile-width .info_group,
+nav .navbar-content.mobile-width .other {
+    display: block;
   }
   main {
     padding: 0;

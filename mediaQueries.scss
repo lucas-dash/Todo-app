@@ -30,9 +30,8 @@
 
       .all-todo {
         display: flex;
-        // overflow: auto;
         overflow-x: scroll;
-        scroll-snap-type: inline mandatory;
+        scroll-snap-type: x mandatory;
         gap: 15px;
 
         .to-start,
@@ -41,6 +40,7 @@
           flex: 0 0 100%;
           scroll-snap-align: start;
           scroll-snap-stop: always;
+          scroll-behavior: smooth;
           .heading-for-Task {
             display: none;
           }
@@ -83,15 +83,47 @@
 }
 
 @media screen and (max-width: 550px) {
-  nav.active {
+  nav.active-width {
     height: 90%;
-    width: 100% !important;
+    width: 100%;
   }
   nav {
-    top: 0;
-    width: 100% !important;
+    width: 100%;
     height: 45px;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 10px 10px;
+
+    .open-side {
+      .arrow-sidebar {
+        top: 0.5rem;
+        .arrow {
+          transform: rotate(90deg);
+        }
+        .arrow.rotate {
+          transform: rotate(270deg);
+        }
+      }
+    }
+
+    .navbar-content {
+      margin: 0.5rem;
+      .logo {
+        img {
+          width: 30px;
+        }
+      }
+      .menu_group,
+      .info_group,
+      .other {
+        display: none;
+      }
+    }
+    .navbar-content.mobile-width {
+      .menu_group,
+      .info_group,
+      .other {
+        display: block;
+      }
+    }
   }
 
   main {
