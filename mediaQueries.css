@@ -20,34 +20,21 @@
   main .canvas .all-todo {
     display: flex;
     overflow-x: scroll;
-    -ms-scroll-snap-type: x mandatory;
-        scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
     gap: 15px;
   }
   main .canvas .all-todo .to-start,
-main .canvas .all-todo .in-progress,
-main .canvas .all-todo .done {
+  main .canvas .all-todo .in-progress,
+  main .canvas .all-todo .done {
     flex: 0 0 100%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
     scroll-behavior: smooth;
   }
   main .canvas .all-todo .to-start .heading-for-Task,
-main .canvas .all-todo .in-progress .heading-for-Task,
-main .canvas .all-todo .done .heading-for-Task {
+  main .canvas .all-todo .in-progress .heading-for-Task,
+  main .canvas .all-todo .done .heading-for-Task {
     display: none;
-  }
-  @-webkit-keyframes formOut {
-    0% {
-      transform: scaleY(1);
-      transform-origin: 100% 0;
-      opacity: 1;
-    }
-    100% {
-      transform: scaleY(0);
-      transform-origin: 100% 0;
-      opacity: 1;
-    }
   }
   @keyframes formOut {
     0% {
@@ -61,28 +48,12 @@ main .canvas .all-todo .done .heading-for-Task {
       opacity: 1;
     }
   }
-  @-webkit-keyframes textUp {
-    0% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(0, -20px);
-    }
-  }
   @keyframes textUp {
     0% {
       transform: translate(0, 0);
     }
     100% {
       transform: translate(0, -20px);
-    }
-  }
-  @-webkit-keyframes textDown {
-    0% {
-      transform: translate(0, -20px);
-    }
-    100% {
-      transform: translate(0, 0);
     }
   }
   @keyframes textDown {
@@ -120,13 +91,13 @@ main .canvas .all-todo .done .heading-for-Task {
     width: 30px;
   }
   nav .navbar-content .menu_group,
-nav .navbar-content .info_group,
-nav .navbar-content .other {
+  nav .navbar-content .info_group,
+  nav .navbar-content .other {
     display: none;
   }
   nav .navbar-content.mobile-width .menu_group,
-nav .navbar-content.mobile-width .info_group,
-nav .navbar-content.mobile-width .other {
+  nav .navbar-content.mobile-width .info_group,
+  nav .navbar-content.mobile-width .other {
     display: block;
   }
   main {
@@ -140,7 +111,6 @@ nav .navbar-content.mobile-width .other {
     left: 10%;
   }
   main .canvas .head-create-task .first-col-head h2.moveUp, main .canvas .head-create-task .first-col-head h2.moveDown {
-    -webkit-animation: none;
-            animation: none;
+    animation: none;
   }
 }/*# sourceMappingURL=mediaQueries.css.map */

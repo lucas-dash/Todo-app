@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./mediaQueries.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <nav class="nav">
+
+        <div class="open-side">
+            <a class="arrow-sidebar">
+                <i class="arrow"></i>
+            </a>
+        </div>
+        <div class="navbar-content active">
+            <div class="logo">
+                <img src="/icon/vuesax/bold/3dcube.svg" alt="todoApp">
+                <h2>Task Lab</h2>
+            </div>
+
+            <ul class="menu_group">
+                <p class="section_side">Menu</p>
+                <li class="dashboard_side">
+                    <a href="/dashboard.html">
+                        <img src="/icon/vuesax/linear/dashboard.svg" alt="Dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="task_side">
+                    <a href="/">
+                        <img src="/icon/vuesax/linear/task.svg" alt="tasks">
+                        <span>Task</span>
+                    </a>
+                    <span id="count_task_side">0</span>
+                </li>
+                <li class="calendar_side">
+                    <a href="/">
+                        <img src="/icon/vuesax/linear/calendar.svg" alt="calendar">
+                        <span>Calendar</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="info_group">
+                <p class="section_side">Info</p>
+                <p class="section_side p-left">Priority</p>
+
+                <li><a class="info_priority low"></a><span>Nízká</span></li>
+                <li><a class="info_priority medium"></a><span>Střední</span></li>
+                <li><a class="info_priority high"></a><span>Vysoká</span></li>
+            </ul>
+
+            <ul class="other">
+                <!-- <li class="darkmode_group">
+                    <input type="checkbox" id="darkmode_toggle">
+                    <label for="darkmode_toggle">
+                        <span class="lightMode">Light</span>
+                        <span class="darkMode">Dark</span>
+                    </label>
+                </li> -->
+                <li class="setting-side">
+                    <a href=""><img src="/icon/vuesax/linear/settings.svg" alt="setting"><span>Setting</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="canvas">
+            <article class="dashboard-heading">
+                <h1>Dashboard</h1>
+
+            </article>
+
+            <section class="dashboard-info">
+                <div class="dashboard-card">
+                    <h2>Tasks</h2>
+                    <div>
+                        <p>Nakoupit</p>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <h2>Progress</h2>
+                    <div>
+                        <p>Nakoupit</p>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <h2>Quote</h2>
+                    <div>
+                        <p>Nakoupit</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="./dashboard.js" defer></script>
+</body>
+
+</html>
