@@ -106,6 +106,13 @@
   main .canvas {
     grid-template-rows: 180px 3% 1fr;
   }
+  main .canvas .dashboard-info .cards {
+    align-items: center;
+    flex-direction: column;
+  }
+  main .canvas .dashboard-info .quote-card {
+    min-height: 130px;
+  }
   main .canvas .head-create-task .first-col-head .create-task {
     top: 7.5rem;
     left: 10%;

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./icon/vuesax/bold/3dcube.svg" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./mediaQueries.css">
     <title>Dashboard</title>
@@ -73,29 +74,37 @@
     <main>
         <section class="canvas">
             <article class="dashboard-heading">
-                <h1>Dashboard</h1>
+                <div class="welcome-text">
+                    <h1 id="welcome-text">Good morning!</h1>
+                </div>
+                <div class="head-dash">
+                    <h2 id="date-now">11.3.2023</h2>
+                </div>
 
             </article>
 
             <section class="dashboard-info">
-                <div class="dashboard-card">
-                    <h2>Tasks</h2>
+
+                <div class="quote-card">
+                    <h2>Daily Motivation</h2>
                     <div>
-                        <p>Nakoupit</p>
+                        <h3 id="quote"></h3>
+                        <p id="quote-author"></p>
                     </div>
                 </div>
-                <div class="dashboard-card">
-                    <h2>Progress</h2>
-                    <div>
-                        <p>Nakoupit</p>
+
+
+                <section class="cards">
+
+                    <div class="dashboard-card">
+                        <h2>You have <span id="today-task">0</span> task today</h2>
                     </div>
-                </div>
-                <div class="dashboard-card">
-                    <h2>Quote</h2>
-                    <div>
-                        <p>Nakoupit</p>
+
+                    <div class="dashboard-card2">
+                        <h2>Task In Progress <span id="task-progress">8</span></h2>
                     </div>
-                </div>
+                </section>
+
             </section>
         </section>
     </main>

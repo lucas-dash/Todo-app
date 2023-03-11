@@ -1,4 +1,4 @@
-@import 'variables';
+@import '_variables';
 
 * {
   margin: 0;
@@ -24,8 +24,23 @@ body {
   background-attachment: fixed;
 }
 
+// ? reuseable code
 .p-left {
   padding-left: 0.5rem;
+}
+
+@mixin dash-card($color) {
+  min-width: 270px;
+  max-width: 300px;
+
+  background-color: $color;
+  box-shadow: 0px 3px 15px $shadow;
+  border-radius: 15px;
+  border: 1px solid $dot-color;
+
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 // ! nav
@@ -226,38 +241,94 @@ main {
     display: grid;
     grid-template-rows: 140px 1fr;
 
-    // border: 1px solid rgb(242, 41, 75);
-
     .dashboard-heading {
       display: flex;
       align-items: center;
-      justify-content: center;
-      h1 {
-        font-size: $font-500;
-        text-decoration: underline;
+      margin: 15px;
+      border-bottom: 2px solid $dot-color;
+
+      .welcome-text {
+        flex: 0 1 30%;
+
+        h1 {
+          font-size: 1.25rem;
+          text-align: center;
+        }
+      }
+
+      .head-dash {
+        flex: 0 1 70%;
+        h2 {
+          font-size: 1.25rem;
+          font-weight: 500;
+          text-align: center;
+        }
       }
     }
 
     .dashboard-info {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
+      color: $soft-dark;
+      padding: 15px;
 
-      .dashboard-card {
-        width: 350px;
-        height: 200px;
-        background-color: $fourth-light;
-        box-shadow: 0px 3px 15px $shadow;
-        border-radius: 15px;
-        border: 1px solid $dot-color;
-        padding: 0.5rem;
+      .quote-card {
+        text-align: center;
+        min-height: 120px;
+        div {
+          #quote {
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem;
+          }
+          #quote-author {
+            font-weight: 400;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            font-family: $ft-accent;
+            text-shadow: 0 2px 5px $shadow;
+          }
+        }
+      }
+
+      .cards {
+        padding-top: 1.5rem;
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        gap: 20px;
 
-        h2 {
-          text-align: center;
-          font-size: $font-300;
+        .dashboard-card {
+          @include dash-card($soft-secondary);
+
+          h2 {
+            text-align: center;
+            font-size: $font-200;
+            font-weight: 500;
+          }
+          #today-task {
+            font-weight: 600;
+            border: 1px solid $dot-color;
+            border-radius: 50%;
+            padding: 3px 7px;
+            text-align: center;
+          }
+        }
+
+        .dashboard-card2 {
+          @include dash-card($soft-primary);
+
+          h2 {
+            text-align: center;
+            font-size: $font-200;
+            font-weight: 500;
+          }
+          #task-progress {
+            font-weight: 600;
+            border: 1px solid $dot-color;
+            border-radius: 50%;
+            padding: 3px 7px;
+            text-align: center;
+          }
         }
       }
     }

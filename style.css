@@ -208,22 +208,56 @@ main .canvas {
 main .canvas .dashboard-heading {
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin: 15px;
+  border-bottom: 2px solid #6c6b6b;
 }
-main .canvas .dashboard-heading h1 {
-  font-size: clamp(1rem, 5vw, 1.5rem);
-  text-decoration: underline;
+main .canvas .dashboard-heading .welcome-text {
+  flex: 0 1 30%;
+}
+main .canvas .dashboard-heading .welcome-text h1 {
+  font-size: 1.25rem;
+  text-align: center;
+}
+main .canvas .dashboard-heading .head-dash {
+  flex: 0 1 70%;
+}
+main .canvas .dashboard-heading .head-dash h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: center;
 }
 main .canvas .dashboard-info {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
+  color: #080826;
+  padding: 15px;
 }
-main .canvas .dashboard-info .dashboard-card {
-  width: 350px;
-  height: 200px;
-  background-color: #fff;
+main .canvas .dashboard-info .quote-card {
+  text-align: center;
+  min-height: 120px;
+}
+main .canvas .dashboard-info .quote-card div #quote {
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+main .canvas .dashboard-info .quote-card div #quote-author {
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  text-shadow: 0 2px 5px #6c6b6b;
+}
+main .canvas .dashboard-info .cards {
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  gap: 20px;
+}
+main .canvas .dashboard-info .cards .dashboard-card {
+  min-width: 270px;
+  max-width: 300px;
+  background-color: #bae5f4;
   box-shadow: 0px 3px 15px #6c6b6b;
   border-radius: 15px;
   border: 1px solid #6c6b6b;
@@ -231,9 +265,40 @@ main .canvas .dashboard-info .dashboard-card {
   display: flex;
   flex-direction: column;
 }
-main .canvas .dashboard-info .dashboard-card h2 {
+main .canvas .dashboard-info .cards .dashboard-card h2 {
   text-align: center;
-  font-size: clamp(1rem, 5vw, 1.25rem);
+  font-size: clamp(0.9rem, 10vw, 1.1rem);
+  font-weight: 500;
+}
+main .canvas .dashboard-info .cards .dashboard-card #today-task {
+  font-weight: 600;
+  border: 1px solid #6c6b6b;
+  border-radius: 50%;
+  padding: 3px 7px;
+  text-align: center;
+}
+main .canvas .dashboard-info .cards .dashboard-card2 {
+  min-width: 270px;
+  max-width: 300px;
+  background-color: #e2d2fe;
+  box-shadow: 0px 3px 15px #6c6b6b;
+  border-radius: 15px;
+  border: 1px solid #6c6b6b;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+main .canvas .dashboard-info .cards .dashboard-card2 h2 {
+  text-align: center;
+  font-size: clamp(0.9rem, 10vw, 1.1rem);
+  font-weight: 500;
+}
+main .canvas .dashboard-info .cards .dashboard-card2 #task-progress {
+  font-weight: 600;
+  border: 1px solid #6c6b6b;
+  border-radius: 50%;
+  padding: 3px 7px;
+  text-align: center;
 }
 main .canvas .head-create-task {
   display: grid;

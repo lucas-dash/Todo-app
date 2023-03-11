@@ -9,6 +9,12 @@ $secondary-dark: #0d120e;
 $third-dark: #232826;
 $fourth-dark: #3c413f;
 
+$soft-primary: #e2d2fe;
+$soft-secondary: #bae5f4;
+$soft-third: #fccdcd;
+$soft-light: #ffe5c1;
+$soft-dark: #080826;
+
 $description: #5f5f5f;
 $shadow: #6c6b6b;
 $clr-hover-bar: hsl(0, 1%, 80%);
@@ -32,10 +38,10 @@ $important2: #3581f2;
 $important3: #f61f1f;
 
 // ? FONTS
-@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
-$ft-base: "Lora", serif;
-$ft-accent: "Poppins", sans-serif;
+$ft-base: 'Lora', serif;
+$ft-accent: 'Poppins', sans-serif;
 
 $font-100: clamp(0.8rem, 10vw, 0.9rem);
 $font-200: clamp(0.9rem, 10vw, 1.1rem);

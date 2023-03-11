@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 // ? Media queries
 
@@ -130,6 +130,18 @@
     padding: 0;
     .canvas {
       grid-template-rows: 180px 3% 1fr;
+
+      .dashboard-info {
+        .cards {
+          align-items: center;
+          flex-direction: column;
+        }
+
+        .quote-card {
+          min-height: 130px;
+        }
+      }
+
       .head-create-task {
         .first-col-head {
           .create-task {
