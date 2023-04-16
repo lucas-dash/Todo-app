@@ -58,7 +58,7 @@ nav .open-side .arrow-sidebar {
   transition: all 200ms ease-in;
 }
 nav .open-side .arrow-sidebar .arrow {
-  content: url(/icon/vuesax/linear/arrow-right.svg);
+  content: url(./icon/vuesax/linear/arrow-right.svg);
   display: inline-block;
   width: 25px;
   height: 25px;
@@ -321,7 +321,7 @@ main .canvas .head-create-task .first-col-head h2.moveDown {
   animation: textDown 300ms ease-in both;
 }
 main .canvas .head-create-task .first-col-head h2 #add-task {
-  content: url(/icon/plus-circle.svg);
+  content: url(./icon/plus-circle.svg);
   display: inline-block;
   width: clamp(1.55rem, 6vw, 2.2rem);
   height: clamp(1.55rem, 6vw, 2.2rem);
@@ -425,19 +425,19 @@ main .canvas .head-create-task .first-col-head .create-task .two-row .prior labe
   margin-right: 0.3rem;
 }
 main .canvas .head-create-task .first-col-head .create-task .two-row .date {
-  content: url(/icon/vuesax/linear/calendar.svg);
+  content: url(./icon/vuesax/linear/calendar.svg);
 }
 main .canvas .head-create-task .first-col-head .create-task .two-row .time {
-  content: url(/icon/vuesax/linear/clock.svg);
+  content: url(./icon/vuesax/linear/clock.svg);
 }
 main .canvas .head-create-task .first-col-head .create-task .two-row .prior label {
-  content: url(/icon/vuesax/linear/info-circle.svg);
+  content: url(./icon/vuesax/linear/info-circle.svg);
 }
 main .canvas .head-create-task .first-col-head .create-task .submit-btn {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background: #24282c center center url(/icon/plus-circle.svg);
+  background: #24282c center center url(./icon/plus-circle.svg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -462,7 +462,7 @@ main .canvas .head-create-task .second-row-head .count-task {
   align-items: center;
 }
 main .canvas .head-create-task .second-row-head .to-start-icon {
-  content: url(/icon/circle.svg);
+  content: url(./icon/circle.svg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -473,7 +473,7 @@ main .canvas .head-create-task .second-row-head .to-start-icon {
   border-radius: 15px;
 }
 main .canvas .head-create-task .second-row-head .progress-icon {
-  content: url(/icon/progress.svg);
+  content: url(./icon/progress.svg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -484,7 +484,7 @@ main .canvas .head-create-task .second-row-head .progress-icon {
   border-radius: 15px;
 }
 main .canvas .head-create-task .second-row-head .complet-icon {
-  content: url(/icon/check-circle.svg);
+  content: url(./icon/check-circle.svg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -791,21 +791,21 @@ main .canvas .all-todo .completeTask .newTask .head .status {
 main .canvas .all-todo .todo .newTask .head .status .to-do,
 main .canvas .all-todo .progressTask .newTask .head .status .to-do,
 main .canvas .all-todo .completeTask .newTask .head .status .to-do {
-  content: url(/icon/circle.svg);
+  content: url(./icon/circle.svg);
   height: 15px;
   width: 15px;
 }
 main .canvas .all-todo .todo .newTask .head .status .progress,
 main .canvas .all-todo .progressTask .newTask .head .status .progress,
 main .canvas .all-todo .completeTask .newTask .head .status .progress {
-  content: url(/icon/progress.svg);
+  content: url(./icon/progress.svg);
   height: 15px;
   width: 15px;
 }
 main .canvas .all-todo .todo .newTask .head .status .complet,
 main .canvas .all-todo .progressTask .newTask .head .status .complet,
 main .canvas .all-todo .completeTask .newTask .head .status .complet {
-  content: url(/icon/check-circle.svg);
+  content: url(./icon/check-circle.svg);
   height: 15px;
   width: 15px;
 }
@@ -989,7 +989,7 @@ main .canvas .all-todo .completeTask .newTask .complete .settings {
 main .canvas .all-todo .todo .newTask .complete .settings .edit,
 main .canvas .all-todo .progressTask .newTask .complete .settings .edit,
 main .canvas .all-todo .completeTask .newTask .complete .settings .edit {
-  content: url(/icon/edit.svg);
+  content: url(./icon/edit.svg);
   height: 19px;
   width: 19px;
   cursor: pointer;
@@ -997,7 +997,7 @@ main .canvas .all-todo .completeTask .newTask .complete .settings .edit {
 main .canvas .all-todo .todo .newTask .complete .settings .edit-save,
 main .canvas .all-todo .progressTask .newTask .complete .settings .edit-save,
 main .canvas .all-todo .completeTask .newTask .complete .settings .edit-save {
-  content: url(/icon/save.svg);
+  content: url(./icon/save.svg);
   height: 19px;
   width: 19px;
   cursor: pointer;
@@ -1005,7 +1005,7 @@ main .canvas .all-todo .completeTask .newTask .complete .settings .edit-save {
 main .canvas .all-todo .todo .newTask .complete .settings .delete,
 main .canvas .all-todo .progressTask .newTask .complete .settings .delete,
 main .canvas .all-todo .completeTask .newTask .complete .settings .delete {
-  content: url(/icon/trash-2.svg);
+  content: url(./icon/trash-2.svg);
   height: 19px;
   width: 19px;
   cursor: pointer;
