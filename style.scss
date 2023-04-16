@@ -171,12 +171,6 @@ nav {
 
         display: inline-flex;
         align-items: center;
-        // &:hover {
-        //   border: 1px solid $clr-hover-bar;
-        //   border-radius: 10px;
-        //   padding: 0.2rem;
-        //   outline: none;
-        // }
         img {
           width: 20px;
         }
@@ -200,7 +194,6 @@ nav {
         }
       }
       .darkmode_group {
-        // padding-block: 0.5rem;
         background-color: $clr-hover-bar;
       }
     }
@@ -527,7 +520,6 @@ main {
           width: clamp(20px, 5vw, 30px);
           height: clamp(20px, 5vw, 30px);
           padding: 0.2rem;
-          // border: 2px solid black;
           background-color: $fourth-light;
           border-radius: 15px;
         }
@@ -540,7 +532,6 @@ main {
           width: clamp(20px, 5vw, 30px);
           height: clamp(20px, 5vw, 30px);
           padding: 0.2rem;
-          // border: 1px solid black;
           background-color: $fourth-light;
           border-radius: 15px;
         }
@@ -553,7 +544,6 @@ main {
           width: clamp(20px, 5vw, 30px);
           height: clamp(20px, 5vw, 30px);
           padding: 0.2rem;
-          // border: 2px solid black;
           background-color: $fourth-light;
           border-radius: 15px;
         }
@@ -733,7 +723,6 @@ main {
       height: auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      // border: 1px solid rgb(56, 71, 207);
 
       // ! containers for heading and ul
       .to-start,
@@ -743,7 +732,6 @@ main {
         display: flex;
         flex-direction: column;
         border-radius: 10px;
-        // border: 2px solid rgb(171, 18, 195);
       }
 
       // ! heading container
@@ -830,8 +818,6 @@ main {
       .todo,
       .progressTask,
       .completeTask {
-        // min-height: 90%;
-        // max-height: max-content;
         display: grid;
         grid-auto-flow: row;
         grid-auto-rows: max-content;
@@ -840,12 +826,9 @@ main {
         align-items: start;
         margin-block-end: 3.5rem;
 
-        // border: 1px solid pink;
-
         // ! list
         .newTask {
           list-style: none;
-          // width: min(80%, 400px);
           width: clamp(17.267rem, 80%, 400px);
           height: 5.1rem;
           padding: 0.8rem;

@@ -298,11 +298,50 @@ class Method {
 // ! arrays
 
 // ? new Task
-const todo = JSON.parse(localStorage.getItem('todo')) || [];
+const todo = JSON.parse(localStorage.getItem('todo')) || [
+  {
+    _complete: false,
+    _date: '16/04/2023',
+    _description: 'Here is note for task',
+    _inProgress: false,
+    _name: 'Your tasks will be shown here',
+    _priority: '14dd28',
+    _time: '20:00',
+  },
+  {
+    _complete: false,
+    _date: '16/04/2023',
+    _description: 'Sushi',
+    _inProgress: false,
+    _name: 'Make Lunch',
+    _priority: '3581f2',
+    _time: '11:00',
+  },
+];
 // ? progress task
-const inProgress = JSON.parse(localStorage.getItem('progress')) || [];
+const inProgress = JSON.parse(localStorage.getItem('progress')) || [
+  {
+    _complete: false,
+    _date: '18/04/2023',
+    _description: '',
+    _inProgress: true,
+    _name: 'Clean room',
+    _priority: '3581f2',
+    _time: '13:00',
+  },
+];
 // ? complete task
-const completeTask = JSON.parse(localStorage.getItem('complete')) || [];
+const completeTask = JSON.parse(localStorage.getItem('complete')) || [
+  {
+    _complete: true,
+    _date: '06/04/2023',
+    _description: '',
+    _inProgress: false,
+    _name: 'Here is complete task',
+    _priority: 'f61f1f',
+    _time: '18:00',
+  },
+];
 
 // ! creating new Task with Form
 const creatingTask = document.querySelector('.create-task');
@@ -334,7 +373,6 @@ creatingTask.addEventListener('submit', (e) => {
       taskTime,
       taskPriorityColor
     );
-    // console.table(newTask);
 
     todo.push(newTask);
 
@@ -371,9 +409,6 @@ completeTask.forEach((doneTask) => {
   Method.render(completeTask, '.completeTask', doneTask);
 });
 
-// todo in complete Task možnost odstranit z complete
-// todo click vpravo nahoře vrátit zpět do todo? nebo nějakou návratovou funkci
-
 // ? show how much task are in which array
 function getCountTask() {
   const todoCount = document.querySelectorAll('[data-todo]');
@@ -395,16 +430,3 @@ function getCountTask() {
 }
 
 getCountTask();
-
-// ! searching task from input
-// const searchInput = document.querySelector('#search-task');
-// const listSearch = document.querySelector('.search-task-list');
-
-// searchInput.addEventListener('input', (e) => {
-//   const allTask = [...todo, ...inProgress, ...completeTask];
-//   allTask.forEach((task) => {
-//     if (task._name.toLowerCase().includes(e.target.value.toLowerCase())) {
-//       // Method.render(allTask, '.search-task-list', task);
-//     }
-//   });
-// });
