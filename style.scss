@@ -86,7 +86,7 @@ nav {
       transition: all 200ms ease-in;
 
       .arrow {
-        content: url(/icon/vuesax/linear/arrow-right.svg);
+        content: url(./icon/vuesax/linear/arrow-right.svg);
         display: inline-block;
         width: 25px;
         height: 25px;
@@ -348,7 +348,7 @@ main {
           }
 
           #add-task {
-            content: url(/icon/plus-circle.svg);
+            content: url(./icon/plus-circle.svg);
             display: inline-block;
             width: clamp(1.55rem, 6vw, 2.2rem);
             height: clamp(1.55rem, 6vw, 2.2rem);
@@ -464,15 +464,15 @@ main {
             }
 
             .date {
-              content: url(/icon/vuesax/linear/calendar.svg);
+              content: url(./icon/vuesax/linear/calendar.svg);
             }
 
             .time {
-              content: url(/icon/vuesax/linear/clock.svg);
+              content: url(./icon/vuesax/linear/clock.svg);
             }
             .prior {
               label {
-                content: url(/icon/vuesax/linear/info-circle.svg);
+                content: url(./icon/vuesax/linear/info-circle.svg);
               }
             }
           }
@@ -481,13 +481,11 @@ main {
             height: 2rem;
             border-radius: 50%;
             background: $secondary-light center center
-              url(/icon/plus-circle.svg);
+              url(./icon/plus-circle.svg);
 
             display: flex;
             align-items: center;
             justify-content: center;
-
-            // todo loading
 
             #submit {
               cursor: pointer;
@@ -513,7 +511,7 @@ main {
         }
 
         .to-start-icon {
-          content: url(/icon/circle.svg);
+          content: url(./icon/circle.svg);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -524,7 +522,7 @@ main {
           border-radius: 15px;
         }
         .progress-icon {
-          content: url(/icon/progress.svg);
+          content: url(./icon/progress.svg);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -536,7 +534,7 @@ main {
           border-radius: 15px;
         }
         .complet-icon {
-          content: url(/icon/check-circle.svg);
+          content: url(./icon/check-circle.svg);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -870,17 +868,17 @@ main {
               align-items: center;
               justify-content: flex-end;
               .to-do {
-                content: url(/icon/circle.svg);
+                content: url(./icon/circle.svg);
                 height: 15px;
                 width: 15px;
               }
               .progress {
-                content: url(/icon/progress.svg);
+                content: url(./icon/progress.svg);
                 height: 15px;
                 width: 15px;
               }
               .complet {
-                content: url(/icon/check-circle.svg);
+                content: url(./icon/check-circle.svg);
                 height: 15px;
                 width: 15px;
               }
@@ -1031,20 +1029,20 @@ main {
               display: flex;
               gap: 8px;
               .edit {
-                content: url(/icon/edit.svg);
+                content: url(./icon/edit.svg);
                 height: 19px;
                 width: 19px;
                 cursor: pointer;
               }
               .edit-save {
-                content: url(/icon/save.svg);
+                content: url(./icon/save.svg);
                 height: 19px;
                 width: 19px;
                 cursor: pointer;
               }
 
               .delete {
-                content: url(/icon/trash-2.svg);
+                content: url(./icon/trash-2.svg);
                 height: 19px;
                 width: 19px;
                 cursor: pointer;
